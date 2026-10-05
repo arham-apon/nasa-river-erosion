@@ -1,0 +1,69 @@
+REM Optional voice alert (needs gTTS from step 2 and internet):
+    python -c "from gtts import gTTS; t = open('data/web/alerts_bn.txt', encoding='utf-8').read().split('\n\n')[0]; gTTS(t, lang='bn').save('data/web/alert_1.mp3')"
+
+
+5. OPEN THE DASHBOARD
+---------------------
+REM Start a small local web server (keep this window open while you use the map):
+    python -m http.server 8000 --directory data\web
+
+Then open this address in a web browser:
+    http://localhost:8000/dashboard.html
+
+On the map:
+- Layer list (top right): union threat, 2026 risk per stretch, hindcast 2023/2024/2025,
+  banklines, eroded land 2021-2025. Tick/untick to switch.
+- Click any polygon for details. Click a union in the left panel to zoom to it.
+
+To stop the server: go back to the cmd window and press Ctrl + C.
+
+
+6. NEXT TIME (environment already set up)
+-----------------------------------------
+    cd /d %USERPROFILE%\Desktop\nasa-river-erosion
+    nenv\Scripts\activate
+    python -m http.server 8000 --directory data\web
+REM then open http://localhost:8000/dashboard.html
+
+
+7. OPTIONAL: REBUILD EVERYTHING FROM THE SATELLITE DATA (Steps 1-8, slow)
+--------------------------------------------------------------------------
+Only needed to recreate the training tables themselves. Needs a Google Earth Engine account
+with access to the Cloud project "nasa-river-erosion", and about 1-2 hours.
+Results can differ slightly from the stored tables if Google has added or removed scenes.
+
+    earthengine authenticate
+
+REM Union/upazila boundaries (about 290 MB download), unzip into data\boundaries\
+    mkdir data\boundaries
+    curl -L -o data\boundaries\adm3.zip https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/gbOpen/BGD/ADM3/geoBoundaries-BGD-ADM3-all.zip
+    curl -L -o data\boundaries\adm4.zip https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/gbOpen/BGD/ADM4/geoBoundaries-BGD-ADM4-all.zip
+    tar -xf data\boundaries\adm3.zip -C data\boundaries
+    tar -xf data\boundaries\adm4.zip -C data\boundaries
+
+REM Region 1
+    set CEW_REGION=gaibandha
+    python 02c_fetch_direct.py class context extras
+    python 03_erosion.py
+    python 04_features.py
+    python 07_sanity_checks.py
+
+REM Region 2
+    set CEW_REGION=sirajganj
+    python 02c_fetch_direct.py class context extras
+    python 03_erosion.py
+    python 04_features.py
+    python 07_sanity_checks.py
+
+REM Then steps 3, 4 and 5 above.
+
+
+TROUBLESHOOTING
+---------------
+- "py is not recognized": use "python" instead of "py -3.14" (check "python --version" says 3.14).
+- pip install fails on one package: make sure it is Python 3.14 (the lock file is for 3.14).
+- Dashboard page is blank: open it through http://localhost:8000/dashboard.html, not by
+  double-clicking the file; and keep the server window open.
+- Port 8000 busy: use another number, e.g. "python -m http.server 8010 --directory data\web"
+  and open http://localhost:8010/dashboard.html.
+- Full details: docs\REPRODUCE.md and docs\step_*.md
