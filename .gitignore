@@ -8,8 +8,23 @@ env/
 .nenv/
 /drive_data
 
-# Project data (large, downloaded)
-data/
+# Project data: ignore everything except what is needed to retrain and rebuild the
+# results without downloading (see docs/REPRODUCE.md)
+data/*
+!data/boundaries/
+data/boundaries/*
+!data/boundaries/unions_study_area.gpkg
+!data/gaibandha/
+!data/sirajganj/
+data/gaibandha/*
+data/sirajganj/*
+!data/gaibandha/processed/
+!data/sirajganj/processed/
+data/*/processed/*
+!data/*/processed/training_table.csv
+!data/*/processed/segments.gpkg
+!data/*/processed/banklines.gpkg
+!data/*/processed/erosion_polygons.gpkg
 __pycache__/
 nenv/
 .claude/worktrees/

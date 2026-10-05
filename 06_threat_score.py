@@ -11,6 +11,7 @@ import config as C
 ID_COLS = ["segment", "side"]
 MODEL = C.ROOT / "data" / "model"
 UNIONS = C.BOUNDARIES / "geoBoundaries-BGD-ADM4.shp"
+UNIONS_SMALL = C.BOUNDARIES / "unions_study_area.gpkg"  # clipped copy, small enough to keep in git
 OUT = C.ROOT / "data" / "web"
 W_RISK, W_RETREAT, W_POP, W_BLDG = 0.5, 0.2, 0.2, 0.1
 
@@ -19,6 +20,18 @@ ALERT_BN = (
     "নদীর পাড়ের কাছে থাকা ঘরবাড়ি, গবাদিপশু ও মূল্যবান জিনিসপত্র নিরাপদ স্থানে সরানোর প্রস্তুতি নিন। "
     "বিস্তারিত জানতে ইউনিয়ন পরিষদে যোগাযোগ করুন।"
 )
+
+
+def study_unions():
+    """Union polygons around both study regions. Made once from the full geoBoundaries file, then reused."""
+    if UNIONS_SMALL.exists():
+        return gpd.read_file(UNIONS_SMALL)
+    boxes = [C.REGIONS[r]["bbox"] for r in C.REGIONS]
+    bbox = (min(b[0] for b in boxes), min(b[1] for b in boxes), max(b[2] for b in boxes), max(b[3] for b in boxes))
+    u = gpd.read_file(UNIONS, bbox=bbox)[["shapeName", "shapeID", "geometry"]]
+    u.to_file(UNIONS_SMALL, driver="GPKG")
+    print(f"Saved {len(u)} study-area unions to {UNIONS_SMALL}")
+    return u
 
 
 def segment_layer(table, keep, name):
@@ -109,9 +122,7 @@ def main():
     print(u[["rank", "region", "union_name", "threat_score", "threat_level", "high_stretches", "population"]]
           .head(15).to_string(index=False))
 
-    boxes = [C.REGIONS[r]["bbox"] for r in C.REGIONS]
-    bbox = (min(b[0] for b in boxes), min(b[1] for b in boxes), max(b[2] for b in boxes), max(b[3] for b in boxes))
-    b = gpd.read_file(UNIONS, bbox=bbox)[["shapeID", "geometry"]].rename(columns={"shapeID": "union_id"})
+    b = study_unions()[["shapeID", "geometry"]].rename(columns={"shapeID": "union_id"})
     un = b.merge(u, on="union_id").to_crs(4326)
     un["geometry"] = un.geometry.simplify(0.0002)
     un.to_file(OUT / "unions.geojson", driver="GeoJSON")

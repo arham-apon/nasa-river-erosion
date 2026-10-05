@@ -28,7 +28,7 @@ Region switch: `CEW_REGION=gaibandha|sirajganj` (env var). Every output is on di
 - Step 7/8 findings and fixes: see `docs/step_7_and_8.md`.
 - Open manual task: Google Earth Pro check of `data/<region>/checks/check_<region>.kml` (doc 7.2).
 - Archives (not used by the pipeline): `data/old_wide_box/` (wrong-box Drive download), `data/gaibandha_drive_-13.2dB/` (original Gaibandha class maps).
-- Code and docs are not committed to git yet; data/ is gitignored.
+- Code, docs and the data needed to retrain are in git (branch backend-pipeline-testing); see `docs/REPRODUCE.md`. Everything else in data/ is ignored.
 
 ## Resume commands
 

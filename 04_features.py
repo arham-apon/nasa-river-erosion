@@ -162,6 +162,7 @@ def load_unions(crs):
     for folder in (C.RAW, C.BOUNDARIES):
         for ext in ("shp", "geojson"):
             files += [f for f in folder.glob(f"geoBoundaries-BGD-ADM4*.{ext}") if "simplified" not in f.name.lower()]
+    files += [f for f in (C.BOUNDARIES / "unions_study_area.gpkg",) if f.exists()]  # clipped copy made by 06
     if not files:
         print(f"Union boundaries not found in {C.RAW} or {C.BOUNDARIES}; skipping union join")
         return None
