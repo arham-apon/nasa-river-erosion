@@ -1,0 +1,26 @@
+Our pipeline covers the middle reach of the Jamuna, from around the Jamuna (Bangabandhu) Bridge in the south up to Gaibandha in the north.
+
+**Bounding box (`AOI_BBOX` in `config.py`)**
+- Latitude: 24.40° N to 25.30° N, about 100 km north to south
+- Longitude: 89.45° E to 89.95° E, about 50 km west to east
+
+**Districts and upazilas along this stretch**
+- **West bank:**
+  - Sirajganj (Sirajganj Sadar, Kazipur)
+  - Bogura (Dhunat, Sariakandi)
+  - Gaibandha (Saghata, Fulchhari)
+- **East bank:**
+  - Tangail (Bhuapur)
+  - Jamalpur (Sarishabari, Madarganj, Islampur, Dewanganj)
+
+**Not covered**
+- **North of the box:** the upper Jamuna in Kurigram (Chilmari, Roumari, Rowmari). Several of CEGIS's 2026 predicted hotspots are there.
+- **South of the box:** the lower Jamuna below the bridge, toward Aricha and the Padma confluence.
+
+**To include Kurigram,** extend the northern edge:
+```python
+AOI_BBOX = [89.45, 24.40, 89.95, 25.60]
+```
+Then re-export all years with the new box. The grids must match across years, so you can't mix old and new exports.
+
+The paper itself studied the Jamuna more broadly. Our box is a smaller section chosen to keep processing fast for the hackathon.
