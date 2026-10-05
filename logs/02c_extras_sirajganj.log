@@ -1,0 +1,14 @@
+Region sirajganj, box [89.51, 23.98, 89.94, 24.81], threshold -13.2 dB -> C:\Users\User\Desktop\nasa-river-erosion\.claude\worktrees\context-folder-review-347c4d\data\sirajganj\raw
+Wrote static_layers.tif: 2273x4642, 50 tiles, 20 s
+2015: no Dynamic World images, skipped
+Wrote dw_water_2016.tif: 2273x4642, 50 tiles, 23 s
+Wrote dw_water_2017.tif: 2273x4642, 50 tiles, 22 s
+Wrote dw_water_2018.tif: 2273x4642, 50 tiles, 31 s
+Wrote dw_water_2019.tif: 2273x4642, 50 tiles, 36 s
+Wrote dw_water_2020.tif: 2273x4642, 50 tiles, 39 s
+Wrote dw_water_2021.tif: 2273x4642, 50 tiles, 41 s
+Wrote dw_water_2022.tif: 2273x4642, 50 tiles, 29 s
+Wrote dw_water_2023.tif: 2273x4642, 50 tiles, 47 s
+Wrote dw_water_2024.tif: 2273x4642, 50 tiles, 36 s
+Wrote dw_water_2025.tif: 2273x4642, 50 tiles, 50 s
+Wrote dw_water_2026.tif: 2273x4642, 50 tiles, 40 s

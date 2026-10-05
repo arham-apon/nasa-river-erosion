@@ -1,0 +1,19 @@
+ rank    region     union_name  threat_score threat_level  high_stretches  population
+    1 sirajganj Sadia Chandpur         0.785         High               0     16458.0
+    2 sirajganj       Belkuchi         0.782         High               3     11145.0
+    3 gaibandha       Sughatta         0.758         High               2      9734.0
+    4 sirajganj        Kaijuri         0.748         High               3     22854.0
+    5 gaibandha    Bahadurabad         0.748         High               0       921.0
+    6 sirajganj    Khas Kaulia         0.746         High               1      9524.0
+    7 gaibandha      Chikajani         0.737         High               2     14010.0
+    8 sirajganj     Khoksabari         0.729         High               1     11433.0
+    9 gaibandha      Ghuridaha         0.723         High               0      6328.0
+   10 gaibandha     Bhartkhali         0.714         High               0      3337.0
+   11 sirajganj       Kamalpur         0.712         High               2      6051.0
+   12 gaibandha        Gazaria         0.705         High               2      7404.0
+   13 gaibandha     Muktanagar         0.703         High               1      7589.0
+   14 sirajganj        Nikrail         0.699       Medium               1     14048.0
+   15 sirajganj   Khas Pukuria         0.694       Medium               0      3028.0
+
+13 Bangla alerts written to C:\Users\User\Desktop\nasa-river-erosion\.claude\worktrees\context-folder-review-347c4d\data\web\alerts_bn.txt
+Dashboard: python -m http.server 8000 --directory C:\Users\User\Desktop\nasa-river-erosion\.claude\worktrees\context-folder-review-347c4d\data\web  then open http://localhost:8000/dashboard.html

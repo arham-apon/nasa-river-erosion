@@ -9,21 +9,7 @@ import gee_common as G
 DONE = {"COMPLETED", "SUCCEEDED", "FAILED", "CANCELLED"}
 
 
-def class_task(year):
-    return ee.batch.Export.image.toDrive(
-        image=G.class_image(year),
-        description=f"class_{year}",
-        folder=C.DRIVE_FOLDER,
-        fileNamePrefix=f"class_{year}",
-        region=G.aoi(),
-        crs=C.CRS,
-        scale=C.SCALE_EXPORT,
-        maxPixels=1e10,
-        fileFormat="GeoTIFF",
-    )
-
-
-def buildings_task():
+def buildings_fc():
     def to_point(f):
         c = f.geometry().centroid(maxError=1).coordinates()
         return ee.Feature(
@@ -31,24 +17,29 @@ def buildings_task():
             {"lon": c.get(0), "lat": c.get(1), "area_m2": f.get("area_in_meters"), "confidence": f.get("confidence")},
         )
 
-    fc = (
+    return (
         ee.FeatureCollection("GOOGLE/Research/open-buildings/v3/polygons")
         .filterBounds(G.aoi())
         .filter(ee.Filter.gte("confidence", C.BUILDING_CONFIDENCE))
         .map(to_point)
     )
-    return ee.batch.Export.table.toDrive(
-        collection=fc,
-        description="buildings",
+
+
+def buildings_task():
+    task = ee.batch.Export.table.toDrive(
+        collection=buildings_fc(),
+        description=f"{C.REGION}_buildings",
         folder=C.DRIVE_FOLDER,
         fileNamePrefix="buildings",
         fileFormat="CSV",
         selectors=["lon", "lat", "area_m2", "confidence"],
     )
+    task.start()
+    return task
 
 
-def worldpop_task():
-    img = (
+def worldpop_image():
+    return (
         ee.ImageCollection("WorldPop/GP/100m/pop")
         .filter(ee.Filter.eq("country", "BGD"))
         .filter(ee.Filter.eq("year", C.WORLDPOP_YEAR))
@@ -56,17 +47,19 @@ def worldpop_task():
         .select("population")
         .toFloat()
     )
-    return ee.batch.Export.image.toDrive(
-        image=img,
-        description=f"worldpop_{C.WORLDPOP_YEAR}",
-        folder=C.DRIVE_FOLDER,
-        fileNamePrefix=f"worldpop_{C.WORLDPOP_YEAR}",
-        region=G.aoi(),
-        crs=C.CRS,
-        scale=100,
-        maxPixels=1e10,
-        fileFormat="GeoTIFF",
-    )
+
+
+def wait(tasks):
+    while True:
+        states = {name: t.status()["state"] for name, t in tasks}
+        print(time.strftime("%H:%M:%S"), " ".join(f"{k}:{v}" for k, v in states.items()), flush=True)
+        if all(s in DONE for s in states.values()):
+            break
+        time.sleep(60)
+    for name, t in tasks:
+        st = t.status()
+        if st["state"] in {"FAILED", "CANCELLED"}:
+            print(f"{name} {st['state']}: {st.get('error_message', '')}")
 
 
 def main():
@@ -78,6 +71,7 @@ def main():
 
     G.init()
     years = args.years or list(range(C.FIRST_DRY_SEASON, C.LAST_DRY_SEASON + 1))
+    print(f"Region {C.REGION}, box {C.AOI_BBOX}, threshold {C.LAND_THRESHOLD_DB} dB")
 
     for year in years:
         counts = G.image_counts(year)
@@ -87,27 +81,17 @@ def main():
                 f"No images for {year - 1}/{year}. Check ASC_ORBIT/DESC_ORBIT in config.py or set them to None."
             )
 
-    tasks = [(f"class_{y}", class_task(y)) for y in years]
+    tasks = [(f"class_{y}", G.export_image(G.class_image(y), f"class_{y}", C.SCALE_EXPORT)) for y in years]
     if not args.skip_context:
-        tasks += [("buildings", buildings_task()), (f"worldpop_{C.WORLDPOP_YEAR}", worldpop_task())]
-
-    for name, t in tasks:
-        t.start()
+        tasks.append(("buildings", buildings_task()))
+        name = f"worldpop_{C.WORLDPOP_YEAR}"
+        tasks.append((name, G.export_image(worldpop_image(), name, 100)))
+    for name, _ in tasks:
         print(f"Started {name}")
     print(f"\nTrack tasks at https://code.earthengine.google.com/tasks (Drive folder: {C.DRIVE_FOLDER})")
 
-    if not args.wait:
-        return
-    while True:
-        states = {name: t.status()["state"] for name, t in tasks}
-        print(time.strftime("%H:%M:%S"), " ".join(f"{k}:{v}" for k, v in states.items()))
-        if all(s in DONE for s in states.values()):
-            break
-        time.sleep(60)
-    for name, t in tasks:
-        st = t.status()
-        if st["state"] in {"FAILED", "CANCELLED"}:
-            print(f"{name} {st['state']}: {st.get('error_message', '')}")
+    if args.wait:
+        wait(tasks)
 
 
 if __name__ == "__main__":

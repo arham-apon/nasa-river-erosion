@@ -23,8 +23,19 @@ def veg_mask(end_year):
     return s2.reduce(ee.Reducer.percentile([90])).gt(C.NDVI_VEG).rename("veg")
 
 
+def scores(rows, n):
+    """Overall accuracy and balanced accuracy (mean of land recall and sand/water recall)."""
+    acc = sum(1 for r in rows if r[n] == r["veg"]) / len(rows)
+    veg = [r for r in rows if r["veg"] == 1]
+    bare = [r for r in rows if r["veg"] == 0]
+    rec_land = sum(1 for r in veg if r[n] == 1) / max(len(veg), 1)
+    rec_bare = sum(1 for r in bare if r[n] == 0) / max(len(bare), 1)
+    return acc, (rec_land + rec_bare) / 2
+
+
 def main():
     G.init()
+    print(f"Region {C.REGION}, box {C.AOI_BBOX}")
     zone = ee.Image("JRC/GSW1_4/GlobalSurfaceWater").select("occurrence").gt(0)
     points = ee.FeatureCollection.randomPoints(G.aoi(), C.VALIDATION_POINTS, 42)
     names = [f"t{i}" for i in range(len(C.VALIDATION_THRESHOLDS))]
@@ -44,23 +55,25 @@ def main():
         if not rows:
             print(f"{year - 1}/{year}: no valid samples")
             continue
-        line = [f"{year - 1}/{year}: images={counts['ascending']}, samples={len(rows)}"]
+        veg_share = sum(r["veg"] for r in rows) / len(rows)
+        line = [f"{year - 1}/{year}: images={counts['ascending']}, samples={len(rows)}, vegetated={veg_share:.0%}"]
         for t, n in zip(C.VALIDATION_THRESHOLDS, names):
-            acc = sum(1 for r in rows if r[n] == r["veg"]) / len(rows)
-            summary[t].append(acc)
-            line.append(f"{t:+.1f}dB={acc:.3f}")
-        print("  ".join(line))
+            acc, bal = scores(rows, n)
+            summary[t].append((acc, bal))
+            line.append(f"{t:+.1f}dB={acc:.3f}/{bal:.3f}")
+        print("  ".join(line), flush=True)
 
-    print("\nMean accuracy across years:")
+    print("\nMean across years (accuracy / balanced accuracy):")
     best = None
-    for t, accs in summary.items():
-        if accs:
-            mean = sum(accs) / len(accs)
-            print(f"  {t:+.1f} dB: {mean:.3f}")
-            if best is None or mean > best[1]:
-                best = (t, mean)
+    for t, vals in summary.items():
+        if vals:
+            acc = sum(v[0] for v in vals) / len(vals)
+            bal = sum(v[1] for v in vals) / len(vals)
+            print(f"  {t:+.1f} dB: {acc:.3f} / {bal:.3f}")
+            if best is None or bal > best[1]:
+                best = (t, bal)
     if best:
-        print(f"\nBest threshold: {best[0]:+.1f} dB (accuracy {best[1]:.3f})")
+        print(f"\nBest threshold (balanced accuracy): {best[0]:+.1f} dB ({best[1]:.3f})")
         print(f"Current LAND_THRESHOLD_DB in config.py: {C.LAND_THRESHOLD_DB:+.1f} dB")
 
 

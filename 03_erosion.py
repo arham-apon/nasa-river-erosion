@@ -1,3 +1,5 @@
+import importlib
+
 import geopandas as gpd
 import numpy as np
 import pandas as pd
@@ -10,6 +12,7 @@ from shapely.geometry import shape
 import config as C
 
 NODATA = 255
+corridor = importlib.import_module("04_features").corridor
 
 
 def load_year(year):
@@ -35,6 +38,18 @@ def drop_small(mask, min_px):
         return mask
     sizes = np.bincount(labels.ravel())
     keep = sizes >= min_px
+    keep[0] = False
+    return keep[labels]
+
+
+def touching(mask, region, gap_px=2):
+    """Keep only the patches of mask that touch region (within gap_px pixels)."""
+    labels, n = ndimage.label(mask, structure=np.ones((3, 3)))
+    if n == 0:
+        return mask
+    near = ndimage.binary_dilation(region, iterations=gap_px)
+    keep = np.zeros(n + 1, dtype=bool)
+    keep[np.unique(labels[mask & near])] = True
     keep[0] = False
     return keep[labels]
 
@@ -81,6 +96,8 @@ def main():
         valid = (before != NODATA) & (after != NODATA)
         eroded = valid & np.isin(before, (1, 2)) & (after == 0)
         eroded = drop_small(eroded, C.MIN_PATCH_PX)
+        if C.EROSION_TOUCH_CORRIDOR:
+            eroded = touching(eroded, corridor(before))
         out = np.zeros(before.shape, dtype=np.uint8)
         out[eroded] = 1
         out[eroded & (before == 2)] = 2

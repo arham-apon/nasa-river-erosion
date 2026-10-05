@@ -7,6 +7,23 @@ def init():
     ee.Initialize(project=C.GEE_PROJECT)
 
 
+def export_image(img, name, scale):
+    """Start a Google Drive export of img on the region grid (EPSG:32645, origin snapped to scale)."""
+    task = ee.batch.Export.image.toDrive(
+        image=img,
+        description=f"{C.REGION}_{name}",
+        folder=C.DRIVE_FOLDER,
+        fileNamePrefix=name,
+        region=aoi(),
+        crs=C.CRS,
+        scale=scale,
+        maxPixels=1e10,
+        fileFormat="GeoTIFF",
+    )
+    task.start()
+    return task
+
+
 def aoi():
     return ee.Geometry.Rectangle(C.AOI_BBOX, proj="EPSG:4326", geodesic=False)
 

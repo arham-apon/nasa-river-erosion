@@ -7,3 +7,9 @@ env/
 .env/
 .nenv/
 /drive_data
+
+# Project data (large, downloaded)
+data/
+__pycache__/
+nenv/
+.claude/worktrees/
