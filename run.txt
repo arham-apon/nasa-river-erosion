@@ -67,3 +67,6 @@ TROUBLESHOOTING
 - Port 8000 busy: use another number, e.g. "python -m http.server 8010 --directory data\web"
   and open http://localhost:8010/dashboard.html.
 - Full details: docs\REPRODUCE.md and docs\step_*.md
+
+
+thats it ig
