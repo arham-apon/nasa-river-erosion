@@ -6,3 +6,4 @@ venv/
 env/
 .env/
 .nenv/
+/drive_data
