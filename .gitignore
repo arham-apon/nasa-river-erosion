@@ -20,6 +20,11 @@ data/gaibandha/*
 data/sirajganj/*
 !data/gaibandha/processed/
 !data/sirajganj/processed/
+# Dry-season 2026 class map: the grid 08_nisar_fetch.py puts NISAR on (so it runs without Earth Engine)
+!data/gaibandha/raw/
+!data/sirajganj/raw/
+data/*/raw/*
+!data/*/raw/class_2026.tif
 data/*/processed/*
 !data/*/processed/training_table.csv
 !data/*/processed/segments.gpkg

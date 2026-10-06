@@ -35,7 +35,7 @@ Region switch: `CEW_REGION=gaibandha|sirajganj` (env var). Every output is on di
 - The river is still high on 09-22: whole-map "erosion" (3,721 / 7,488 ha) is mostly flooded char land. Use the bank-stretch numbers.
 - NEXT: when October/November passes appear (36-72 h after acquisition), re-run 08 -> 09 (both regions) -> 10 and update
   the tables in docs/step_13_and_14.md and docs/step_15_and_16.md.
-- run.txt (committed) is cut off; run_full.txt is the full version with the NISAR section. Replacing run.txt: ask the user first.
+- run.txt is the full run guide (sections 0-8, incl. NISAR); it replaced the cut-off version on 2026-10-06.
 
 ## Notes
 

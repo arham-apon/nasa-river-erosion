@@ -10,6 +10,7 @@ The repo contains the code plus the small set of data needed to retrain the mode
 | `data/<region>/processed/segments.gpkg` | `06_threat_score.py` (stretch polygons) | 0.4 MB |
 | `data/<region>/processed/banklines.gpkg`, `erosion_polygons.gpkg` | `06_threat_score.py` (dashboard layers) | 35 MB |
 | `data/boundaries/unions_study_area.gpkg` | `06_threat_score.py` (325 unions around both regions) | 9.7 MB |
+| `data/<region>/raw/class_2026.tif` | `08_nisar_fetch.py` (grid the NISAR passes are put on) | 1.1 MB |
 | `data/nisar_scenes.csv`, `data/<region>/nisar/{calibration,timeline,segments_2026}.csv`, `erosion_2026.gpkg` | `10_nisar_check.py` (NISAR forecast check and dashboard layers) | 3.7 MB |
 
 Not in git (rebuilt by the scripts): `data/model/`, `data/web/`, and the large rasters (`raw/`, `class_stack.tif`, `eroded_stack.tif`, NISAR `gcov_*.tif`, `water_stack.tif`, `eroded_2026.tif`). The full geoBoundaries file (124 MB) is over GitHub's limit; `06` made the clipped copy from it.
@@ -71,4 +72,4 @@ python 09_nisar_erosion.py
 python 10_nisar_check.py
 ```
 
-`08` needs `data/<region>/raw/class_2026.tif` (the grid NISAR is put on) and `09` needs `raw/static_layers.tif` and `processed/segments.gpkg`, so the Earth Engine steps above must have been run for both regions first. New passes (October onward) are picked up automatically, so a re-run changes the provisional results (see `docs/step_15_and_16.md`). Expected with the 8 passes up to 2026-09-22: `gradient boosting forecast 0.292 0.533 0.222` in the `both` rows of `10`'s table.
+`08` needs only `data/<region>/raw/class_2026.tif` (the grid NISAR is put on; in git), so `08` + `10` give the full dashboard, including the radar time-lapse, without Earth Engine. `09` also needs `raw/static_layers.tif`, `raw/class_*.tif` and `processed/erosion_summary.csv` (not in git): run it only after the Earth Engine steps above. Its results are already in git. New passes (October onward) are picked up automatically, so a re-run changes the provisional results (see `docs/step_15_and_16.md`). Expected with the 8 passes up to 2026-09-22: `gradient boosting forecast 0.292 0.533 0.222` in the `both` rows of `10`'s table.
