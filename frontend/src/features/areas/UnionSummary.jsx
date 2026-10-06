@@ -33,19 +33,17 @@ export default function UnionSummary({ manifest, region, union, sections, alert,
           <Tag tone="forecast">{t("tags.forecastSeason", { season })}</Tag>
         </div>
 
-        <dl className={p.headline}>
-          <div>
-            <dt>{t("area.priority")}</dt>
-            <dd>
-              <RiskLabel level={union.level} kind="priority" />
-            </dd>
-            <span className={p.headNote}>{t("area.priorityNote")}</span>
-          </div>
+        <div className={p.primary}>
+          <span className={p.label}>{t("area.priority")}</span>
+          <span className={p.primaryValue}>
+            <RiskLabel level={union.level} kind="priority" />
+          </span>
+          <span className={p.headNote}>{t("area.priorityNote")}</span>
+        </div>
+        <dl className={p.secondaryRow}>
           <div>
             <dt>{t("area.highSections")}</dt>
-            <dd>
-              {t("area.ofN", { n: fmtNum(high, lang), total: fmtNum(sections.length, lang) })}
-            </dd>
+            <dd>{t("area.ofN", { n: fmtNum(high, lang), total: fmtNum(sections.length, lang) })}</dd>
             <span className={p.headNote}>{t("area.highSectionsNote")}</span>
           </div>
           <div>

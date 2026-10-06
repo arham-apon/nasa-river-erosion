@@ -15,10 +15,17 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
-  font-size: var(--fs-14);
-  line-height: 1.5;
+  font-size: var(--fs-ui);
+  line-height: 1.55;
+  font-optical-sizing: auto;
+  font-feature-settings: "cv11" 1;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* One accent phrase per page headline. */
+.hl {
+  color: var(--water);
 }
 
 h1,
@@ -36,8 +43,9 @@ h1,
 h2,
 h3,
 h4 {
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
 }
 
 ul,
@@ -78,7 +86,7 @@ button {
 
 .num,
 .mono {
-  font-family: var(--font-mono);
+  font-family: var(--font-num);
   font-variant-numeric: tabular-nums;
 }
 

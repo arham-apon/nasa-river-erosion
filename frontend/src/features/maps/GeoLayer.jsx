@@ -15,7 +15,7 @@ function safe(fn) {
  * One GeoJSON source with its style layers. layers: [{ id, type, paint, layout, filter, slot, interactive }].
  * The interactive layer reports hover/click; hover also sets feature-state { hover: true } (needs promoteId).
  */
-export default function GeoLayer({ id, data, layers, promoteId, onClick, onHover }) {
+export default function GeoLayer({ id, data, layers, promoteId, onClick, onHover, visible = true }) {
   const map = useMap();
   const cb = useRef({ onClick, onHover });
   cb.current = { onClick, onHover };
@@ -25,7 +25,8 @@ export default function GeoLayer({ id, data, layers, promoteId, onClick, onHover
     map.addSource(id, { type: "geojson", data: data ?? EMPTY, promoteId });
     for (const l of layers) {
       const { slot = "slot-line", interactive, ...spec } = l;
-      map.addLayer({ ...spec, source: id }, slot);
+      // Hidden layers stay mounted so toggling them never reshuffles the stacking order.
+      map.addLayer({ ...spec, layout: { ...spec.layout, visibility: visible ? "visible" : "none" }, source: id }, slot);
     }
     const hit = layers.find((l) => l.interactive)?.id;
     let hoverId = null;
@@ -69,6 +70,11 @@ export default function GeoLayer({ id, data, layers, promoteId, onClick, onHover
   useEffect(() => {
     map.getSource(id)?.setData(data ?? EMPTY);
   }, [map, id, data]);
+
+  useEffect(() => {
+    for (const l of layers) if (map.getLayer(l.id)) map.setLayoutProperty(l.id, "visibility", visible ? "visible" : "none");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [map, visible]);
 
   useEffect(() => {
     for (const l of layers) {

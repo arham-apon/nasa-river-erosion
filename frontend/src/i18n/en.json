@@ -51,18 +51,20 @@
     "Matamuhuri": "Matamuhuri"
   },
   "home": {
-    "title": "Which Jamuna riverbanks to watch this monsoon",
-    "lede": "{{sections}} bank sections, each {{length}} m long, in two reaches near Gaibandha and Sirajganj, ranked by a model trained on Sentinel-1 radar maps from 2015 to 2025. NISAR passes from June to September 2026 give an early, provisional check.",
+    "title": "Which <hl>Jamuna riverbanks</hl> to watch this monsoon",
+    "lede": "{{sections}} bank sections, each {{length}} m long, in two reaches near Gaibandha and Sirajganj, ranked by a model trained on Sentinel-1 radar maps from 2015 to 2025.",
     "findArea": "Find an area",
     "unionCount_one": "{{n}} union",
     "unionCount_other": "{{n}} unions",
     "searchPlaceholder": "Search a union in the {{region}}",
     "highestHere": "Highest priority here:",
-    "figHigh": "sections ranked High",
-    "figHighNote": "Forecast {{season}} · top 10% per reach",
-    "figErosion": "mapped erosion, monsoon {{year}}",
-    "figErosionNote": "Both reaches, incl. chars · observed",
-    "figNisar": "NISAR radar passes",
+    "figHigh": "bank sections ranked High",
+    "figHighNote": "Forecast {{season}} · the top 10% of each reach",
+    "figErosion": "of land mapped as eroded in the {{year}} monsoon",
+    "figErosionNote": "both reaches, including chars · observed",
+    "cardLabel": "NISAR check · provisional",
+    "cardText": "So far in 2026, High-ranked sections saw major erosion {{high}} of the time, against {{low}} for Low ones (to {{date}}). Measured by a radar the model never trained on.",
+    "cardLink": "See the check",
     "tour": "Take the 3-step tour",
     "howRanking": "How the ranking works",
     "sceneLabel": "3D overview map of Bangladesh with the two study reaches raised",
@@ -97,6 +99,41 @@
     "title": "Page not found",
     "body": "This address is not part of River Watch. The study reaches and data are reachable from the overview.",
     "home": "Go to overview"
+  },
+  "layout": {
+    "resizeIntro": "Drag to resize the text and map columns (double-click to reset)",
+    "resizePanel": "Drag to resize the panel (double-click to reset)"
+  },
+  "layers": {
+    "title": "Map layers",
+    "count": "{{n}} on",
+    "groups": {
+      "forecast": "Forecast 2026",
+      "past": "Past and observed",
+      "nisar": "NISAR 2026 · provisional"
+    },
+    "items": {
+      "priority": "Union priority",
+      "risk": "Section risk",
+      "hindcast": "Past model check",
+      "erosion": "Eroded land",
+      "banks": "Banklines",
+      "nisarChange": "Land turned to water",
+      "nisarCheck": "Forecast check"
+    },
+    "hints": {
+      "priority": "Tint by union priority level",
+      "risk": "High, Medium, Low per 500 m section",
+      "hindcast": "Hits, misses and false alarms by year",
+      "erosion": "Mapped patches of at least 3 ha",
+      "banks": "All dry seasons, latest highlighted",
+      "nisarChange": "Change up to the latest pass",
+      "nisarCheck": "High sections vs. observed change"
+    },
+    "hindYear": "Past check year",
+    "monsoon": "Monsoon",
+    "tipHindcast": "Past check {{year}}: {{outcome}}",
+    "tipNisar": "NISAR 2026 so far: {{ha}} ha"
   },
   "map": {
     "basemap": "Base map",
@@ -200,6 +237,10 @@
     "retreatNote": "Retreat is the bank's landward movement in that monsoon; negative values mean the bank built out."
   },
   "legend": {
+    "mapKey": "Map key",
+    "observedMajor": "Eroded ≥ {{ha}} ha (observed)",
+    "flaggedTop20": "Flagged by the model, {{year}} (top 20%)",
+    "erodedLandYear": "Eroded land, monsoon {{year}}",
     "riskTitle": "Relative risk · forecast {{season}}",
     "high": "High · top 10% of reach",
     "medium": "Medium · next 20%",
@@ -322,7 +363,7 @@
   },
   "how": {
     "toc": "On this page",
-    "title": "How it works",
+    "title": "How <hl>it works</hl>",
     "lede": "From satellite radar to a ranking of riverbank sections, and how well that ranking held up on years it had not seen.",
     "process": {
       "title": "From radar to a ranking",
@@ -423,7 +464,7 @@
     }
   },
   "about": {
-    "title": "About River Watch",
+    "title": "About <hl>River Watch</hl>",
     "lede": "A hackathon prototype that explains a working erosion pipeline: what it measures, what it ranks, and how far its results can be trusted.",
     "what": {
       "title": "What this is",

@@ -28,7 +28,11 @@ export default function MapView({ initialBounds, basemap = "dark", tilt = false,
     });
     // style.load, not load: our data should not wait for every remote base-map tile to arrive.
     m.once("style.load", () => setMap(m));
+    // The panel divider changes the map's width without a window resize.
+    const ro = new ResizeObserver(() => m.resize());
+    ro.observe(el.current);
     return () => {
+      ro.disconnect();
       setMap(null);
       m.remove();
     };
