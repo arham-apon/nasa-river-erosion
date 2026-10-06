@@ -63,8 +63,17 @@ BANK_TOLERANCE_M = 60
 MIN_VALID_ROW_FRACTION = 0.5
 EROSION_TARGET_HA = 5.0
 
+# NISAR L-band (Steps 13-14). Track 69 ascending, frame 14 covers both regions fully, every 12 days from 2026-06-18.
+NISAR_TRACK = 69
+NISAR_DIRECTION = "ASCENDING"
+NISAR_FRAME = 14
+NISAR_START = "2026-06-01"
+NISAR_AFTER_PASSES = 2  # a pixel counts as eroded only if it is open water in each of the latest N passes
+NISAR_MAX_RETREAT_M = 1000  # ignore "erosion" farther than this from the dry-season river (same limit as MAX_JUMP_M)
+
 ROOT = Path(__file__).resolve().parent
 DATA = Path(os.environ["CEW_DATA"]) if os.environ.get("CEW_DATA") else ROOT / "data" / REGION
 RAW = DATA / "raw"
 PROCESSED = DATA / "processed"
 BOUNDARIES = ROOT / "data" / "boundaries"
+NISAR = DATA / "nisar"

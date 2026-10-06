@@ -25,6 +25,18 @@ data/*/processed/*
 !data/*/processed/segments.gpkg
 !data/*/processed/banklines.gpkg
 !data/*/processed/erosion_polygons.gpkg
+# NISAR (Steps 14-15): small results only; the GCOV cut-outs (gcov_*.tif, ~0.8 GB) are re-fetched by 08
+!data/nisar_scenes.csv
+!data/gaibandha/nisar/
+!data/sirajganj/nisar/
+data/*/nisar/*
+!data/*/nisar/calibration.csv
+!data/*/nisar/timeline.csv
+!data/*/nisar/segments_2026.csv
+!data/*/nisar/erosion_2026.gpkg
 __pycache__/
 nenv/
 .claude/worktrees/
+
+# Secrets (Earthdata token)
+.env

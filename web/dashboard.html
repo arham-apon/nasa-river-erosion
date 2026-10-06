@@ -27,6 +27,12 @@
   .legend { background: #fff; padding: 8px 10px; border-radius: 6px; font-size: 12.5px; line-height: 1.6; box-shadow: 0 1px 4px rgba(0,0,0,.25); }
   .legend i { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: middle; border-radius: 2px; }
   audio { width: 100%; margin-top: 4px; }
+  .nisar { background: #f3f7fd; border: 1px solid #cfdcf0; border-radius: 6px; padding: 8px; margin: 6px 0; }
+  .nisar input[type=range] { width: 100%; }
+  .row { display: flex; gap: 6px; align-items: center; }
+  .row button { font: inherit; padding: 2px 10px; }
+  #nisarDate { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .spark { width: 100%; height: 70px; }
   @media (max-width: 800px) { #app { flex-direction: column-reverse; } #side { width: 100%; height: 45%; border-right: 0; border-top: 1px solid var(--line); } }
 </style>
 </head>
@@ -35,7 +41,23 @@
   <aside id="side">
     <h1>Char Erosion Watch</h1>
     <div class="sub">Jamuna: Gaibandha (Shaghata + Fulchhari) and Sirajganj (Chauhali + Kazipur).
-      Sentinel-1 radar erosion maps 2015–2025, forecast for the 2026 monsoon.</div>
+      Sentinel-1 radar erosion maps 2015–2025, forecast for the 2026 monsoon,
+      checked with NISAR L-band radar passes through the 2026 monsoon.</div>
+
+    <div id="nisarBox" hidden>
+      <h2>NISAR: the 2026 monsoon, pass by pass</h2>
+      <div class="nisar">
+        <div class="row"><button id="nisarPlay">▶ Play</button><span id="nisarDate"></span></div>
+        <input id="nisarSlider" type="range" min="0" max="0" value="0">
+        <div class="sub">NISAR L-band radar (HH), every 12 days. Dark = open water. Turn on the
+          “NISAR radar time-lapse” layer to see it on the map.</div>
+        <svg id="nisarSpark" class="spark"></svg>
+        <div class="sub" id="nisarSparkNote"></div>
+      </div>
+      <h2>Did the 2026 forecast come true?</h2>
+      <div class="sub" id="nisarCheckNote"></div>
+      <table id="nisarCheck"><thead><tr><th>Ranking</th><th class="num">PR-AUC</th><th class="num">Recall</th><th class="num">Precision</th></tr></thead><tbody></tbody></table>
+    </div>
 
     <h2>Unions by threat score</h2>
     <table id="unions"><thead><tr><th>#</th><th>Union</th><th>Region</th><th class="num">Score</th><th>Level</th></tr></thead><tbody></tbody></table>
@@ -115,6 +137,7 @@ const fmt = v => v == null ? "–" : Math.round(v).toLocaleString("en");
       onEachFeature: (f, l) => l.bindPopup(`Monsoon ${f.properties.monsoon}: ${f.properties.area_ha} ha ${esc(f.properties.kind)}`)});
   } catch (e) { console.warn("optional layers missing", e); }
 
+  await addNisar();
   L.control.layers(null, layers, {collapsed: window.innerWidth < 800}).addTo(map);
   map.fitBounds(layers["Union threat score"].getBounds());
 
@@ -122,7 +145,8 @@ const fmt = v => v == null ? "–" : Math.round(v).toLocaleString("en");
   legend.onAdd = () => {
     const d = L.DomUtil.create("div", "legend");
     d.innerHTML = "<b>Risk / threat</b><br>" + Object.entries(riskColor).map(([k, c]) => `<i style="background:${c}"></i>${k}`).join("<br>") +
-      "<br><b>Hindcast</b><br>" + Object.entries(outcomeColor).map(([k, c]) => `<i style="background:${c}"></i>${k.replace("_", " ")}`).join("<br>");
+      "<br><b>Hindcast / NISAR check</b><br>" + [["hit", "hit"], ["missed", "missed"], ["false_alarm", "false alarm / not yet"],
+        ["correct_quiet", "quiet"]].map(([k, t]) => `<i style="background:${outcomeColor[k]}"></i>${t}`).join("<br>");
     return d;
   };
   legend.addTo(map);
@@ -151,6 +175,95 @@ const fmt = v => v == null ? "–" : Math.round(v).toLocaleString("en");
       `<div class="alert"><b>${esc(a.union)}</b> (${esc(a.region)})<br><span lang="bn">${esc(a.text)}</span></div>`).join("");
   } catch (e) { console.warn("tables missing", e); }
 })();
+
+const nisarColor = {hit: "#d7191c", missed: "#7b3294", not_yet: "#fdae61", quiet: "#1a9641"};
+async function addNisar() {
+  let frames, check, timeline;
+  try {
+    [frames, check, timeline] = await Promise.all(
+      ["nisar_frames.json", "nisar_forecast_check.json", "nisar_timeline.json"].map(load));
+  } catch (e) { console.warn("NISAR layers missing", e); return; }
+  document.getElementById("nisarBox").hidden = false;
+
+  try {
+    const ero = await load("nisar_erosion.geojson");
+    layers["NISAR: land turned to water, 2026 (provisional)"] = L.geoJSON(ero, {
+      style: f => ({color: f.properties.kind === "settlement" ? "#ff00ff" : "#00e5ff", weight: 0.8, fillOpacity: 0.7}),
+      onEachFeature: (f, l) => l.bindPopup(`NISAR, monsoon 2026 (to ${esc(f.properties.after)}):<br>` +
+        `${f.properties.area_ha} ha ${esc(f.properties.kind)} turned into water<br>` +
+        `(erosion, or flooding that has not drained yet)`)}).addTo(map);
+    const seg = await load("nisar_segments.geojson");
+    layers["NISAR check of the 2026 forecast"] = L.geoJSON(seg, {
+      style: f => ({color: nisarColor[f.properties.outcome], weight: 1, fillOpacity: 0.55}),
+      onEachFeature: (f, l) => l.bindPopup(`${esc(f.properties.union_name)} (${esc(f.properties.region)})<br>` +
+        `Forecast: ${esc(f.properties.risk_class)} (${pct(f.properties.prob)})<br>` +
+        `NISAR-observed erosion: ${(f.properties.nisar_eroded_ha ?? 0).toFixed(1)} ha<br>` +
+        `<b>${esc(f.properties.outcome).replace("_", " ")}</b>`)});
+  } catch (e) { console.warn("NISAR vectors missing", e); }
+
+  const dates = [...new Set(frames.map(f => f.date))].sort();
+  if (!dates.length) {  // results without the radar images (e.g. fresh clone without 08_nisar_fetch.py)
+    document.querySelector("#nisarBox .nisar").hidden = true;
+    return showNisarCheck(check, timeline);
+  }
+  const group = L.layerGroup();
+  layers["NISAR radar time-lapse"] = group;
+  const slider = document.getElementById("nisarSlider");
+  slider.max = dates.length - 1;
+  slider.value = dates.length - 1;
+  const show = i => {
+    group.clearLayers();
+    frames.filter(f => f.date === dates[i]).forEach(f => L.imageOverlay(f.png, f.bounds, {opacity: 0.9}).addTo(group));
+    document.getElementById("nisarDate").textContent = dates[i];
+    drawSpark(timeline, dates[i]);
+  };
+  slider.oninput = () => show(+slider.value);
+  let timer = null;
+  const play = document.getElementById("nisarPlay");
+  play.onclick = () => {
+    if (timer) { clearInterval(timer); timer = null; play.textContent = "▶ Play"; return; }
+    if (!map.hasLayer(group)) map.addLayer(group);
+    play.textContent = "❚❚ Pause";
+    timer = setInterval(() => { slider.value = (+slider.value + 1) % dates.length; show(+slider.value); }, 1200);
+  };
+  show(dates.length - 1);
+  showNisarCheck(check, timeline);
+}
+
+function showNisarCheck(check, timeline) {
+  const both = check.filter(r => r.scope === "both");
+  const best = Math.max(...both.map(r => r.pr_auc));
+  document.querySelector("#nisarCheck tbody").innerHTML = both.map(r =>
+    `<tr class="${r.pr_auc === best ? "best" : ""}"><td>${esc(r.model)}</td><td class="num">${r.pr_auc.toFixed(2)}</td>` +
+    `<td class="num">${r.recall_top20.toFixed(2)}</td><td class="num">${r.precision_top20.toFixed(2)}</td></tr>`).join("");
+  const b = both[0];
+  document.getElementById("nisarCheckNote").textContent =
+    `By ${timeline.map(t => t.date).sort().at(-1)}, NISAR saw ≥ 5 ha of dry-season land turn into water at ${b.major_nisar} of ` +
+    `${b.stretches} bank stretches (${Math.round(b.eroded_ha)} ha in total). ` +
+    `Share of stretches with major erosion: High-risk ${pct(b.major_share_high)}, Medium ${pct(b.major_share_medium)}, ` +
+    `Low ${pct(b.major_share_low)}. Provisional: the river is still high in September, so some of this is flooding; ` +
+    `re-run with the November passes.`;
+}
+
+function drawSpark(timeline, current) {
+  const svg = document.getElementById("nisarSpark");
+  const W = svg.clientWidth || 340, H = 70, pad = 4;
+  const regions = [...new Set(timeline.map(r => r.region))];
+  const dates = [...new Set(timeline.map(r => r.date))].sort();
+  const max = Math.max(...timeline.map(r => r.dry_season_land_under_water_ha));
+  const x = d => pad + (W - 2 * pad) * dates.indexOf(d) / Math.max(dates.length - 1, 1);
+  const y = v => H - pad - (H - 2 * pad) * v / (max || 1);
+  const colors = ["#1f5fa8", "#c2410c"];
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.innerHTML = `<line x1="${x(current)}" x2="${x(current)}" y1="0" y2="${H}" stroke="#999" stroke-dasharray="3 3"/>` +
+    regions.map((r, i) => {
+      const pts = timeline.filter(t => t.region === r).sort((a, b) => a.date < b.date ? -1 : 1);
+      return `<polyline fill="none" stroke="${colors[i % 2]}" stroke-width="2" points="${
+        pts.map(p => `${x(p.date)},${y(p.dry_season_land_under_water_ha)}`).join(" ")}"/>`;
+    }).join("");
+  document.getElementById("nisarSparkNote").innerHTML = "Dry-season land under water (ha) per pass: " +
+    regions.map((r, i) => `<span style="color:${colors[i % 2]}">■</span> ${esc(r)}`).join(" ");
+}
 </script>
 </body>
 </html>

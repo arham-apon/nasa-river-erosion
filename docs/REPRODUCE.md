@@ -10,8 +10,9 @@ The repo contains the code plus the small set of data needed to retrain the mode
 | `data/<region>/processed/segments.gpkg` | `06_threat_score.py` (stretch polygons) | 0.4 MB |
 | `data/<region>/processed/banklines.gpkg`, `erosion_polygons.gpkg` | `06_threat_score.py` (dashboard layers) | 35 MB |
 | `data/boundaries/unions_study_area.gpkg` | `06_threat_score.py` (325 unions around both regions) | 9.7 MB |
+| `data/nisar_scenes.csv`, `data/<region>/nisar/{calibration,timeline,segments_2026}.csv`, `erosion_2026.gpkg` | `10_nisar_check.py` (NISAR forecast check and dashboard layers) | 3.7 MB |
 
-Not in git (rebuilt by the scripts): `data/model/`, `data/web/`, and the large rasters (`raw/`, `class_stack.tif`, `eroded_stack.tif`). The full geoBoundaries file (124 MB) is over GitHub's limit; `06` made the clipped copy from it.
+Not in git (rebuilt by the scripts): `data/model/`, `data/web/`, and the large rasters (`raw/`, `class_stack.tif`, `eroded_stack.tif`, NISAR `gcov_*.tif`, `water_stack.tif`, `eroded_2026.tif`). The full geoBoundaries file (124 MB) is over GitHub's limit; `06` made the clipped copy from it.
 
 ## Steps (Windows, cmd)
 
@@ -23,6 +24,7 @@ nenv\Scripts\activate
 pip install -r requirements-lock.txt
 python 05_model.py
 python 06_threat_score.py
+python 10_nisar_check.py
 python -m http.server 8000 --directory data/web
 ```
 
@@ -31,6 +33,8 @@ Open http://localhost:8000/dashboard.html.
 ## Check
 
 Tested on 2026-10-06 with a clean copy holding only the files above: `results_time_split.csv`, `results_cross_region.csv`, `feature_importance.csv`, `forecast_predictions.csv`, `hindcast_predictions.csv`, `union_ranking.csv`, `segment_scores.csv` and `alerts_bn.txt` were byte-for-byte identical to the original run. Expected time-split line for gradient boosting: PR-AUC 0.282, recall@20% 0.500, precision@20% 0.315.
+
+`10_nisar_check.py` rebuilds the NISAR forecast check and map layers from the small NISAR files in git. Without the radar images the dashboard hides the NISAR time-lapse; to get them, run the NISAR steps below.
 
 `alert_1.mp3` (optional voice alert) needs `pip install gTTS` and internet; see `docs/step_9_and_10.md`.
 
@@ -47,3 +51,24 @@ python 07_sanity_checks.py
 ```
 
 Then repeat with `set CEW_REGION=sirajganj`. Note: Earth Engine collections can gain or lose scenes over time, so a full rebuild may differ slightly from the stored training tables.
+
+## NISAR (Steps 13–15)
+
+Needs a free NASA Earthdata account. Create a token at https://urs.earthdata.nasa.gov (Generate Token) and put it in a file `.env` in the project folder (git-ignored, never commit it):
+
+```
+EARTHDATA_TOKEN=<your token>
+```
+
+Then (about 3 minutes per pass for both regions; safe to stop and re-run):
+
+```
+python 08_nisar_fetch.py
+set CEW_REGION=gaibandha
+python 09_nisar_erosion.py
+set CEW_REGION=sirajganj
+python 09_nisar_erosion.py
+python 10_nisar_check.py
+```
+
+`08` needs `data/<region>/raw/class_2026.tif` (the grid NISAR is put on) and `09` needs `raw/static_layers.tif` and `processed/segments.gpkg`, so the Earth Engine steps above must have been run for both regions first. New passes (October onward) are picked up automatically, so a re-run changes the provisional results (see `docs/step_15_and_16.md`). Expected with the 8 passes up to 2026-09-22: `gradient boosting forecast 0.292 0.533 0.222` in the `both` rows of `10`'s table.

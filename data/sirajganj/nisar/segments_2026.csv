@@ -1,0 +1,371 @@
+segment,side,prob,risk_class,eroded_ha_lag1,union_name,nisar_eroded_ha,nisar_major,region
+0,east,0.8455206521506625,High,5.12,Chandan Baisha,3.52,0,sirajganj
+0,west,0.0277965864469098,Low,0.0,Kutubpur,0.0,0,sirajganj
+1,east,0.8728789103370752,High,7.0,Chandan Baisha,6.48,1,sirajganj
+1,west,0.0559151508547409,Low,0.0,Kutubpur,0.0,0,sirajganj
+2,east,0.8064900825885685,High,7.96,Bohail,25.6,1,sirajganj
+2,west,0.0867536807339591,Low,0.0,Kutubpur,0.0,0,sirajganj
+3,east,0.8520892518952614,High,5.36,Bohail,16.36,1,sirajganj
+3,west,0.0245172663010635,Low,0.0,Chandan Baisha,0.0,0,sirajganj
+4,east,0.7535679778420517,High,0.0,Bohail,3.24,0,sirajganj
+4,west,0.0809045120341954,Low,0.0,Chandan Baisha,0.0,0,sirajganj
+5,east,0.363406910869793,Low,0.44,Bohail,0.0,0,sirajganj
+5,west,0.0569138521496581,Low,0.0,Chandan Baisha,0.0,0,sirajganj
+6,east,0.5031976625579658,Medium,3.84,Bohail,1.12,0,sirajganj
+6,west,0.0744473074343544,Low,0.0,Chandan Baisha,0.0,0,sirajganj
+7,east,0.5403200300225002,Medium,4.28,Bohail,1.04,0,sirajganj
+7,west,0.0603665437764859,Low,0.0,Kamalpur,0.0,0,sirajganj
+8,east,0.6784867279634642,Medium,3.24,Bohail,0.24,0,sirajganj
+8,west,0.1639753960943447,Low,0.0,Kamalpur,0.0,0,sirajganj
+9,east,0.6813947887097661,Medium,1.48,Bohail,4.48,0,sirajganj
+9,west,0.2464491315214627,Low,0.04,Kamalpur,2.6,0,sirajganj
+10,east,0.7084636906305003,High,4.0,Bohail,7.28,1,sirajganj
+10,west,0.8156313299628825,High,5.12,Kamalpur,1.16,0,sirajganj
+11,east,0.726227721541972,High,2.92,Bohail,5.88,1,sirajganj
+11,west,0.6972301996953161,High,8.36,Kamalpur,0.8,0,sirajganj
+12,east,0.5310515466471883,Medium,8.76,Khas Rajbari,6.2,1,sirajganj
+12,west,0.6456024205767972,Medium,12.48,Kamalpur,2.0,0,sirajganj
+13,east,0.5731838830719671,Medium,3.04,Khas Rajbari,21.76,1,sirajganj
+13,west,0.6011028240745208,Medium,15.24,Kamalpur,2.76,0,sirajganj
+14,east,0.3031739209094983,Low,1.36,Khas Rajbari,48.92,1,sirajganj
+14,west,0.7846237753012911,High,6.84,Gosainbari,5.04,1,sirajganj
+15,east,0.3045814970152007,Low,6.0,Mansur Nagar,33.0,1,sirajganj
+15,west,0.1568310778610153,Low,4.72,Gosainbari,3.48,0,sirajganj
+16,east,0.4395491552112391,Medium,12.4,Mansur Nagar,32.56,1,sirajganj
+16,west,0.2271122980428145,Low,4.48,Gosainbari,5.08,1,sirajganj
+17,east,0.4797892709008234,Medium,9.6,Mansur Nagar,14.88,1,sirajganj
+17,west,0.2550244614506932,Low,2.88,Gosainbari,5.12,1,sirajganj
+18,east,0.7832696852297238,High,0.0,Mansur Nagar,6.16,1,sirajganj
+18,west,0.1613438085646913,Low,0.28,Bhandarbari,0.96,0,sirajganj
+19,east,0.5015716544782207,Medium,0.0,Mansur Nagar,0.0,0,sirajganj
+19,west,0.091930490553319,Low,0.0,Gosainbari,0.0,0,sirajganj
+20,east,0.4327525373379145,Medium,0.0,Char Girish,0.32,0,sirajganj
+20,west,0.00788182532979,Low,0.0,Gosainbari,0.0,0,sirajganj
+21,east,0.3778694983478314,Low,2.44,Char Girish,0.76,0,sirajganj
+21,west,0.0134845124110867,Low,1.24,Gosainbari,0.0,0,sirajganj
+22,east,0.6988929550414998,High,7.6,Char Girish,1.16,0,sirajganj
+22,west,0.0060775071072439,Low,0.64,Gosainbari,0.0,0,sirajganj
+23,east,0.6710741712491982,Medium,10.64,Char Girish,7.48,1,sirajganj
+23,west,0.0114707468100027,Low,1.24,Bhandarbari,0.0,0,sirajganj
+24,east,0.7351473557271669,High,10.4,Char Girish,11.52,1,sirajganj
+24,west,0.0086522200733348,Low,0.0,Bhandarbari,0.0,0,sirajganj
+25,east,0.7933700304380819,High,8.68,Char Girish,14.28,1,sirajganj
+25,west,0.010826276446739,Low,0.0,Bhandarbari,0.0,0,sirajganj
+26,east,0.5534748113436675,Medium,2.6,Char Girish,6.8,1,sirajganj
+26,west,0.0128835809073223,Low,0.0,Bhandarbari,0.0,0,sirajganj
+27,east,0.3445210849664893,Low,0.0,Char Girish,2.84,0,sirajganj
+27,west,0.0135910083877695,Low,0.0,Bhandarbari,0.0,0,sirajganj
+28,east,0.3565923070995793,Low,0.32,Char Girish,0.0,0,sirajganj
+28,west,0.0220194297106086,Low,0.0,Bhandarbari,0.0,0,sirajganj
+29,east,0.6567131975589734,Medium,0.0,Char Girish,0.0,0,sirajganj
+29,west,0.0357559693613476,Low,0.0,Maijbari,0.0,0,sirajganj
+30,east,0.3050742149513836,Low,0.0,Char Girish,0.2,0,sirajganj
+30,west,0.0294384134659548,Low,0.0,Maijbari,0.0,0,sirajganj
+31,east,0.6644359034694178,Medium,0.16,Nishchintapur,4.0,0,sirajganj
+31,west,0.1319376191847416,Low,0.0,Maijbari,0.0,0,sirajganj
+32,east,0.3620610309221359,Low,2.72,Nishchintapur,5.88,1,sirajganj
+32,west,0.0162266289638583,Low,0.0,Maijbari,0.0,0,sirajganj
+33,east,0.1519445965243268,Low,0.04,Nishchintapur,1.12,0,sirajganj
+33,west,0.0074061345688308,Low,0.0,Kazipur,0.0,0,sirajganj
+34,east,0.6284417089805233,Medium,0.0,Nishchintapur,7.2,1,sirajganj
+34,west,0.0380228254801128,Low,0.0,Kazipur,0.0,0,sirajganj
+35,east,0.6541000791483157,Medium,0.0,Nishchintapur,7.64,1,sirajganj
+35,west,0.0844608019253532,Low,0.0,Kazipur,0.0,0,sirajganj
+36,east,0.5133533514076246,Medium,0.0,Nishchintapur,1.88,0,sirajganj
+36,west,0.1100687817302665,Low,0.0,Kazipur Paurashava,0.0,0,sirajganj
+37,east,0.778865482291035,High,0.0,Nishchintapur,1.12,0,sirajganj
+37,west,0.0491072415903802,Low,0.88,Kazipur Paurashava,0.0,0,sirajganj
+38,east,0.3480461310006096,Low,0.0,Aona,2.6,0,sirajganj
+38,west,0.0412894545683136,Low,0.28,Kazipur Paurashava,0.0,0,sirajganj
+39,east,0.680866325959569,Medium,0.0,Aona,0.0,0,sirajganj
+39,west,0.0257383112326844,Low,0.44,Kazipur Paurashava,4.72,0,sirajganj
+40,east,0.2254383232150145,Low,4.92,Pingna,2.04,0,sirajganj
+40,west,0.0449016606671242,Low,2.8000000000000003,Kazipur Paurashava,1.0,0,sirajganj
+41,east,0.0223050717504255,Low,0.0,Pingna,0.0,0,sirajganj
+41,west,0.0383869879990314,Low,1.24,Kazipur,0.0,0,sirajganj
+42,east,0.0092948178784594,Low,0.0,Pingna,0.0,0,sirajganj
+42,west,0.161385469036465,Low,0.0,Gandail,0.0,0,sirajganj
+43,east,0.0237490483612839,Low,0.0,Pingna,0.0,0,sirajganj
+43,west,0.0851495125916136,Low,0.0,Gandail,0.0,0,sirajganj
+44,east,0.0133709144880047,Low,0.0,Pingna,0.0,0,sirajganj
+44,west,0.0223460727018675,Low,0.0,Gandail,0.0,0,sirajganj
+45,east,0.01922133874568,Low,0.0,Pingna,0.0,0,sirajganj
+45,west,0.0443336894745182,Low,0.0,Gandail,0.0,0,sirajganj
+46,east,0.0355637488055564,Low,0.0,Pingna,0.0,0,sirajganj
+46,west,0.2631980685603124,Low,0.44,Gandail,0.0,0,sirajganj
+47,east,0.0649495220959848,Low,0.0,Pingna,0.0,0,sirajganj
+47,west,0.5016679216929932,Medium,2.48,Gandail,0.0,0,sirajganj
+48,east,0.0096601558004339,Low,0.0,Jhawail,0.0,0,sirajganj
+48,west,0.2977435639347348,Low,6.8,Ratankandi,0.68,0,sirajganj
+49,east,0.4119594815506006,Low,0.0,Pingna,0.0,0,sirajganj
+49,west,0.6170755758165746,Medium,0.12,Ratankandi,3.72,0,sirajganj
+50,east,0.4053138482429475,Low,0.0,Jhawail,1.16,0,sirajganj
+50,west,0.0141122921375852,Low,0.0,Ratankandi,0.0,0,sirajganj
+51,east,0.3483335110697544,Low,0.0,Jhawail,5.92,1,sirajganj
+51,west,0.0534596989325335,Low,0.0,Subhagachha,0.0,0,sirajganj
+52,east,0.2182843095961901,Low,0.0,Jhawail,1.28,0,sirajganj
+52,west,0.0517182167500926,Low,0.0,Ratankandi,0.0,0,sirajganj
+53,east,0.0183451155098214,Low,0.0,Arjuna,0.0,0,sirajganj
+53,west,0.0520723323168184,Low,0.0,Ratankandi,0.0,0,sirajganj
+54,east,0.0589319541474321,Low,0.0,Arjuna,1.12,0,sirajganj
+54,west,0.0314705475099616,Low,0.0,Ratankandi,0.0,0,sirajganj
+55,east,0.1502583932880721,Low,0.92,Arjuna,1.88,0,sirajganj
+55,west,0.0537211956948317,Low,0.0,Ratankandi,0.0,0,sirajganj
+56,east,0.0448029747899583,Low,3.72,Arjuna,0.0,0,sirajganj
+56,west,0.0108519605982942,Low,0.0,Ratankandi,0.0,0,sirajganj
+57,east,0.0234176651859875,Low,1.44,Hemnagar,0.0,0,sirajganj
+57,west,0.0139932943788367,Low,0.0,Ratankandi,0.0,0,sirajganj
+58,east,0.0679628283805403,Low,1.04,Hemnagar,0.0,0,sirajganj
+58,west,0.0291683745130824,Low,0.0,Chhangachha,0.0,0,sirajganj
+59,east,0.3740022304037118,Low,0.0,Hemnagar,0.0,0,sirajganj
+59,west,0.4804618441068643,Medium,0.0,Chhangachha,0.0,0,sirajganj
+60,east,0.5639499028469018,Medium,1.36,Arjuna,0.04,0,sirajganj
+60,west,0.0158584114515913,Low,0.0,Chhangachha,0.0,0,sirajganj
+61,east,0.5050709186104351,Medium,0.0,Arjuna,3.32,0,sirajganj
+61,west,0.0611983941663303,Low,0.0,Chhangachha,0.0,0,sirajganj
+62,east,0.6882421807459804,Medium,0.0,Arjuna,6.24,1,sirajganj
+62,west,0.0830559564127243,Low,0.0,Chhangachha,0.0,0,sirajganj
+63,east,0.7136396766058559,High,0.0,Gabsara,6.84,1,sirajganj
+63,west,0.0556101364707421,Low,0.0,Chhangachha,0.0,0,sirajganj
+64,east,0.4254326354305813,Medium,0.0,Gabsara,0.44,0,sirajganj
+64,west,0.1367189385478116,Low,1.84,Chhangachha,0.0,0,sirajganj
+65,east,0.3113317469011812,Low,2.84,Gabsara,1.92,0,sirajganj
+65,west,0.6270522008589376,Medium,9.84,Chhangachha,2.16,0,sirajganj
+66,east,0.7217988445918778,High,0.0,Gabsara,4.56,0,sirajganj
+66,west,0.7901071832291366,High,6.76,Khoksabari,1.08,0,sirajganj
+67,east,0.3759466110859611,Low,0.0,Gabsara,2.64,0,sirajganj
+67,west,0.6099158600419151,Medium,0.44,Khoksabari,1.76,0,sirajganj
+68,east,0.3204367300451092,Low,0.0,Gabsara,0.0,0,sirajganj
+68,west,0.2585493615221735,Low,0.0,Khoksabari,0.88,0,sirajganj
+69,east,0.4142597270492296,Low,0.0,Gabsara,0.0,0,sirajganj
+69,west,0.321925725341808,Low,0.52,Khoksabari,0.0,0,sirajganj
+70,east,0.3100577038129226,Low,0.0,Gabsara,0.0,0,sirajganj
+70,west,0.3749016413828131,Low,3.72,Khoksabari,0.16,0,sirajganj
+71,east,0.3367091083619911,Low,0.84,Gabsara,0.0,0,sirajganj
+71,west,0.4177080803409336,Medium,5.16,Khoksabari,2.6,0,sirajganj
+72,east,0.5484023387741906,Medium,1.92,Gabsara,0.0,0,sirajganj
+72,west,0.2510168009629191,Low,0.12,Khoksabari,0.48,0,sirajganj
+73,east,0.5285145138848715,Medium,0.0,Gabsara,0.0,0,sirajganj
+73,west,0.1713051924527311,Low,0.44,Khoksabari,0.0,0,sirajganj
+74,east,0.2911851343435138,Low,0.16,Gabsara,1.16,0,sirajganj
+74,west,0.0520389325569743,Low,3.04,Sirajganj Paurashava,0.0,0,sirajganj
+75,east,0.2247896010316709,Low,1.92,Bhuapur Paurashava,2.92,0,sirajganj
+75,west,0.0131747859395927,Low,1.4,Sirajganj Paurashava,0.0,0,sirajganj
+76,east,0.2178833759867375,Low,3.3200000000000003,Gobindasi,6.12,1,sirajganj
+76,west,0.0060963106696146,Low,0.0,Sirajganj Paurashava,0.0,0,sirajganj
+77,east,0.0231003020783165,Low,0.84,Gobindasi,0.0,0,sirajganj
+77,west,0.0074696223433327,Low,0.0,Sirajganj Paurashava,0.0,0,sirajganj
+78,east,0.0307420311666377,Low,0.0,Gobindasi,0.0,0,sirajganj
+78,west,0.0089944227830871,Low,0.0,Sirajganj Paurashava,0.0,0,sirajganj
+79,east,0.0121936505313989,Low,0.0,Gobindasi,0.0,0,sirajganj
+79,west,0.1747023402607639,Low,0.0,Sirajganj Paurashava,5.12,1,sirajganj
+80,east,0.0800510794284046,Low,0.0,Gobindasi,0.0,0,sirajganj
+80,west,0.5171165903363637,Medium,0.0,Sirajganj Paurashava,9.44,1,sirajganj
+81,east,0.0148820045675815,Low,0.0,Gobindasi,0.0,0,sirajganj
+81,west,0.0496388443489453,Low,0.0,Sirajganj Paurashava,0.0,0,sirajganj
+82,east,0.0430284868979642,Low,0.0,Gobindasi,0.0,0,sirajganj
+82,west,0.0135785339336522,Low,0.0,Sirajganj Paurashava,0.0,0,sirajganj
+83,east,0.0321445874436015,Low,0.0,Gobindasi,0.0,0,sirajganj
+83,west,0.0177120607508229,Low,0.0,Sirajganj Paurashava,0.0,0,sirajganj
+84,east,0.08901254304313,Low,0.0,Nikrail,0.0,0,sirajganj
+84,west,0.0293199886766974,Low,0.0,Kalia Haripur,0.0,0,sirajganj
+85,east,0.0492848081614,Low,0.0,Nikrail,0.0,0,sirajganj
+85,west,0.0604711546524905,Low,0.0,Kalia Haripur,0.0,0,sirajganj
+86,east,0.069176730472943,Low,0.0,Gobindasi,0.0,0,sirajganj
+86,west,0.119527800609111,Low,0.0,Kalia Haripur,3.64,0,sirajganj
+87,east,0.0218798773746872,Low,0.0,Nikrail,0.0,0,sirajganj
+87,west,0.139698652476405,Low,0.0,Kalia Haripur,0.32,0,sirajganj
+88,east,0.2289948946502176,Low,0.0,Nikrail,0.0,0,sirajganj
+88,west,0.0257146491432193,Low,0.0,Kalia Haripur,0.0,0,sirajganj
+89,east,0.1983113377808722,Low,0.0,Nikrail,0.0,0,sirajganj
+89,west,0.1069626621480628,Low,0.0,Kalia Haripur,0.0,0,sirajganj
+90,east,0.6163358644970064,Medium,0.0,Nikrail,2.16,0,sirajganj
+90,west,0.1041827638557814,Low,0.0,Saidabad,0.0,0,sirajganj
+91,east,0.5551762656499838,Medium,0.0,Nikrail,1.36,0,sirajganj
+91,west,0.2083436174894662,Low,0.0,Saidabad,0.0,0,sirajganj
+92,east,0.2981442036992388,Low,0.0,Nikrail,0.0,0,sirajganj
+92,west,0.3105025305336024,Low,0.36,Saidabad,1.64,0,sirajganj
+93,east,0.7871089265239134,High,0.0,Nikrail,0.0,0,sirajganj
+93,west,0.4246927956603415,Medium,3.4,Saidabad,0.0,0,sirajganj
+94,east,0.858536010720678,High,2.84,Gohaliabari,0.0,0,sirajganj
+94,west,0.1267550186923718,Low,0.0,Saidabad,0.0,0,sirajganj
+95,east,0.0168673699168706,Low,1.24,Gohaliabari,0.0,0,sirajganj
+95,west,0.3349014737609055,Low,0.0,Saidabad,0.0,0,sirajganj
+96,east,0.0549142014059381,Low,0.0,Gohaliabari,0.0,0,sirajganj
+96,west,0.535555923870283,Medium,0.0,Saidabad,0.0,0,sirajganj
+97,east,0.022190907081042,Low,0.0,Gohaliabari,0.0,0,sirajganj
+97,west,0.0475993663995868,Low,0.0,Saidabad,0.0,0,sirajganj
+98,east,0.027703488318376,Low,0.0,Gohaliabari,1.16,0,sirajganj
+98,west,0.1041007289299585,Low,0.0,Saidabad,0.0,0,sirajganj
+99,east,0.0932933348733991,Low,0.0,Gohaliabari,2.0,0,sirajganj
+99,west,0.0573682448604096,Low,0.0,Saidabad,0.0,0,sirajganj
+100,east,0.0460415708559321,Low,0.0,Gohaliabari,0.0,0,sirajganj
+100,west,0.0336702901590569,Low,0.0,Saidabad,0.0,0,sirajganj
+101,east,0.0141064382389416,Low,0.0,Gohaliabari,0.0,0,sirajganj
+101,west,0.0171636325624223,Low,0.0,Saidabad,0.0,0,sirajganj
+102,east,0.013654907477026,Low,0.0,Gohaliabari,0.0,0,sirajganj
+102,west,0.0209544768575022,Low,0.0,Rajapur,0.0,0,sirajganj
+103,east,0.0148434027838535,Low,0.0,Kakua,0.0,0,sirajganj
+103,west,0.0998222636080798,Low,0.0,Rajapur,0.0,0,sirajganj
+104,east,0.0111837564230221,Low,0.0,Kakua,0.0,0,sirajganj
+104,west,0.0201038717239296,Low,0.0,Belkuchi,0.0,0,sirajganj
+105,east,0.0128656089121804,Low,0.0,Kakua,0.0,0,sirajganj
+105,west,0.0138689410329134,Low,0.0,Belkuchi,0.0,0,sirajganj
+106,east,0.1114104287307901,Low,0.0,Kakua,0.0,0,sirajganj
+106,west,0.1028297461142422,Low,0.8,Belkuchi,0.0,0,sirajganj
+107,east,0.1946083591672264,Low,0.0,Kakua,0.0,0,sirajganj
+107,west,0.3494240389396068,Low,6.2,Belkuchi,11.88,1,sirajganj
+108,east,0.0823337342596694,Low,0.0,Kakua,0.0,0,sirajganj
+108,west,0.5684051361179441,Medium,9.6,Belkuchi,22.08,1,sirajganj
+109,east,0.0549280454091916,Low,0.0,Kakua,0.0,0,sirajganj
+109,west,0.9177394502363756,High,8.72,Belkuchi,19.16,1,sirajganj
+110,east,0.6741789282456218,Medium,0.0,Kakua,0.0,0,sirajganj
+110,west,0.9161557027753614,High,7.12,Belkuchi,19.48,1,sirajganj
+111,east,0.0406451498032745,Low,0.0,Kakua,0.0,0,sirajganj
+111,west,0.8025888640182975,High,8.2,Belkuchi,19.88,1,sirajganj
+112,east,0.0614560414694458,Low,0.0,Kakua,0.0,0,sirajganj
+112,west,0.905519396739498,High,8.040000000000001,Bara Dhul,8.08,1,sirajganj
+113,east,0.0304523736557716,Low,0.0,Hugra,0.0,0,sirajganj
+113,west,0.912355475148566,High,7.4,Bara Dhul,2.76,0,sirajganj
+114,east,0.3146647376436597,Low,1.08,Hugra,0.0,0,sirajganj
+114,west,0.3447925022127203,Low,0.0,Bara Dhul,0.4,0,sirajganj
+115,east,0.4722737423515877,Medium,0.0,Kakua,0.0,0,sirajganj
+115,west,0.7519218796932269,High,0.0,Bara Dhul,0.0,0,sirajganj
+116,east,0.4857142180285988,Medium,0.0,Hugra,0.0,0,sirajganj
+116,west,0.7115481242315397,High,0.0,Bara Dhul,0.0,0,sirajganj
+117,east,0.17566211048987,Low,0.0,Hugra,0.0,0,sirajganj
+117,west,0.5364640212893758,Medium,0.0,Bara Dhul,1.56,0,sirajganj
+118,east,0.1443861425638917,Low,0.0,Hugra,0.0,0,sirajganj
+118,west,0.1860982918910175,Low,0.0,Bara Dhul,0.08,0,sirajganj
+119,east,0.2558701012997269,Low,0.0,Hugra,0.0,0,sirajganj
+119,west,0.146567682238711,Low,0.0,Bara Dhul,0.0,0,sirajganj
+120,east,0.5346589546355593,Medium,0.0,Hugra,0.0,0,sirajganj
+120,west,0.0293730760041604,Low,0.0,Bara Dhul,0.0,0,sirajganj
+121,east,0.6176107995655702,Medium,0.0,Hugra,0.0,0,sirajganj
+121,west,0.0414925519691536,Low,0.0,Bara Dhul,0.0,0,sirajganj
+122,east,0.3084158209300823,Low,0.0,Hugra,0.0,0,sirajganj
+122,west,0.1295843867152326,Low,0.0,Bara Dhul,0.0,0,sirajganj
+123,east,0.665554596409944,Medium,0.0,Hugra,0.0,0,sirajganj
+123,west,0.3792243918503768,Low,1.56,Bara Dhul,0.0,0,sirajganj
+124,east,0.635307766305347,Medium,0.0,Hugra,0.0,0,sirajganj
+124,west,0.4698015611199246,Medium,1.64,Sadia Chandpur,3.96,0,sirajganj
+125,east,0.510760094126237,Medium,0.6,Hugra,0.0,0,sirajganj
+125,west,0.3547903356954221,Low,0.0,Sadia Chandpur,12.36,1,sirajganj
+126,east,0.5105732984801364,Medium,0.84,Hugra,0.0,0,sirajganj
+126,west,0.6173736326058094,Medium,1.88,Sadia Chandpur,2.24,0,sirajganj
+127,east,0.459895577053272,Medium,0.0,Katuli,0.0,0,sirajganj
+127,west,0.3751247401441893,Low,0.32,Sadia Chandpur,0.48,0,sirajganj
+128,east,0.5851231837791526,Medium,0.0,Katuli,0.0,0,sirajganj
+128,west,0.1527708092489911,Low,0.0,Sadia Chandpur,0.0,0,sirajganj
+129,east,0.2673749258356732,Low,0.0,Katuli,0.0,0,sirajganj
+129,west,0.3450136294368935,Low,0.0,Sadia Chandpur,0.0,0,sirajganj
+130,east,0.2968729326737769,Low,0.0,Katuli,0.0,0,sirajganj
+130,west,0.6004933013543655,Medium,0.0,Sadia Chandpur,0.0,0,sirajganj
+131,east,0.1943222806329452,Low,0.0,Katuli,0.0,0,sirajganj
+131,west,0.0565461900409132,Low,0.0,Khukni,0.0,0,sirajganj
+132,east,0.414240821330936,Low,0.0,Katuli,0.0,0,sirajganj
+132,west,0.1856724617859057,Low,0.0,Khukni,0.0,0,sirajganj
+133,east,0.2775137950053253,Low,0.0,Katuli,0.0,0,sirajganj
+133,west,0.1370133855834128,Low,0.0,Khukni,0.0,0,sirajganj
+134,east,0.1915331257540006,Low,0.0,Katuli,0.0,0,sirajganj
+134,west,0.2296988752479489,Low,0.0,Khukni,0.0,0,sirajganj
+135,east,0.3202963472150697,Low,0.0,Katuli,1.16,0,sirajganj
+135,west,0.0482099874000604,Low,0.0,Khukni,0.0,0,sirajganj
+136,east,0.4363532168613904,Medium,0.0,Katuli,0.08,0,sirajganj
+136,west,0.0245036777291738,Low,0.0,Khukni,0.0,0,sirajganj
+137,east,0.5000064798539045,Medium,0.0,Katuli,1.32,0,sirajganj
+137,west,0.2402486361551407,Low,0.0,Jalalpur,0.0,0,sirajganj
+138,east,0.5265095830897072,Medium,0.0,Sthal,3.52,0,sirajganj
+138,west,0.2431876310917068,Low,0.0,Jalalpur,0.0,0,sirajganj
+139,east,0.4833699197520453,Medium,0.0,Sthal,3.44,0,sirajganj
+139,west,0.0215078047439758,Low,0.0,Jalalpur,0.0,0,sirajganj
+140,east,0.2753729808037466,Low,0.0,Sthal,0.0,0,sirajganj
+140,west,0.0247391986405442,Low,0.0,Jalalpur,0.0,0,sirajganj
+141,east,0.2532611195159271,Low,0.0,Sthal,0.0,0,sirajganj
+141,west,0.2813547078519244,Low,0.0,Kaijuri,0.0,0,sirajganj
+142,east,0.5642614368126657,Medium,0.0,Bhara,0.0,0,sirajganj
+142,west,0.040312544780506,Low,0.0,Kaijuri,0.0,0,sirajganj
+143,east,0.8055770457775154,High,0.0,Bhara,2.28,0,sirajganj
+143,west,0.2221167848924094,Low,0.0,Kaijuri,0.0,0,sirajganj
+144,east,0.7341346609419053,High,0.0,Bhara,1.8,0,sirajganj
+144,west,0.5483585534037609,Medium,0.12,Kaijuri,0.0,0,sirajganj
+145,east,0.8483564740088317,High,0.0,Gharjan,0.76,0,sirajganj
+145,west,0.1706291759538663,Low,0.96,Kaijuri,1.48,0,sirajganj
+146,east,0.4598589084845637,Medium,0.0,Gharjan,0.0,0,sirajganj
+146,west,0.4066735218710992,Low,0.0,Kaijuri,0.68,0,sirajganj
+147,east,0.455069327409999,Medium,0.0,Gharjan,0.0,0,sirajganj
+147,west,0.7634512650648008,High,0.0,Kaijuri,0.0,0,sirajganj
+148,east,0.4765141711369855,Medium,0.0,Gharjan,0.0,0,sirajganj
+148,west,0.7582968027635063,High,1.32,Kaijuri,0.44,0,sirajganj
+149,east,0.5506359500715001,Medium,0.56,Khas Kaulia,0.0,0,sirajganj
+149,west,0.3516534260820917,Low,0.0,Kaijuri,0.72,0,sirajganj
+150,east,0.8244442795116236,High,2.72,Khas Kaulia,0.0,0,sirajganj
+150,west,0.7376680653952463,High,0.0,Kaijuri,0.0,0,sirajganj
+151,east,0.6948863086121283,Medium,5.16,Khas Kaulia,0.0,0,sirajganj
+151,west,0.5229776373776385,Medium,0.0,Kaijuri,0.0,0,sirajganj
+152,east,0.0264195323690621,Low,1.32,Khas Kaulia,0.0,0,sirajganj
+152,west,0.3654057696429269,Low,2.2,Kaijuri,4.28,0,sirajganj
+153,east,0.0142432263662213,Low,0.0,Khas Kaulia,0.0,0,sirajganj
+153,west,0.3018129817540587,Low,8.0,Kaijuri,5.4,1,sirajganj
+154,east,0.0251047443421175,Low,0.0,Khas Kaulia,0.0,0,sirajganj
+154,west,0.3515658443661911,Low,6.32,Gala,1.76,0,sirajganj
+155,east,0.0350839940045093,Low,0.84,Khas Kaulia,0.52,0,sirajganj
+155,west,0.7561043609461932,High,3.52,Gala,1.56,0,sirajganj
+156,east,0.5831502247989591,Medium,1.84,Khas Kaulia,3.72,0,sirajganj
+156,west,0.3300730916114899,Low,0.0,Gala,0.0,0,sirajganj
+157,east,0.2747949656045637,Low,0.8,Khas Pukuria,5.08,1,sirajganj
+157,west,0.0233177056326918,Low,0.0,Gala,0.0,0,sirajganj
+158,east,0.3852917925169409,Low,0.0,Khas Pukuria,0.64,0,sirajganj
+158,west,0.0222245359852638,Low,0.0,Gala,0.0,0,sirajganj
+159,east,0.6285239526431352,Medium,0.0,Khas Pukuria,1.56,0,sirajganj
+159,west,0.0140022177980492,Low,0.0,Gala,0.0,0,sirajganj
+160,east,0.2478483961957283,Low,0.0,Bagutia,0.0,0,sirajganj
+160,west,0.0392890879428944,Low,0.0,Gala,0.0,0,sirajganj
+161,east,0.0203446914807802,Low,0.0,Bagutia,0.0,0,sirajganj
+161,west,0.0223731783720527,Low,0.0,Bera Paurashava,0.0,0,sirajganj
+162,east,0.0172663471185158,Low,0.0,Bagutia,0.0,0,sirajganj
+162,west,0.0461623898431145,Low,0.0,Bera Paurashava,2.96,0,sirajganj
+163,east,0.0595703952401894,Low,0.0,Bagutia,0.0,0,sirajganj
+163,west,0.1021533850971781,Low,0.0,Bera Paurashava,4.48,0,sirajganj
+164,east,0.0550000231472082,Low,0.0,Bagutia,0.0,0,sirajganj
+164,west,0.0896659694671328,Low,0.0,Bera Paurashava,1.68,0,sirajganj
+165,east,0.0227957042844422,Low,0.0,Bagutia,0.0,0,sirajganj
+165,west,0.0206115326258185,Low,0.0,Bera Paurashava,0.0,0,sirajganj
+166,east,0.0486000993563443,Low,0.0,Bagutia,0.0,0,sirajganj
+166,west,0.0099181541071861,Low,0.0,Bera Paurashava,0.0,0,sirajganj
+167,east,0.1392444015329113,Low,0.0,Salimabad,0.0,0,sirajganj
+167,west,0.0063358875545597,Low,0.0,Haturia Nakalia,0.0,0,sirajganj
+168,east,0.4970772374615252,Medium,0.0,Salimabad,0.0,0,sirajganj
+168,west,0.0036749079653382,Low,0.0,Haturia Nakalia,0.0,0,sirajganj
+169,east,0.287089406815615,Low,0.0,Salimabad,0.0,0,sirajganj
+169,west,0.0055183522366911,Low,0.0,Haturia Nakalia,0.0,0,sirajganj
+170,east,0.6171057258673197,Medium,0.0,Salimabad,0.0,0,sirajganj
+170,west,0.0057996447279987,Low,0.0,Haturia Nakalia,0.0,0,sirajganj
+171,east,0.5341961065903595,Medium,0.0,Salimabad,0.0,0,sirajganj
+171,west,0.0085313799902984,Low,0.0,Haturia Nakalia,0.0,0,sirajganj
+172,east,0.6216338031467161,Medium,0.0,Salimabad,0.0,0,sirajganj
+172,west,0.0237478571606054,Low,0.0,Haturia Nakalia,0.0,0,sirajganj
+173,east,0.4929559495231913,Medium,0.16,Salimabad,0.0,0,sirajganj
+173,west,0.0234839213515317,Low,0.0,Haturia Nakalia,0.0,0,sirajganj
+174,east,0.4829143615399243,Medium,0.0,Salimabad,0.0,0,sirajganj
+174,west,0.0847341524437769,Low,0.0,Kytola,0.0,0,sirajganj
+175,east,0.017193428387575,Low,0.0,Dhubaria,0.0,0,sirajganj
+175,west,0.0439245459463647,Low,1.4,Kytola,0.0,0,sirajganj
+176,east,0.0132705159998871,Low,0.0,Duptiair,0.0,0,sirajganj
+176,west,0.0326633875317505,Low,1.64,Kytola,0.0,0,sirajganj
+177,east,0.0419282012130051,Low,0.0,Duptiair,0.0,0,sirajganj
+177,west,0.0601234551847965,Low,0.16,Kytola,0.0,0,sirajganj
+178,east,0.0180935634937049,Low,0.0,Duptiair,0.0,0,sirajganj
+178,west,0.0063257371108386,Low,0.0,Kytola,0.0,0,sirajganj
+179,east,0.0712232871731886,Low,0.0,Duptiair,0.0,0,sirajganj
+179,west,0.0116616727877902,Low,0.0,Kytola,0.0,0,sirajganj
+180,east,0.7373925743684702,High,0.0,Duptiair,0.0,0,sirajganj
+180,west,0.0250678634589801,Low,0.0,Kytola,0.0,0,sirajganj
+181,east,0.2625900614354503,Low,0.0,Duptiair,0.0,0,sirajganj
+181,west,0.1925265386370604,Low,4.32,Kytola,0.0,0,sirajganj
+182,east,0.823342391700061,High,0.0,Bachamara,1.52,0,sirajganj
+182,west,0.2347439206421576,Low,5.76,Nutan Bharenga,0.0,0,sirajganj
+183,east,0.534098951902522,Medium,1.6,Bachamara,0.08,0,sirajganj
+183,west,0.1773070263307187,Low,3.96,Nutan Bharenga,0.0,0,sirajganj
+184,east,0.2577282059201066,Low,0.52,Bachamara,0.0,0,sirajganj
+184,west,0.3004465057806799,Low,2.44,Puran Bharenga,0.2,0,sirajganj
