@@ -1,0 +1,14 @@
+Region gaibandha, box [89.5, 25.04, 89.95, 25.42], threshold -13.2 dB -> C:\Users\User\Desktop\nasa-river-erosion\.claude\worktrees\context-folder-review-347c4d\data\gaibandha\raw
+Wrote static_layers.tif: 2311x2152, 25 tiles, 11 s
+2015: no Dynamic World images, skipped
+Wrote dw_water_2016.tif: 2311x2152, 25 tiles, 11 s
+Wrote dw_water_2017.tif: 2311x2152, 25 tiles, 12 s
+Wrote dw_water_2018.tif: 2311x2152, 25 tiles, 15 s
+Wrote dw_water_2019.tif: 2311x2152, 25 tiles, 17 s
+Wrote dw_water_2020.tif: 2311x2152, 25 tiles, 26 s
+Wrote dw_water_2021.tif: 2311x2152, 25 tiles, 21 s
+Wrote dw_water_2022.tif: 2311x2152, 25 tiles, 19 s
+Wrote dw_water_2023.tif: 2311x2152, 25 tiles, 19 s
+Wrote dw_water_2024.tif: 2311x2152, 25 tiles, 17 s
+Wrote dw_water_2025.tif: 2311x2152, 25 tiles, 19 s
+Wrote dw_water_2026.tif: 2311x2152, 25 tiles, 23 s

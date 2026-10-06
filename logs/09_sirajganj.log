@@ -1,0 +1,19 @@
+sirajganj: 8 NISAR passes 2026-06-18 .. 2026-09-22
+Water threshold: HH < -12.00 dB; balanced accuracy per pass 0.938-0.977 (150336 water / 1065776 land reference pixels)
+      date  water_ha  dry_season_land_under_water_ha  valid_fraction
+2026-06-18  56295.76                        16080.32             1.0
+2026-06-30  74991.76                        31734.24             1.0
+2026-07-12  61194.84                        20194.52             1.0
+2026-07-24  92201.20                        47836.24             1.0
+2026-08-17  67491.00                        25851.32             1.0
+2026-08-29  75201.16                        32541.16             1.0
+2026-09-10  80241.76                        36536.52             1.0
+2026-09-22  71629.64                        28149.24             1.0
+
+NISAR erosion, monsoon 2026 (dry season 2026 + 2026-06-18 -> 2026-09-10, 2026-09-22): 7488 ha (settlement 17.9 ha). Sentinel-1 2015-2025: mean 6482, range 3141-10231 ha/yr
+Stretches with >= 5 ha NISAR erosion: 37 of 370
+            stretches  major  eroded_ha
+risk_class                             
+High               37     14      199.8
+Low               259     12      218.8
+Medium             74     11      199.2

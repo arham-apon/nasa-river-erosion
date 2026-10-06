@@ -1,0 +1,86 @@
+.page {
+  position: relative;
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: var(--split, var(--panel-w)) 1fr;
+  height: calc(100vh - var(--header-h));
+  min-height: 520px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+}
+
+.body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.handle {
+  display: none;
+}
+
+.mapArea {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Phones: the map is the page; details live in a sheet the user opens explicitly. */
+@media (max-width: 820px) {
+  .page {
+    grid-template-columns: 1fr;
+    height: calc(100dvh - var(--header-h));
+    position: relative;
+  }
+
+  .panel {
+    position: absolute;
+    z-index: 20;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 56px;
+    border-right: 0;
+    border-top: 1px solid var(--line-2);
+    border-radius: var(--r-4) var(--r-4) 0 0;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.45);
+    transition: height 220ms var(--ease);
+  }
+
+  .panel[data-open="true"] {
+    height: 78dvh;
+  }
+
+  .handle {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 56px;
+    padding: 0 var(--s-4);
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .handle svg {
+    color: var(--text-3);
+    transition: transform 200ms var(--ease);
+  }
+
+  .panel[data-open="true"] .handle svg {
+    transform: rotate(180deg);
+  }
+
+  .panel[data-open="false"] .body {
+    display: none;
+  }
+}

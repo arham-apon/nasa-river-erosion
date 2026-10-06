@@ -1,0 +1,40 @@
+Region gaibandha
+Quick-look maps written to C:\Users\User\Desktop\nasa-river-erosion\.claude\worktrees\context-folder-review-347c4d\data\gaibandha\checks
+    monsoon  kind  area_ha  veg_before  veg_after  confirmed
+0      2021  land    80.28        0.99       0.11       True
+1      2020  land     2.12        1.00       0.98      False
+2      2023  land    14.64        0.99       0.01       True
+3      2024  land     7.44        0.92       0.10       True
+4      2023  land     7.12        0.99       0.00       True
+5      2021  land     6.24        0.38       0.75      False
+6      2018  land     5.96        0.96       0.34       True
+7      2024  land    12.40        0.93       0.09       True
+8      2025  land     3.88        0.97       0.56      False
+9      2019  land     2.28        0.98       0.31       True
+10     2022  land    68.84        0.96       0.04       True
+11     2021  land     9.84        0.91       0.16       True
+12     2020  land     2.68        0.46       0.17      False
+13     2019  land    11.04        0.87       0.02       True
+14     2019  land     9.04        0.97       0.15       True
+15     2022  land     5.48        0.97       0.04       True
+16     2022  land    17.08        0.79       0.18       True
+17     2024  land    11.64        0.95       0.08       True
+18     2020  land    12.92        0.91       0.14       True
+19     2022  land     4.40        0.86       0.00       True
+
+Optical check: 16 of 20 patches confirmed (vegetated before, not vegetated after). Doc rule: 15 or more is good.
+
+Erosion near the main banks (2 km landward + 60 m riverward) vs whole box:
+         bank_eroded_ha  bank_eroded_settlement_ha  median_retreat_m  box_eroded_ha  bank_share
+monsoon                                                                                        
+2015             1346.3                       22.4              60.0         7635.6         0.2
+2016              590.6                       11.7              20.0         5226.1         0.1
+2017              519.1                       10.4              20.0         5257.4         0.1
+2018              350.6                        8.3              20.0         2849.2         0.1
+2019              450.8                        9.2              20.0         3833.1         0.1
+2020              675.0                        7.8              20.0         7539.4         0.1
+2021              248.9                        3.0               0.0         2944.5         0.1
+2022              357.7                        5.1               0.0         4355.8         0.1
+2023              337.0                        3.1               0.0         4029.7         0.1
+2024              423.9                        2.6               0.0         4034.5         0.1
+2025              263.2                        0.9               0.0         2824.8         0.1

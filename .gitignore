@@ -1,0 +1,47 @@
+# Virtual environment
+nevn/
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+.nenv/
+/drive_data
+
+# Project data: ignore everything except what is needed to retrain and rebuild the
+# results without downloading (see docs/REPRODUCE.md)
+data/*
+!data/boundaries/
+data/boundaries/*
+!data/boundaries/unions_study_area.gpkg
+!data/gaibandha/
+!data/sirajganj/
+data/gaibandha/*
+data/sirajganj/*
+!data/gaibandha/processed/
+!data/sirajganj/processed/
+# Dry-season 2026 class map: the grid 08_nisar_fetch.py puts NISAR on (so it runs without Earth Engine)
+!data/gaibandha/raw/
+!data/sirajganj/raw/
+data/*/raw/*
+!data/*/raw/class_2026.tif
+data/*/processed/*
+!data/*/processed/training_table.csv
+!data/*/processed/segments.gpkg
+!data/*/processed/banklines.gpkg
+!data/*/processed/erosion_polygons.gpkg
+# NISAR (Steps 14-15): small results only; the GCOV cut-outs (gcov_*.tif, ~0.8 GB) are re-fetched by 08
+!data/nisar_scenes.csv
+!data/gaibandha/nisar/
+!data/sirajganj/nisar/
+data/*/nisar/*
+!data/*/nisar/calibration.csv
+!data/*/nisar/timeline.csv
+!data/*/nisar/segments_2026.csv
+!data/*/nisar/erosion_2026.gpkg
+__pycache__/
+nenv/
+.claude/worktrees/
+
+# Secrets (Earthdata token)
+.env

@@ -1,0 +1,173 @@
+segment,side,prob,risk_class,eroded_ha_lag1,union_name,nisar_eroded_ha,nisar_major,region
+0,east,0.04091546119538,Low,0.0,Mohanganj,0.44,0,gaibandha
+0,west,0.091314153690821,Low,0.0,Sreepur,0.0,0,gaibandha
+1,east,0.611091012052642,Medium,0.0,Mohanganj,5.52,1,gaibandha
+1,west,0.0458293497547152,Low,0.0,Sreepur,0.0,0,gaibandha
+2,east,0.8138946140677746,High,0.0,Mohanganj,5.2,1,gaibandha
+2,west,0.0174560637141711,Low,0.0,Sreepur,0.0,0,gaibandha
+3,east,0.0502701579715027,Low,0.0,Mohanganj,0.0,0,gaibandha
+3,west,0.0183869074624715,Low,0.0,Sreepur,0.0,0,gaibandha
+4,east,0.0142549025880299,Low,0.0,Mohanganj,0.0,0,gaibandha
+4,west,0.0201025203035102,Low,0.0,Malibari,0.0,0,gaibandha
+5,east,0.0548613860319422,Low,0.0,Mohanganj,0.0,0,gaibandha
+5,west,0.0259918999601597,Low,0.0,Malibari,0.0,0,gaibandha
+6,east,0.0300623698847097,Low,0.0,Mohanganj,0.2,0,gaibandha
+6,west,0.024820197122969,Low,0.0,Malibari,0.0,0,gaibandha
+7,east,0.0319582606895409,Low,0.0,Mohanganj,0.04,0,gaibandha
+7,west,0.0495015577069469,Low,0.0,Gidari,0.0,0,gaibandha
+8,east,0.2447065391584176,Low,0.0,Mohanganj,1.44,0,gaibandha
+8,west,0.0228116547838071,Low,0.0,Gidari,0.0,0,gaibandha
+9,east,0.0577809721044774,Low,0.0,Mohanganj,1.96,0,gaibandha
+9,west,0.6772149360122924,Medium,2.44,Gidari,0.0,0,gaibandha
+10,east,0.090856848061472,Low,0.0,Char Aomkhaoa,0.04,0,gaibandha
+10,west,0.5407091867287737,Medium,2.2,Gidari,0.0,0,gaibandha
+11,east,0.1864644515587263,Low,2.4,Char Aomkhaoa,0.0,0,gaibandha
+11,west,0.556728641565995,Medium,4.48,Gidari,0.0,0,gaibandha
+12,east,0.2374911798235786,Low,2.76,Char Aomkhaoa,1.6,0,gaibandha
+12,west,0.5948797825950648,Medium,12.44,Gidari,0.24,0,gaibandha
+13,east,0.1917628053466077,Low,2.6,Char Aomkhaoa,0.08,0,gaibandha
+13,west,0.4958298655227631,Medium,12.84,Gidari,0.92,0,gaibandha
+14,east,0.4446424127685942,Medium,1.52,Char Aomkhaoa,0.0,0,gaibandha
+14,west,0.3292347232327865,Low,4.04,Gidari,1.28,0,gaibandha
+15,east,0.0782948425008629,Low,0.0,Char Aomkhaoa,0.0,0,gaibandha
+15,west,0.1376166175522043,Low,1.44,Gidari,0.28,0,gaibandha
+16,east,0.1337910082675266,Low,1.16,Char Aomkhaoa,0.0,0,gaibandha
+16,west,0.6776221359000838,Medium,0.0,Gidari,0.76,0,gaibandha
+17,east,0.3360250257808558,Low,0.0,Char Aomkhaoa,0.0,0,gaibandha
+17,west,0.7409055537864329,High,0.0,Gidari,0.0,0,gaibandha
+18,east,0.6174356536900668,Medium,0.0,Char Aomkhaoa,5.04,1,gaibandha
+18,west,0.7525559248815213,High,0.0,Kamarjani,0.0,0,gaibandha
+19,east,0.0799565131674897,Low,0.0,Char Aomkhaoa,0.16,0,gaibandha
+19,west,0.6587613285505977,Medium,0.0,Gidari,2.08,0,gaibandha
+20,east,0.0358287807526968,Low,0.0,Char Aomkhaoa,0.0,0,gaibandha
+20,west,0.2723976979814472,Low,1.6,Gidari,3.12,0,gaibandha
+21,east,0.1338865603401193,Low,0.24,Erendabari,0.0,0,gaibandha
+21,west,0.3203568299384991,Low,1.88,Kanchi Para,1.44,0,gaibandha
+22,east,0.2454945922232717,Low,4.72,Erendabari,0.0,0,gaibandha
+22,west,0.3059796175495338,Low,0.36,Kanchi Para,0.0,0,gaibandha
+23,east,0.5176605264700057,Medium,5.32,Erendabari,0.0,0,gaibandha
+23,west,0.0210824091436374,Low,0.0,Kanchi Para,0.0,0,gaibandha
+24,east,0.7587399679739114,High,2.0,Erendabari,1.28,0,gaibandha
+24,west,0.0463271674079938,Low,0.0,Kanchi Para,0.0,0,gaibandha
+25,east,0.4864770344667332,Medium,0.0,Erendabari,0.0,0,gaibandha
+25,west,0.0831593801416911,Low,0.0,Kanchi Para,0.0,0,gaibandha
+26,east,0.1914070028808516,Low,0.0,Erendabari,0.0,0,gaibandha
+26,west,0.0772175273258846,Low,0.0,Kanchi Para,0.0,0,gaibandha
+27,east,0.5920882359796394,Medium,1.84,Erendabari,1.32,0,gaibandha
+27,west,0.0503658389522812,Low,0.0,Kanchi Para,0.0,0,gaibandha
+28,east,0.6626297531490548,Medium,0.4,Erendabari,0.0,0,gaibandha
+28,west,0.0177570628107094,Low,0.0,Kanchi Para,0.16,0,gaibandha
+29,east,0.5429509810785286,Medium,1.76,Erendabari,0.0,0,gaibandha
+29,west,0.2103588141806233,Low,0.0,Kanchi Para,1.8,0,gaibandha
+30,east,0.3882636683292527,Low,0.28,Erendabari,1.0,0,gaibandha
+30,west,0.0733459135151147,Low,0.0,Udakhali,0.0,0,gaibandha
+31,east,0.5065093184594288,Medium,1.04,Erendabari,0.0,0,gaibandha
+31,west,0.0356399169054193,Low,0.0,Udakhali,0.0,0,gaibandha
+32,east,0.4058719925567248,Low,1.04,Erendabari,0.0,0,gaibandha
+32,west,0.2525749528274518,Low,2.32,Uria,0.0,0,gaibandha
+33,east,0.3772522691632136,Low,0.0,Erendabari,0.0,0,gaibandha
+33,west,0.0973865368442959,Low,0.84,Uria,0.0,0,gaibandha
+34,east,0.7502081290895902,High,0.0,Erendabari,0.0,0,gaibandha
+34,west,0.0180176028283339,Low,0.0,Uria,0.0,0,gaibandha
+35,east,0.5500981604280676,Medium,2.92,Erendabari,0.0,0,gaibandha
+35,west,0.0525547646674481,Low,0.0,Uria,0.0,0,gaibandha
+36,east,0.4211879391496931,Low,3.3200000000000003,Erendabari,1.96,0,gaibandha
+36,west,0.1255896808309865,Low,0.0,Udakhali,0.0,0,gaibandha
+37,east,0.267395798850442,Low,0.0,Erendabari,0.8,0,gaibandha
+37,west,0.1456370397945367,Low,0.0,Uria,0.0,0,gaibandha
+38,east,0.8456403779659145,High,0.0,Erendabari,0.0,0,gaibandha
+38,west,0.2439628922036159,Low,0.4,Uria,0.0,0,gaibandha
+39,east,0.3575085588884463,Low,1.16,Erendabari,0.0,0,gaibandha
+39,west,0.6268920659632384,Medium,4.28,Uria,1.72,0,gaibandha
+40,east,0.7292417047662972,Medium,0.0,Erendabari,0.08,0,gaibandha
+40,west,0.8754776503990002,High,6.16,Udakhali,0.0,0,gaibandha
+41,east,0.3697296557420597,Low,1.68,Erendabari,10.12,1,gaibandha
+41,west,0.5477423543583814,Medium,1.4,Udakhali,0.0,0,gaibandha
+42,east,0.2709342748063271,Low,7.76,Chikajani,3.8,0,gaibandha
+42,west,0.3974102603046368,Low,3.84,Gazaria,0.0,0,gaibandha
+43,east,0.5285070130876169,Medium,4.12,Chikajani,2.88,0,gaibandha
+43,west,0.578332952429801,Medium,2.92,Gazaria,0.0,0,gaibandha
+44,east,0.8367168359478365,High,0.0,Chikajani,3.44,0,gaibandha
+44,west,0.1713359795648061,Low,0.08,Gazaria,2.08,0,gaibandha
+45,east,0.5579693816243629,Medium,5.0,Chikajani,0.0,0,gaibandha
+45,west,0.5408492945826806,Medium,1.32,Gazaria,0.4,0,gaibandha
+46,east,0.5532349253723744,Medium,12.68,Bahadurabad,0.0,0,gaibandha
+46,west,0.296613622100523,Low,0.16,Gazaria,1.88,0,gaibandha
+47,east,0.7905983759991829,High,9.16,Chikajani,0.12,0,gaibandha
+47,west,0.5395912588729777,Medium,4.32,Gazaria,8.28,1,gaibandha
+48,east,0.5632490100797022,Medium,7.56,Chikajani,3.28,0,gaibandha
+48,west,0.281841211295147,Low,0.68,Gazaria,6.96,1,gaibandha
+49,east,0.4294913297868942,Low,1.44,Chikajani,6.52,1,gaibandha
+49,west,0.7880059273170553,High,0.0,Gazaria,4.56,0,gaibandha
+50,east,0.3082042808310679,Low,0.0,Chikajani,4.28,0,gaibandha
+50,west,0.2975078096709053,Low,0.0,Gazaria,0.36,0,gaibandha
+51,east,0.1805303754153449,Low,0.0,Chikajani,6.6,1,gaibandha
+51,west,0.2881642147021449,Low,0.0,Gazaria,0.0,0,gaibandha
+52,east,0.1100995670140024,Low,0.0,Chikajani,0.0,0,gaibandha
+52,west,0.5199826972525953,Medium,0.0,Bhartkhali,0.0,0,gaibandha
+53,east,0.0962462390030938,Low,0.0,Chikajani,1.24,0,gaibandha
+53,west,0.7710723921782662,High,0.16,Gazaria,0.0,0,gaibandha
+54,east,0.0336135862408314,Low,0.0,Chikajani,0.0,0,gaibandha
+54,west,0.2426272082541448,Low,0.0,Bhartkhali,0.0,0,gaibandha
+55,east,0.0533749272329444,Low,0.0,Chikajani,0.0,0,gaibandha
+55,west,0.6454457595446841,Medium,5.76,Muktanagar,0.0,0,gaibandha
+56,east,0.3558703032827678,Low,0.0,Chukaibari,0.0,0,gaibandha
+56,west,0.1444713373234222,Low,9.08,Muktanagar,0.04,0,gaibandha
+57,east,0.3676442105590228,Low,0.0,Chukaibari,0.0,0,gaibandha
+57,west,0.8260845084496268,High,0.0,Muktanagar,1.56,0,gaibandha
+58,east,0.583648520290693,Medium,0.0,Chukaibari,0.0,0,gaibandha
+58,west,0.0956206182909536,Low,0.0,Muktanagar,0.0,0,gaibandha
+59,east,0.7686078291263102,High,0.0,Chukaibari,0.0,0,gaibandha
+59,west,0.0867456472385095,Low,0.0,Muktanagar,0.0,0,gaibandha
+60,east,0.5794521496519716,Medium,2.32,Chukaibari,3.44,0,gaibandha
+60,west,0.0751313556138393,Low,0.0,Muktanagar,0.0,0,gaibandha
+61,east,0.776191782883808,High,0.0,Chukaibari,0.0,0,gaibandha
+61,west,0.0479429236502659,Low,1.92,Sughatta,0.0,0,gaibandha
+62,east,0.1822813897077137,Low,0.0,Chukaibari,0.0,0,gaibandha
+62,west,0.1564920579895948,Low,2.36,Sughatta,0.0,0,gaibandha
+63,east,0.0233209337604587,Low,0.0,Chukaibari,0.0,0,gaibandha
+63,west,0.0561921318213423,Low,0.96,Sughatta,0.0,0,gaibandha
+64,east,0.0188037109439792,Low,0.0,Patharsi,0.0,0,gaibandha
+64,west,0.0521523779278704,Low,0.0,Sughatta,0.0,0,gaibandha
+65,east,0.1142740529078024,Low,0.0,Patharsi,0.0,0,gaibandha
+65,west,0.0414282305293264,Low,0.2,Sughatta,0.0,0,gaibandha
+66,east,0.0150202953838042,Low,0.0,Kulkandi,0.0,0,gaibandha
+66,west,0.2462117320682378,Low,2.04,Sughatta,0.0,0,gaibandha
+67,east,0.1138088652558164,Low,5.72,Kulkandi,0.0,0,gaibandha
+67,west,0.7713577146223806,High,2.84,Sughatta,0.0,0,gaibandha
+68,east,0.6998540329291939,Medium,7.2,Kulkandi,0.0,0,gaibandha
+68,west,0.7703307017020699,High,1.72,Sughatta,0.0,0,gaibandha
+69,east,0.8170550832836876,High,11.48,Kulkandi,0.0,0,gaibandha
+69,west,0.2914669608801868,Low,9.92,Ghuridaha,0.0,0,gaibandha
+70,east,0.5571285700648689,Medium,8.4,Belgachha,0.0,0,gaibandha
+70,west,0.0878875308027636,Low,8.96,Ghuridaha,0.0,0,gaibandha
+71,east,0.5060021561609678,Medium,4.44,Belgachha,0.0,0,gaibandha
+71,west,0.095653770316027,Low,7.48,Ghuridaha,0.0,0,gaibandha
+72,east,0.3835956381507813,Low,0.0,Belgachha,0.0,0,gaibandha
+72,west,0.045091022416956,Low,1.8,Ghuridaha,0.0,0,gaibandha
+73,east,0.3659541534973252,Low,0.0,Belgachha,0.0,0,gaibandha
+73,west,0.0199660702841353,Low,0.0,Jummerbari,0.0,0,gaibandha
+74,east,0.3707078123878511,Low,0.0,Chinadulli,0.0,0,gaibandha
+74,west,0.2078635153749329,Low,0.0,Jummerbari,0.0,0,gaibandha
+75,east,0.8250631552745736,High,0.0,Chinadulli,0.0,0,gaibandha
+75,west,0.0635936243382584,Low,0.0,Jummerbari,0.0,0,gaibandha
+76,east,0.439718261942659,Low,0.0,Chinadulli,0.0,0,gaibandha
+76,west,0.0143967099594436,Low,0.0,Jummerbari,0.0,0,gaibandha
+77,east,0.0643194627433223,Low,0.0,Chinadulli,0.0,0,gaibandha
+77,west,0.014250168666919,Low,0.0,Jummerbari,0.0,0,gaibandha
+78,east,0.0460056842910461,Low,0.0,Chinadulli,0.0,0,gaibandha
+78,west,0.013934134371788,Low,0.0,Jummerbari,0.0,0,gaibandha
+79,east,0.0287470305155013,Low,0.0,Chinadulli,0.0,0,gaibandha
+79,west,0.0172325512357439,Low,0.0,Haldia,0.0,0,gaibandha
+80,east,0.0296106413823585,Low,0.0,Chinadulli,0.0,0,gaibandha
+80,west,0.0183173005030175,Low,0.0,Jummerbari,0.0,0,gaibandha
+81,east,0.0355395588618589,Low,0.0,Chinadulli,0.0,0,gaibandha
+81,west,0.0440467737110256,Low,0.0,Jummerbari,0.0,0,gaibandha
+82,east,0.0258761182336446,Low,0.24,Chinadulli,2.68,0,gaibandha
+82,west,0.0150773729519903,Low,0.0,Jummerbari,0.0,0,gaibandha
+83,east,0.0357492975871785,Low,0.28,Chinadulli,0.0,0,gaibandha
+83,west,0.0188377910846622,Low,0.0,Jummerbari,0.0,0,gaibandha
+84,east,0.0342496122811178,Low,0.0,Chinadulli,0.0,0,gaibandha
+84,west,0.144236354137891,Low,0.8,Jummerbari,0.0,0,gaibandha
+85,east,0.0932979545348174,Low,5.44,Noarpara,0.0,0,gaibandha
+85,west,0.1439127929250908,Low,3.36,Jummerbari,0.0,0,gaibandha

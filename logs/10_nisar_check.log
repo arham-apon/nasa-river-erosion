@@ -1,0 +1,13 @@
+    scope  stretches  major_nisar  eroded_ha                      model  pr_auc  recall_top20  precision_top20  major_share_high  major_share_medium  major_share_low
+     both        542           45      734.2 gradient boosting forecast   0.292         0.533            0.222             0.273               0.130            0.042
+     both        542           45      734.2 persistence (2025 erosion)   0.266         0.622            0.259             0.273               0.130            0.042
+     both        542           45      734.2          random (expected)   0.083         0.199            0.083             0.273               0.130            0.042
+gaibandha        172            8      116.5 gradient boosting forecast   0.098         0.375            0.088             0.056               0.088            0.033
+gaibandha        172            8      116.5 persistence (2025 erosion)   0.049         0.125            0.029             0.056               0.088            0.033
+gaibandha        172            8      116.5          random (expected)   0.047         0.198            0.047             0.056               0.088            0.033
+sirajganj        370           37      617.7 gradient boosting forecast   0.380         0.568            0.284             0.378               0.149            0.046
+sirajganj        370           37      617.7 persistence (2025 erosion)   0.463         0.730            0.365             0.378               0.149            0.046
+sirajganj        370           37      617.7          random (expected)   0.100         0.200            0.100             0.378               0.149            0.046
+
+16 radar quick-looks written to C:\Users\User\Desktop\nasa-river-erosion\data\web\nisar
+Copied web/dashboard.html to C:\Users\User\Desktop\nasa-river-erosion\data\web

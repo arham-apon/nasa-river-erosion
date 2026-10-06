@@ -1,0 +1,316 @@
+/*
+ * Asymmetric split: words on the left (resizable), the 3D map on the right.
+ * Balance comes from weight — a heavy headline and one dominant figure against a large visual —
+ * and one element, the highlight card, breaks the column seam.
+ */
+.home {
+  position: relative;
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: var(--split, 520px) 1fr;
+  height: calc(100vh - var(--header-h));
+  min-height: 620px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 40px var(--s-7) var(--s-5) var(--s-6);
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
+}
+
+.kicker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-bottom: calc(-1 * var(--s-3));
+}
+
+.title {
+  font-size: var(--fs-display);
+  font-weight: 700;
+  letter-spacing: -0.032em;
+  line-height: 1.04;
+}
+
+.lede {
+  margin-top: calc(-1 * var(--s-3));
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--text-2);
+  max-width: 46ch;
+}
+
+/* One dominant figure; the second number sits a tier below in plain text. */
+.figures {
+  display: grid;
+  gap: var(--s-3);
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.lead {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+}
+
+.leadFigure {
+  font-size: var(--fs-figure);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+  color: var(--text);
+}
+
+.leadTitle {
+  font-size: var(--fs-lead);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.leadNote {
+  margin-top: 4px;
+  font-size: var(--fs-caption);
+  color: var(--text-3);
+}
+
+.secondary {
+  font-size: var(--fs-small);
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.secondary strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.secondaryNote {
+  color: var(--text-3);
+}
+
+.finder {
+  display: grid;
+  gap: var(--s-3);
+}
+
+.label {
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.quick {
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--text-3);
+}
+
+.sep {
+  color: var(--text-3);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.fine {
+  margin-top: auto;
+  font-size: var(--fs-caption);
+  line-height: 1.6;
+  color: var(--text-3);
+  max-width: 52ch;
+}
+
+/* Stage: the 3D overview. Not clipped itself, so the highlight card can cross the seam. */
+.stage {
+  position: relative;
+  min-height: 0;
+  background: var(--bg);
+}
+
+.sceneClip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.stageHead {
+  position: absolute;
+  top: var(--s-5);
+  left: var(--s-6);
+  pointer-events: none;
+}
+
+.legend {
+  position: absolute;
+  top: var(--s-5);
+  right: var(--s-5);
+  display: grid;
+  gap: 8px;
+  padding: var(--s-3) var(--s-4);
+  list-style: none;
+  font-size: var(--fs-caption);
+  color: var(--text-2);
+  background: rgba(11, 15, 19, 0.78);
+  border: 1px solid var(--line);
+  border-radius: var(--r-3);
+  pointer-events: none;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.legend i {
+  display: inline-block;
+  flex: none;
+}
+
+.lgRiver {
+  width: 18px;
+  height: 2px;
+  background: var(--water);
+}
+
+.lgBank {
+  width: 18px;
+  height: 0;
+  border-top: 1.5px solid #9fd4ee;
+  box-shadow: 0 4px 0 -3px #9fd4ee;
+}
+
+.lgReach {
+  width: 14px;
+  height: 10px;
+  background: #2a4a5e;
+  border: 1px solid var(--water-strong);
+  box-shadow: 2px 2px 0 #141e27;
+}
+
+.lgCity {
+  width: 6px;
+  height: 6px;
+  margin: 0 6px;
+  border-radius: 50%;
+  background: var(--text-2);
+}
+
+.hint {
+  position: absolute;
+  right: var(--s-5);
+  bottom: var(--s-4);
+  font-size: var(--fs-caption);
+  color: var(--text-3);
+  pointer-events: none;
+}
+
+/* The single most telling result, pulled out in front of the map and across the column seam. */
+.highlight {
+  position: absolute;
+  z-index: 14;
+  left: -32px;
+  bottom: var(--s-6);
+  width: 316px;
+  display: grid;
+  gap: var(--s-2);
+  padding: var(--s-4) var(--s-5) var(--s-5);
+  background: var(--surface);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-3);
+  box-shadow: var(--float-shadow);
+}
+
+.highlightFigure {
+  margin-top: var(--s-2);
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--text);
+}
+
+.highlightFigure span {
+  margin-left: 2px;
+  font-size: 0.6em;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.highlightText {
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+.highlightLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--s-1);
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+@media (max-width: 920px) {
+  .home {
+    grid-template-columns: 1fr;
+    grid-template-rows: 62vh auto;
+    height: auto;
+  }
+
+  .stage {
+    grid-row: 1;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .intro {
+    grid-row: 2;
+    border-right: 0;
+    padding: var(--s-6) var(--s-4) var(--s-7);
+    overflow: visible;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+
+  .leadFigure {
+    font-size: 56px;
+  }
+
+  .hint {
+    display: none;
+  }
+
+  .legend {
+    display: none;
+  }
+
+  .stageHead {
+    left: var(--s-4);
+  }
+
+  .highlight {
+    left: var(--s-4);
+    right: var(--s-4);
+    bottom: var(--s-4);
+    width: auto;
+  }
+
+  .highlightFigure {
+    font-size: 40px;
+  }
+}

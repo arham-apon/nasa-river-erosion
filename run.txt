@@ -1,0 +1,179 @@
+CHAR EROSION WATCH - HOW TO RUN, REPRODUCE AND VIEW THE DASHBOARD
+==================================================================
+
+All commands are for Windows Command Prompt (cmd). Type them one at a time.
+Lines starting with "REM" are comments; you do not type them.
+
+
+0. ONE-TIME REQUIREMENTS
+------------------------
+- Git:           https://git-scm.com/download/win
+- Python 3.14:   https://www.python.org/downloads/  (tick "Add python.exe to PATH" in the installer)
+- Internet access (for cloning, installing packages and the satellite basemap of the map)
+
+Check they work:
+
+    git --version
+    py -3.14 --version
+
+
+1. GET THE CODE AND THE TRAINING DATA
+-------------------------------------
+REM Go to the folder where you want the project, e.g. the Desktop
+    cd /d %USERPROFILE%\Desktop
+
+    git clone https://github.com/arham-apon/nasa-river-erosion.git
+    cd nasa-river-erosion
+    git checkout backend-pipeline-testing
+
+
+2. CREATE THE PYTHON ENVIRONMENT (exact package versions)
+---------------------------------------------------------
+    py -3.14 -m venv nenv
+    nenv\Scripts\activate
+
+REM The prompt now starts with (nenv). Install the exact versions used for the original run:
+    python -m pip install --upgrade pip
+    pip install -r requirements-lock.txt
+
+REM Optional, only for the Bangla voice alert (alert_1.mp3) on the dashboard:
+    pip install gTTS
+
+
+3. TRAIN AND TEST THE MODEL (about 1 minute)
+--------------------------------------------
+    python 05_model.py
+
+Expected (must match exactly), in the "TIME SPLIT" table:
+    gradient boosting   0.282   0.500   0.315   204   1626
+
+Output: data\model\  (results tables, hindcast, 2026 forecast, model_hindcast.joblib, model_final.joblib)
+
+
+4. BUILD THE THREAT SCORE, MAP LAYERS AND BANGLA ALERTS (about 1 minute)
+-------------------------------------------------------------------------
+    python 06_threat_score.py
+
+Expected: the top of the ranking is
+     rank    region     union_name  threat_score threat_level
+        1 sirajganj Sadia Chandpur         0.785         High
+        2 sirajganj       Belkuchi         0.782         High
+        3 gaibandha       Sughatta         0.758         High
+and "13 Bangla alerts written".
+
+Output: data\web\  (dashboard.html, unions.geojson, segments_*.geojson, union_ranking.csv, alerts_bn.txt, ...)
+
+REM Optional voice alert (needs gTTS from step 2 and internet):
+    python -c "from gtts import gTTS; t = open('data/web/alerts_bn.txt', encoding='utf-8').read().split('\n\n')[0]; gTTS(t, lang='bn').save('data/web/alert_1.mp3')"
+
+
+4b. CHECK THE 2026 FORECAST WITH NISAR (about 1 minute)
+-------------------------------------------------------
+Uses the small NISAR results stored in git (no NASA account needed for this step).
+
+    python 10_nisar_check.py
+
+Expected (provisional, NISAR passes up to 2026-09-22), in the "both" rows:
+    gradient boosting forecast   0.292   0.533   0.222   (PR-AUC, recall, precision @ top 20%)
+    major_share_high 0.273, major_share_low 0.042
+
+Output: data\model\nisar_forecast_check.csv, data\web\nisar_*  (also copies the dashboard into data\web)
+The NISAR radar time-lapse needs the radar images: see section 8.
+
+
+5. OPEN THE DASHBOARD
+---------------------
+REM Start a small local web server (keep this window open while you use the map):
+    python -m http.server 8000 --directory data\web
+
+Then open this address in a web browser:
+    http://localhost:8000/dashboard.html
+
+On the map:
+- Layer list (top right): union threat, 2026 risk per stretch, hindcast 2023/2024/2025,
+  banklines, eroded land 2021-2025, NISAR land turned to water 2026, NISAR check of the
+  2026 forecast, NISAR radar time-lapse. Tick/untick to switch.
+- Left panel, top: NISAR time-lapse (Play / slider) and "Did the 2026 forecast come true?".
+- Click any polygon for details. Click a union in the left panel to zoom to it.
+
+To stop the server: go back to the cmd window and press Ctrl + C.
+
+
+6. NEXT TIME (environment already set up)
+-----------------------------------------
+    cd /d %USERPROFILE%\Desktop\nasa-river-erosion
+    nenv\Scripts\activate
+    python -m http.server 8000 --directory data\web
+REM then open http://localhost:8000/dashboard.html
+
+
+7. OPTIONAL: REBUILD EVERYTHING FROM THE SATELLITE DATA (Steps 1-8, slow)
+--------------------------------------------------------------------------
+Only needed to recreate the training tables themselves. Needs a Google Earth Engine account
+with access to the Cloud project "nasa-river-erosion", and about 1-2 hours.
+Results can differ slightly from the stored tables if Google has added or removed scenes.
+
+    earthengine authenticate
+
+REM Union/upazila boundaries (about 290 MB download), unzip into data\boundaries\
+    mkdir data\boundaries
+    curl -L -o data\boundaries\adm3.zip https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/gbOpen/BGD/ADM3/geoBoundaries-BGD-ADM3-all.zip
+    curl -L -o data\boundaries\adm4.zip https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/gbOpen/BGD/ADM4/geoBoundaries-BGD-ADM4-all.zip
+    tar -xf data\boundaries\adm3.zip -C data\boundaries
+    tar -xf data\boundaries\adm4.zip -C data\boundaries
+
+REM Region 1
+    set CEW_REGION=gaibandha
+    python 02c_fetch_direct.py class context extras
+    python 03_erosion.py
+    python 04_features.py
+    python 07_sanity_checks.py
+
+REM Region 2
+    set CEW_REGION=sirajganj
+    python 02c_fetch_direct.py class context extras
+    python 03_erosion.py
+    python 04_features.py
+    python 07_sanity_checks.py
+
+REM Then steps 3, 4 and 5 above.
+
+
+8. OPTIONAL: FETCH THE NISAR RADAR PASSES (Steps 13-15)
+-------------------------------------------------------
+No Google Earth Engine needed: the grid NISAR is put on (data\<region>\raw\class_2026.tif) is in git.
+Needs a free NASA Earthdata account: https://urs.earthdata.nasa.gov -> Generate Token.
+Put the token in a file named .env in the project folder (one line, never commit or share this file):
+
+    EARTHDATA_TOKEN=<your token>
+
+REM About 3 minutes per radar pass (8+ passes). Safe to stop and re-run; finished passes are skipped.
+REM New passes (October, November, ...) are picked up automatically on every re-run.
+    python 08_nisar_fetch.py
+
+REM Radar images and the time-lapse for the dashboard:
+    python 10_nisar_check.py
+
+REM Only after section 7 (needs the Earth Engine layers): redo the NISAR water maps and 2026 erosion
+REM with the new passes, then run 10 again.
+    set CEW_REGION=gaibandha
+    python 09_nisar_erosion.py
+    set CEW_REGION=sirajganj
+    python 09_nisar_erosion.py
+    python 10_nisar_check.py
+
+Output: data\<region>\nisar\ (radar passes; with 09 also water maps, 2026 erosion, per-stretch check), then as in 4b.
+Results are provisional until the November passes: in September the river is still high.
+
+
+TROUBLESHOOTING
+---------------
+- "py is not recognized": use "python" instead of "py -3.14" (check "python --version" says 3.14).
+- pip install fails on one package: make sure it is Python 3.14 (the lock file is for 3.14).
+- Dashboard page is blank: open it through http://localhost:8000/dashboard.html, not by
+  double-clicking the file; and keep the server window open.
+- Port 8000 busy: use another number, e.g. "python -m http.server 8010 --directory data\web"
+  and open http://localhost:8010/dashboard.html.
+- 08_nisar_fetch.py says "Set EARTHDATA_TOKEN" or fails with 401: the token is missing or expired
+  (tokens last 60 days); generate a new one and put it in .env.
+- Full details: docs\REPRODUCE.md and docs\step_*.md

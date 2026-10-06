@@ -1,0 +1,17 @@
+Dry season 2015: median corridor width 11620 m
+Dry season 2016: median corridor width 11620 m
+Dry season 2017: median corridor width 11380 m
+Dry season 2018: median corridor width 11680 m
+Dry season 2019: median corridor width 11680 m
+Dry season 2020: median corridor width 11260 m
+Dry season 2021: median corridor width 11720 m
+Dry season 2022: median corridor width 11260 m
+Dry season 2023: median corridor width 11400 m
+Dry season 2024: median corridor width 10660 m
+Dry season 2025: median corridor width 10920 m
+Dry season 2026: median corridor width 10600 m
+Max-jump rule: 258 of 4070 bank moves > 1000 m set to empty
+
+Training rows: 4070 (positives: 740, rate 18.2%)
+Forecast rows (monsoon 2026): 370
+Wrote training_table.csv, segments.gpkg, banklines.gpkg to C:\Users\User\Desktop\nasa-river-erosion\.claude\worktrees\context-folder-review-347c4d\data\sirajganj\processed

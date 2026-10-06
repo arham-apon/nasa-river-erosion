@@ -1,0 +1,75 @@
+:root {
+  color-scheme: dark;
+
+  /* Neutrals: cool graphite, not purple. The page is a dark instrument, data supplies the colour. */
+  --bg: #0b0f13;
+  --bg-sunk: #070a0d;
+  --surface: #10161c;
+  --surface-2: #151c23;
+  --surface-3: #1b242d;
+  --line: #1f2830;
+  --line-2: #2c3742;
+  --text: #edf0f2;
+  --text-2: #b9c1c9;
+  --text-3: #8a96a1;
+
+  /* Cool = water and the user's current focus. Warm = land loss and relative risk. Nothing else gets a hue. */
+  --water: #63b3d9;
+  --water-strong: #8fcbe8;
+  --water-dim: rgba(99, 179, 217, 0.14);
+  --erosion: #e8954a;
+  --erosion-dim: rgba(232, 149, 74, 0.16);
+  --risk-high: #f07a4f;
+  --risk-medium: #c9a25b;
+  --risk-low: #56636e;
+  --select: #ffffff;
+  --danger: #e5675a;
+
+  --font-sans: "Inter Variable", "Inter", "Noto Sans Bengali", system-ui, sans-serif;
+  /* Numbers use Inter's tabular figures so columns and counters line up. */
+  --font-num: "Inter Variable", "Inter", "Noto Sans Bengali", system-ui, sans-serif;
+
+  /*
+   * Type scale. Quiet tiers (label, caption, small) are separated by case, weight and colour;
+   * reading tiers (ui, body, lead) by size; headline tiers jump clearly (h3 → h2 → h1 → display).
+   */
+  --fs-label: 12px;
+  --fs-caption: 13px;
+  --fs-small: 14px;
+  --fs-ui: 15px;
+  --fs-body: 16px;
+  --fs-lead: 18px;
+  --fs-h3: 22px;
+  --fs-h2: 28px;
+  --fs-h1: 38px;
+  --fs-display: 50px;
+  --fs-figure: 72px;
+
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+
+  /* Small radii: tags < controls < panels < sheets. */
+  --r-1: 2px;
+  --r-2: 4px;
+  --r-3: 6px;
+  --r-4: 10px;
+
+  --header-h: 52px;
+  --panel-w: 384px;
+  --float-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Bengali glyphs need a touch more size and leading to read at the same weight. */
+:lang(bn) {
+  --font-num: "Noto Sans Bengali", "Inter Variable", system-ui, sans-serif;
+  --fs-label: 13px;
+  --fs-caption: 14px;
+  --fs-small: 15px;
+}

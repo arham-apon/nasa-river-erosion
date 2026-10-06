@@ -1,0 +1,48 @@
+features used: ['eroded_ha_lag1', 'eroded_ha_lag2', 'eroded_ha_lag3', 'retreat_m_lag1', 'retreat_m_lag2', 'eroded_settlement_ha_lag1', 'bulge_m', 'corridor_width_m', 'side_is_west', 'eroded_3yr_mean', 'erosion_count_3yr', 'retreat_accel', 'jrc_occ_river', 'jrc_occ_land', 'hand_land_m', 'dw_water_river', 'dw_water_change']
+
+share of stretches with major erosion:
+region
+gaibandha    0.209
+sirajganj    0.182
+
+TIME SPLIT (train <= 2022, test [2023, 2024, 2025])
+              model  pr_auc  recall_top20  precision_top20  positives  rows
+             random   0.134         0.191            0.120        204  1626
+        persistence   0.272         0.422            0.265        204  1626
+        3-year mean   0.253         0.324            0.204        204  1626
+logistic regression   0.241         0.431            0.272        204  1626
+  gradient boosting   0.282         0.500            0.315        204  1626
+
+CROSS-REGION
+                                    model  pr_auc  recall_top20  precision_top20  positives  rows
+             gaibandha->sirajganj: random   0.118         0.205            0.122        132  1110
+        gaibandha->sirajganj: persistence   0.317         0.492            0.293        132  1110
+        gaibandha->sirajganj: 3-year mean   0.293         0.371            0.221        132  1110
+gaibandha->sirajganj: logistic regression   0.234         0.409            0.243        132  1110
+  gaibandha->sirajganj: gradient boosting   0.237         0.341            0.203        132  1110
+             sirajganj->gaibandha: random   0.160         0.222            0.157         72   516
+        sirajganj->gaibandha: persistence   0.204         0.292            0.206         72   516
+        sirajganj->gaibandha: 3-year mean   0.180         0.236            0.167         72   516
+sirajganj->gaibandha: logistic regression   0.255         0.444            0.314         72   516
+  sirajganj->gaibandha: gradient boosting   0.267         0.389            0.275         72   516
+
+FEATURE IMPORTANCE (drop in PR-AUC when shuffled)
+jrc_occ_land                 0.0388
+dw_water_river               0.0287
+eroded_ha_lag1               0.0279
+jrc_occ_river                0.0133
+bulge_m                      0.0104
+corridor_width_m             0.0101
+dw_water_change              0.0064
+hand_land_m                  0.0062
+eroded_settlement_ha_lag1    0.0058
+retreat_accel                0.0040
+erosion_count_3yr            0.0032
+eroded_ha_lag3               0.0020
+retreat_m_lag2               0.0016
+retreat_m_lag1               0.0003
+eroded_3yr_mean             -0.0011
+side_is_west                -0.0026
+eroded_ha_lag2              -0.0051
+
+saved results and models to C:\Users\User\Desktop\nasa-river-erosion\.claude\worktrees\context-folder-review-347c4d\data\model
