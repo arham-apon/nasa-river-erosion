@@ -58,10 +58,13 @@ function disposeTree(obj) {
   });
 }
 
-export default function BangladeshScene({ data, lang, selected, hovered, onHover, onSelect, regionText }) {
+const NO_RESERVE = { left: 0, bottom: 0 };
+
+export default function BangladeshScene({ data, lang, selected, hovered, onHover, onSelect, regionText, reserve = NO_RESERVE }) {
   const wrapRef = useRef(null);
   const labelRef = useRef(null);
   const apiRef = useRef(null);
+  const reserveRef = useRef(reserve);
   const cbRef = useRef({ onHover, onSelect });
   const [failed, setFailed] = useState(false);
   cbRef.current = { onHover, onSelect };
@@ -220,13 +223,16 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
     };
     const FINAL_POLAR = 0.74;
     const fit = () => {
-      // Smallest distance at which the whole country stays inside 88% of the frame.
+      // Smallest distance at which the whole country fits the part of the frame no overlay reserves.
+      const { left = 0, bottom = 0 } = reserveRef.current;
+      const xmin = -1 + (2 * left) / width + 0.1;
+      const ymin = -1 + (2 * bottom) / height + 0.14;
       const tmp = new THREE.Vector3();
       for (distance = 6; distance < 40; distance += 0.25) {
         place(FINAL_POLAR, 0, distance);
         if (corners.every((c) => {
           tmp.copy(c).project(camera);
-          return Math.abs(tmp.x) < 0.86 && Math.abs(tmp.y) < 0.8;
+          return tmp.x > xmin && tmp.x < 0.9 && tmp.y > ymin && tmp.y < 0.82;
         })) break;
       }
     };
@@ -235,7 +241,9 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
       height = wrap.clientHeight || 1;
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
-      camera.updateProjectionMatrix();
+      // Centre the map in the free area: shift the image right/up by half of what overlays reserve.
+      const { left = 0, bottom = 0 } = reserveRef.current;
+      camera.setViewOffset(width, height, -left / 2, bottom / 2, width, height);
       for (const l of fatLines) l.material.resolution.set(width, height);
       const sph = new THREE.Spherical().setFromVector3(camera.position.clone().sub(target));
       fit();
@@ -321,6 +329,7 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
     raf = requestAnimationFrame(frame);
 
     apiRef.current = {
+      relayout: resize,
       highlight(sel, hov) {
         for (const [id, b] of Object.entries(blocks)) {
           const isSel = id === sel;
@@ -357,6 +366,11 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
   useEffect(() => {
     apiRef.current?.highlight(selected, hovered);
   }, [selected, hovered, data]);
+
+  useEffect(() => {
+    reserveRef.current = reserve;
+    apiRef.current?.relayout();
+  }, [reserve.left, reserve.bottom]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     apiRef.current?.setText((txt) => {

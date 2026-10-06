@@ -116,7 +116,7 @@ export default function NisarPanel({ manifest, region, nisar, forecast, layers, 
                 <tbody>
                   {byClass.map((r) => (
                     <tr key={r.level}>
-                      <td style={{ fontFamily: "var(--font-sans)" }}>
+                      <td>
                         <RiskLabel level={r.level} />
                       </td>
                       <td>{fmtNum(r.n, lang)}</td>

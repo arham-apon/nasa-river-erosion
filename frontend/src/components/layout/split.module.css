@@ -1,0 +1,60 @@
+/* A 16px hit area centred on the column seam; the visible part is a hairline and a small grip. */
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--split);
+  z-index: 12;
+  width: 16px;
+  margin-left: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: col-resize;
+  touch-action: none;
+  outline: none;
+}
+
+.handle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: transparent;
+  transition: background 120ms var(--ease);
+}
+
+.grip {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 40px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-2);
+  background: var(--surface-2);
+  color: var(--text-3);
+  transition: border-color 120ms var(--ease), color 120ms var(--ease);
+}
+
+.handle:hover::before,
+.handle:focus-visible::before,
+.handle[data-dragging="true"]::before {
+  background: var(--water);
+}
+
+.handle:hover .grip,
+.handle:focus-visible .grip,
+.handle[data-dragging="true"] .grip {
+  border-color: var(--water);
+  color: var(--water-strong);
+}
+
+@media (max-width: 920px) {
+  .handle {
+    display: none;
+  }
+}

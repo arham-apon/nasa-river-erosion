@@ -7,11 +7,11 @@
   --surface: #10161c;
   --surface-2: #151c23;
   --surface-3: #1b242d;
-  --line: #1e272f;
-  --line-2: #2a3540;
-  --text: #e4e8eb;
-  --text-2: #a1abb4;
-  --text-3: #6b7782;
+  --line: #1f2830;
+  --line-2: #2c3742;
+  --text: #edf0f2;
+  --text-2: #b9c1c9;
+  --text-3: #8a96a1;
 
   /* Cool = water and the user's current focus. Warm = land loss and relative risk. Nothing else gets a hue. */
   --water: #63b3d9;
@@ -25,16 +25,25 @@
   --select: #ffffff;
   --danger: #e5675a;
 
-  --font-sans: "IBM Plex Sans", "Noto Sans Bengali", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", "Noto Sans Bengali", ui-monospace, monospace;
+  --font-sans: "Inter Variable", "Inter", "Noto Sans Bengali", system-ui, sans-serif;
+  /* Numbers use Inter's tabular figures so columns and counters line up. */
+  --font-num: "Inter Variable", "Inter", "Noto Sans Bengali", system-ui, sans-serif;
 
-  --fs-11: 11px;
-  --fs-12: 12px;
-  --fs-13: 13px;
-  --fs-14: 14px;
-  --fs-16: 16px;
-  --fs-20: 20px;
-  --fs-28: 28px;
+  /*
+   * Type scale. Quiet tiers (label, caption, small) are separated by case, weight and colour;
+   * reading tiers (ui, body, lead) by size; headline tiers jump clearly (h3 → h2 → h1 → display).
+   */
+  --fs-label: 12px;
+  --fs-caption: 13px;
+  --fs-small: 14px;
+  --fs-ui: 15px;
+  --fs-body: 16px;
+  --fs-lead: 18px;
+  --fs-h3: 22px;
+  --fs-h2: 28px;
+  --fs-h1: 38px;
+  --fs-display: 50px;
+  --fs-figure: 72px;
 
   --s-1: 4px;
   --s-2: 8px;
@@ -51,16 +60,16 @@
   --r-3: 6px;
   --r-4: 10px;
 
-  --header-h: 48px;
-  --panel-w: 368px;
-  --float-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  --header-h: 52px;
+  --panel-w: 384px;
+  --float-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-/* Bengali digits come from Noto either way; keeping separators in the same font avoids ragged numbers. */
+/* Bengali glyphs need a touch more size and leading to read at the same weight. */
 :lang(bn) {
-  --font-mono: "Noto Sans Bengali", "IBM Plex Sans", ui-monospace, monospace;
-  --fs-11: 12px;
-  --fs-12: 13px;
-  --fs-13: 14px;
+  --font-num: "Noto Sans Bengali", "Inter Variable", system-ui, sans-serif;
+  --fs-label: 13px;
+  --fs-caption: 14px;
+  --fs-small: 15px;
 }

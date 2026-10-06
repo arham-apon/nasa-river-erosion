@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { QueryGate } from "../components/ui/StateView.jsx";
 import { useManifest } from "../data/queries.js";
 import { fmtDate, fmtNum, fmtYear } from "../lib/format.js";
@@ -35,7 +35,9 @@ export default function AboutPage() {
         ))}
       </nav>
       <article className={s.content}>
-        <h1 className={s.pageTitle}>{t("about.title")}</h1>
+        <h1 className={s.pageTitle}>
+          <Trans i18nKey="about.title" components={{ hl: <span className="hl" /> }} />
+        </h1>
         <p className={s.lede}>{t("about.lede")}</p>
 
         <QueryGate queries={manifest}>
@@ -65,7 +67,7 @@ export default function AboutPage() {
                       {Object.entries(m.regions).map(([id, r]) => (
                         <tr key={id}>
                           <td>{t(`regions.${id}.name`)}</td>
-                          <td className="mono" style={{ fontSize: 12 }}>
+                          <td className="mono" style={{ fontSize: "var(--fs-caption)" }}>
                             {r.bbox[0]}–{r.bbox[2]}°E, {r.bbox[1]}–{r.bbox[3]}°N
                           </td>
                           <td className="mono">{fmtNum(r.sections, lang)}</td>

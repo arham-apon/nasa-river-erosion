@@ -1,16 +1,22 @@
+/*
+ * Asymmetric split: words on the left (resizable), the 3D map on the right.
+ * Balance comes from weight — a heavy headline and one dominant figure against a large visual —
+ * and one element, the highlight card, breaks the column seam.
+ */
 .home {
+  position: relative;
   flex: 1 1 auto;
   display: grid;
-  grid-template-columns: minmax(360px, 452px) 1fr;
+  grid-template-columns: var(--split, 520px) 1fr;
   height: calc(100vh - var(--header-h));
-  min-height: 600px;
+  min-height: 620px;
 }
 
 .intro {
   display: flex;
   flex-direction: column;
-  gap: var(--s-5);
-  padding: var(--s-6) var(--s-6) var(--s-5);
+  gap: 28px;
+  padding: 40px var(--s-7) var(--s-5) var(--s-6);
   border-right: 1px solid var(--line);
   overflow-y: auto;
 }
@@ -20,27 +26,73 @@
   align-items: center;
   flex-wrap: wrap;
   gap: var(--s-3);
-}
-
-.kickerDate {
-  font-family: var(--font-mono);
-  font-size: var(--fs-11);
-  color: var(--text-3);
+  margin-bottom: calc(-1 * var(--s-3));
 }
 
 .title {
-  font-size: var(--fs-28);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  margin-top: calc(-1 * var(--s-2));
+  font-size: var(--fs-display);
+  font-weight: 700;
+  letter-spacing: -0.032em;
+  line-height: 1.04;
 }
 
 .lede {
+  margin-top: calc(-1 * var(--s-3));
+  font-size: var(--fs-body);
+  line-height: 1.7;
   color: var(--text-2);
-  font-size: 15px;
-  line-height: 1.6;
-  margin-top: calc(-1 * var(--s-2));
+  max-width: 46ch;
+}
+
+/* One dominant figure; the second number sits a tier below in plain text. */
+.figures {
+  display: grid;
+  gap: var(--s-3);
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.lead {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+}
+
+.leadFigure {
+  font-size: var(--fs-figure);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+  color: var(--text);
+}
+
+.leadTitle {
+  font-size: var(--fs-lead);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.leadNote {
+  margin-top: 4px;
+  font-size: var(--fs-caption);
+  color: var(--text-3);
+}
+
+.secondary {
+  font-size: var(--fs-small);
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.secondary strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.secondaryNote {
+  color: var(--text-3);
 }
 
 .finder {
@@ -49,69 +101,21 @@
 }
 
 .label {
-  font-family: var(--font-mono);
-  font-size: var(--fs-11);
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--text-3);
 }
 
 .quick {
-  font-size: var(--fs-13);
+  font-size: var(--fs-small);
+  line-height: 1.6;
   color: var(--text-3);
 }
 
 .sep {
   color: var(--text-3);
-}
-
-/* Three dated figures, divided by hairlines instead of boxed into cards. */
-.figures {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.figures > div {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: var(--s-4) var(--s-3) var(--s-4) 0;
-}
-
-.figures > div + div {
-  padding-left: var(--s-3);
-  border-left: 1px solid var(--line);
-}
-
-.figures dt {
-  font-size: var(--fs-13);
-  color: var(--text);
-  line-height: 1.35;
-}
-
-.figure {
-  order: -1;
-  font-family: var(--font-mono);
-  font-size: 22px;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-  color: var(--text);
-  line-height: 1.2;
-}
-
-.unit {
-  font-size: var(--fs-13);
-  color: var(--text-2);
-}
-
-.figNote {
-  font-size: var(--fs-11);
-  color: var(--text-3);
-  line-height: 1.4;
-  margin-top: 2px;
 }
 
 .actions {
@@ -122,35 +126,45 @@
 
 .fine {
   margin-top: auto;
-  font-size: var(--fs-12);
+  font-size: var(--fs-caption);
+  line-height: 1.6;
   color: var(--text-3);
-  line-height: 1.5;
+  max-width: 52ch;
 }
 
-/* Stage: the 3D overview. */
+/* Stage: the 3D overview. Not clipped itself, so the highlight card can cross the seam. */
 .stage {
   position: relative;
   min-height: 0;
-  overflow: hidden;
   background: var(--bg);
+}
+
+.sceneClip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }
 
 .stageHead {
   position: absolute;
-  top: var(--s-4);
-  left: var(--s-5);
+  top: var(--s-5);
+  left: var(--s-6);
   pointer-events: none;
 }
 
 .legend {
   position: absolute;
-  left: var(--s-5);
-  bottom: var(--s-4);
+  top: var(--s-5);
+  right: var(--s-5);
   display: grid;
-  gap: 6px;
+  gap: 8px;
+  padding: var(--s-3) var(--s-4);
   list-style: none;
-  font-size: var(--fs-12);
+  font-size: var(--fs-caption);
   color: var(--text-2);
+  background: rgba(11, 15, 19, 0.78);
+  border: 1px solid var(--line);
+  border-radius: var(--r-3);
   pointer-events: none;
 }
 
@@ -198,15 +212,62 @@
   position: absolute;
   right: var(--s-5);
   bottom: var(--s-4);
-  font-size: var(--fs-12);
+  font-size: var(--fs-caption);
   color: var(--text-3);
   pointer-events: none;
+}
+
+/* The single most telling result, pulled out in front of the map and across the column seam. */
+.highlight {
+  position: absolute;
+  z-index: 14;
+  left: -32px;
+  bottom: var(--s-6);
+  width: 316px;
+  display: grid;
+  gap: var(--s-2);
+  padding: var(--s-4) var(--s-5) var(--s-5);
+  background: var(--surface);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-3);
+  box-shadow: var(--float-shadow);
+}
+
+.highlightFigure {
+  margin-top: var(--s-2);
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--text);
+}
+
+.highlightFigure span {
+  margin-left: 2px;
+  font-size: 0.6em;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.highlightText {
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+.highlightLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--s-1);
+  font-size: var(--fs-small);
+  font-weight: 500;
 }
 
 @media (max-width: 920px) {
   .home {
     grid-template-columns: 1fr;
-    grid-template-rows: 58vh auto;
+    grid-template-rows: 62vh auto;
     height: auto;
   }
 
@@ -218,8 +279,16 @@
   .intro {
     grid-row: 2;
     border-right: 0;
-    padding: var(--s-5) var(--s-4) var(--s-6);
+    padding: var(--s-6) var(--s-4) var(--s-7);
     overflow: visible;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+
+  .leadFigure {
+    font-size: 56px;
   }
 
   .hint {
@@ -227,22 +296,21 @@
   }
 
   .legend {
-    left: var(--s-4);
+    display: none;
   }
 
   .stageHead {
     left: var(--s-4);
   }
-}
 
-@media (max-width: 420px) {
-  .figures {
-    grid-template-columns: 1fr;
+  .highlight {
+    left: var(--s-4);
+    right: var(--s-4);
+    bottom: var(--s-4);
+    width: auto;
   }
 
-  .figures > div + div {
-    padding-left: 0;
-    border-left: 0;
-    border-top: 1px solid var(--line);
+  .highlightFigure {
+    font-size: 40px;
   }
 }

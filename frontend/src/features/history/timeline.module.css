@@ -68,8 +68,9 @@
   border: 0;
   background: transparent;
   color: var(--text-3);
-  font-family: var(--font-mono);
-  font-size: var(--fs-11);
+  font-family: var(--font-num);
+  font-size: var(--fs-label);
+  font-variant-numeric: tabular-nums;
 }
 
 .year:hover {
@@ -112,7 +113,7 @@
   display: grid;
   gap: 2px;
   align-self: center;
-  font-size: var(--fs-11);
+  font-size: var(--fs-label);
   color: var(--text-3);
 }
 
@@ -123,8 +124,8 @@
   border-radius: var(--r-2);
   background: var(--bg-sunk);
   color: var(--text);
-  font-family: var(--font-mono);
-  font-size: var(--fs-12);
+  font-family: var(--font-num);
+  font-size: var(--fs-caption);
 }
 
 @media (max-width: 820px) {

@@ -32,45 +32,44 @@
 .city > span,
 .capital > span {
   transform: translate(8px, -50%);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-2);
-  text-shadow: 0 0 4px var(--bg), 0 0 2px var(--bg);
+  text-shadow: 0 0 4px var(--bg), 0 0 2px var(--bg), 0 0 1px var(--bg);
 }
 
 .capital > span {
   color: var(--text);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .river > span {
   transform: translate(-50%, -50%);
-  font-size: 11px;
+  font-size: 12px;
   font-style: italic;
-  color: var(--water);
-  opacity: 0.85;
-  text-shadow: 0 0 4px var(--bg), 0 0 2px var(--bg);
+  font-weight: 500;
+  color: var(--water-strong);
+  text-shadow: 0 0 4px var(--bg), 0 0 2px var(--bg), 0 0 1px var(--bg);
 }
 
 .grid > span {
   transform: translate(-50%, -50%);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: #3e4a55;
+  font-size: 11px;
+  color: #4a5864;
 }
 
 /* Region label: a leader tick from the block to a small plate. */
 .region > span {
   position: relative;
   transform: translate(14px, -50%);
-  padding: 3px 8px 3px 8px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.05em;
+  padding: 4px 9px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-2);
-  background: rgba(11, 15, 19, 0.82);
+  background: rgba(11, 15, 19, 0.88);
   border: 1px solid var(--line-2);
-  border-radius: var(--r-1);
+  border-radius: var(--r-2);
 }
 
 .region > span::before {

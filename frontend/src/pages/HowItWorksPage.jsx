@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import Disclosure from "../components/ui/Disclosure.jsx";
 import Tag from "../components/ui/Tag.jsx";
 import { QueryGate } from "../components/ui/StateView.jsx";
@@ -28,7 +28,9 @@ export default function HowItWorksPage() {
       </nav>
 
       <article className={s.content}>
-        <h1 className={s.pageTitle}>{t("how.title")}</h1>
+        <h1 className={s.pageTitle}>
+          <Trans i18nKey="how.title" components={{ hl: <span className="hl" /> }} />
+        </h1>
         <p className={s.lede}>{t("how.lede")}</p>
 
         <QueryGate queries={[ev, manifest]}>
@@ -150,7 +152,7 @@ function Body({ ev, m, t, lang }) {
             .filter((f) => f.importance > 0.002)
             .map((f) => (
               <li key={f.feature}>
-                <span style={{ textAlign: "left", fontFamily: "var(--font-sans)", fontSize: 13, color: "var(--text)" }}>
+                <span style={{ textAlign: "left", fontSize: "var(--fs-small)", color: "var(--text)" }}>
                   {t(`features.${f.feature}`, f.feature)}
                 </span>
                 <i>
