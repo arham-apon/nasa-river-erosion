@@ -1,0 +1,248 @@
+.home {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: minmax(360px, 452px) 1fr;
+  height: calc(100vh - var(--header-h));
+  min-height: 600px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  padding: var(--s-6) var(--s-6) var(--s-5);
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
+}
+
+.kicker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+
+.kickerDate {
+  font-family: var(--font-mono);
+  font-size: var(--fs-11);
+  color: var(--text-3);
+}
+
+.title {
+  font-size: var(--fs-28);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-top: calc(-1 * var(--s-2));
+}
+
+.lede {
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-top: calc(-1 * var(--s-2));
+}
+
+.finder {
+  display: grid;
+  gap: var(--s-3);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-11);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.quick {
+  font-size: var(--fs-13);
+  color: var(--text-3);
+}
+
+.sep {
+  color: var(--text-3);
+}
+
+/* Three dated figures, divided by hairlines instead of boxed into cards. */
+.figures {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.figures > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--s-4) var(--s-3) var(--s-4) 0;
+}
+
+.figures > div + div {
+  padding-left: var(--s-3);
+  border-left: 1px solid var(--line);
+}
+
+.figures dt {
+  font-size: var(--fs-13);
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.figure {
+  order: -1;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.unit {
+  font-size: var(--fs-13);
+  color: var(--text-2);
+}
+
+.figNote {
+  font-size: var(--fs-11);
+  color: var(--text-3);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.fine {
+  margin-top: auto;
+  font-size: var(--fs-12);
+  color: var(--text-3);
+  line-height: 1.5;
+}
+
+/* Stage: the 3D overview. */
+.stage {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.stageHead {
+  position: absolute;
+  top: var(--s-4);
+  left: var(--s-5);
+  pointer-events: none;
+}
+
+.legend {
+  position: absolute;
+  left: var(--s-5);
+  bottom: var(--s-4);
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  font-size: var(--fs-12);
+  color: var(--text-2);
+  pointer-events: none;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.legend i {
+  display: inline-block;
+  flex: none;
+}
+
+.lgRiver {
+  width: 18px;
+  height: 2px;
+  background: var(--water);
+}
+
+.lgBank {
+  width: 18px;
+  height: 0;
+  border-top: 1.5px solid #9fd4ee;
+  box-shadow: 0 4px 0 -3px #9fd4ee;
+}
+
+.lgReach {
+  width: 14px;
+  height: 10px;
+  background: #2a4a5e;
+  border: 1px solid var(--water-strong);
+  box-shadow: 2px 2px 0 #141e27;
+}
+
+.lgCity {
+  width: 6px;
+  height: 6px;
+  margin: 0 6px;
+  border-radius: 50%;
+  background: var(--text-2);
+}
+
+.hint {
+  position: absolute;
+  right: var(--s-5);
+  bottom: var(--s-4);
+  font-size: var(--fs-12);
+  color: var(--text-3);
+  pointer-events: none;
+}
+
+@media (max-width: 920px) {
+  .home {
+    grid-template-columns: 1fr;
+    grid-template-rows: 58vh auto;
+    height: auto;
+  }
+
+  .stage {
+    grid-row: 1;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .intro {
+    grid-row: 2;
+    border-right: 0;
+    padding: var(--s-5) var(--s-4) var(--s-6);
+    overflow: visible;
+  }
+
+  .hint {
+    display: none;
+  }
+
+  .legend {
+    left: var(--s-4);
+  }
+
+  .stageHead {
+    left: var(--s-4);
+  }
+}
+
+@media (max-width: 420px) {
+  .figures {
+    grid-template-columns: 1fr;
+  }
+
+  .figures > div + div {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}

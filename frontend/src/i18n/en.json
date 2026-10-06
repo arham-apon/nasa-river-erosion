@@ -1,0 +1,475 @@
+{
+  "app": {
+    "name": "River Watch",
+    "scope": "Jamuna · Bangladesh",
+    "dataTo": "Data to {{date}}",
+    "snapshotHint": "Latest observation in this snapshot (NISAR pass). Not a live feed.",
+    "language": "Language"
+  },
+  "nav": {
+    "home": "Overview",
+    "myArea": "My area",
+    "riverChanges": "River changes",
+    "howItWorks": "How it works",
+    "about": "About",
+    "label": "Main",
+    "menu": "Menu"
+  },
+  "state": {
+    "loading": "Loading data",
+    "errorTitle": "This data could not be loaded",
+    "errorBody": "The file is missing or the connection dropped. Nothing on this page has been guessed in its place.",
+    "retry": "Try again"
+  },
+  "search": { "none": "No union with that name in this reach" },
+  "tags": {
+    "forecastSeason": "Forecast · season {{season}}",
+    "provisional": "Provisional",
+    "historical": "Historical observation"
+  },
+  "risk": { "High": "High", "Medium": "Medium", "Low": "Low" },
+  "priority": { "High": "High", "Medium": "Medium", "Low": "Low" },
+  "common": {
+    "region": "Study reach",
+    "notHouseLevel": "A model-based comparison of riverbank sections, not a prediction for a specific house or field."
+  },
+  "units": { "ha": "ha", "m": "m" },
+  "regions": {
+    "gaibandha": { "name": "Gaibandha reach" },
+    "sirajganj": { "name": "Sirajganj reach" }
+  },
+  "rivers": {
+    "Brahmaputra": "Brahmaputra",
+    "Jamuna": "Jamuna",
+    "Teesta": "Teesta",
+    "Padma": "Padma",
+    "Meghna": "Meghna",
+    "Surma": "Surma",
+    "Kushiyara": "Kushiyara",
+    "Old Brahmaputra": "Old Brahmaputra",
+    "Karnaphuli": "Karnaphuli",
+    "Matamuhuri": "Matamuhuri"
+  },
+  "home": {
+    "title": "Which Jamuna riverbanks to watch this monsoon",
+    "lede": "{{sections}} bank sections, each {{length}} m long, in two reaches near Gaibandha and Sirajganj, ranked by a model trained on Sentinel-1 radar maps from 2015 to 2025. NISAR passes from June to September 2026 give an early, provisional check.",
+    "findArea": "Find an area",
+    "unionCount_one": "{{n}} union",
+    "unionCount_other": "{{n}} unions",
+    "searchPlaceholder": "Search a union in the {{region}}",
+    "highestHere": "Highest priority here:",
+    "figHigh": "sections ranked High",
+    "figHighNote": "Forecast {{season}} · top 10% per reach",
+    "figErosion": "mapped erosion, monsoon {{year}}",
+    "figErosionNote": "Both reaches, incl. chars · observed",
+    "figNisar": "NISAR radar passes",
+    "tour": "Take the 3-step tour",
+    "howRanking": "How the ranking works",
+    "sceneLabel": "3D overview map of Bangladesh with the two study reaches raised",
+    "sceneTitle": "Bangladesh · study reaches on the Jamuna",
+    "legendRiver": "Major rivers (overview)",
+    "legendReach": "Study reach, select to choose",
+    "legendBank": "Banklines, dry season {{year}}",
+    "legendCity": "Division city",
+    "sceneHint": "Drag to tilt and turn · select a raised reach"
+  },
+  "demo": {
+    "label": "Guided tour",
+    "step": "Tour · step {{n}} of {{total}}",
+    "back": "Back",
+    "next": "Next step",
+    "finish": "Finish",
+    "exit": "Close tour",
+    "find": {
+      "title": "Find an area",
+      "text": "This is the highest-priority union in the Sirajganj reach that has High-ranked sections. Select a coloured section on the map to open its own history."
+    },
+    "watch": {
+      "title": "Watch the bank move",
+      "text": "Each step is one year's dry-season bankline (blue), with 2015 dashed for comparison. Orange patches are land mapped as lost in the monsoon just before."
+    },
+    "observe": {
+      "title": "See what was observed in 2026",
+      "text": "NISAR radar passes from June to September 2026 show where dry-season land turned to water. Provisional: while the river is high, flooding can look like erosion."
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "This address is not part of River Watch. The study reaches and data are reachable from the overview.",
+    "home": "Go to overview"
+  },
+  "map": {
+    "basemap": "Base map",
+    "dark": "Dark",
+    "satellite": "Satellite",
+    "view": "View",
+    "tiltHint": "Tilt the map. Right-drag or Ctrl-drag to rotate.",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "reset": "Back to the whole reach"
+  },
+  "area": {
+    "listTitle": "Unions in the {{region}}",
+    "listAside": "by priority",
+    "listIntro": "Ranked within this reach only, from the bank sections assigned to each union.",
+    "sectionsMeta_one": "{{n}} bank section · {{high}} High",
+    "sectionsMeta_other": "{{n}} bank sections · {{high}} High",
+    "allUnions": "All unions, {{region}}",
+    "rankLine": "Rank {{rank}} of {{total}} unions in the {{region}}",
+    "rankShort": "rank {{rank}} of {{total}}",
+    "priority": "Priority",
+    "priorityNote": "within this reach",
+    "highSections": "High sections",
+    "highSectionsNote": "top 10% of the reach",
+    "ofN": "{{n}} of {{total}}",
+    "people": "People in 2 km zone",
+    "peopleNote": "WorldPop {{year}} estimate",
+    "levelSentence": {
+      "High": "Higher priority within this study reach. This is a model-based comparison of riverbank sections, not a prediction for a specific house or field.",
+      "Medium": "Middle priority within this study reach. This is a model-based comparison of riverbank sections, not a prediction for a specific house or field.",
+      "Low": "Lower priority within this study reach. Low does not mean safe: banks here have eroded before and can again."
+    },
+    "noticeTitle": "Advisory notice · demo",
+    "noticeSeason": "Season {{season}}",
+    "noticeFoot": "Generated from the 2026 forecast, data to {{date}}. Not an official warning; the Union Parishad gives local guidance.",
+    "noNotice": "No advisory notice for this union. Notices exist only for unions with High priority.",
+    "sectionsTitle": "Bank sections ({{n}})",
+    "sortedByModel": "model rank in reach",
+    "erodedLast": "{{ha}} ha eroded in monsoon 2025",
+    "seeChanges": "See how these banks changed",
+    "howPriority": "How the priority score is made",
+    "howPriorityBody": "Each part is turned into a percentile within the reach, then weighted:",
+    "formulaSection": "section = {{risk}} × model rank + {{retreat}} × recent retreat + {{pop}} × people + {{bldg}} × buildings",
+    "formulaUnion": "union = 0.6 × highest section + 0.4 × average section",
+    "howPriorityFoot": "The weights are design choices, not measured contributions. They should be agreed with local officials before any real use.",
+    "exposureTitle": "Exposure and score details",
+    "buildings": "Buildings in 2 km zone",
+    "score": "Priority score (0–1)",
+    "exposureBody": "Population is the WorldPop {{year}} estimate; buildings are from Google Open Buildings v3 (confidence ≥ 0.75). Both describe who lives near the bank today. Neither is a count of people or houses that will be lost.",
+    "badRegion": "“{{region}}” is not a study reach",
+    "badRegionBody": "River Watch covers the Gaibandha and Sirajganj reaches of the Jamuna only. Choose one above.",
+    "unionNotFound": "No union “{{union}}” in the {{region}}. Choose one from the list.",
+    "sectionNotFound": "Section “{{id}}” does not exist in this reach.",
+    "details": "Area details",
+    "mapLabel": "Map of bank sections in the {{region}}"
+  },
+  "section": {
+    "west": "West bank",
+    "east": "East bank",
+    "number": "section {{n}}",
+    "inUnion": "{{union}} union",
+    "rankLine": "rank {{rank}} of {{total}} sections in this reach",
+    "classMeaning": {
+      "High": "The model placed this section in the top 10% of its reach for the 2026 monsoon. It is a ranking, not a probability.",
+      "Medium": "The model placed this section in the next 20% of its reach for the 2026 monsoon. It is a ranking, not a probability.",
+      "Low": "The remaining 70% of sections in this reach. Low does not mean safe."
+    },
+    "historyTitle": "Mapped erosion by monsoon",
+    "noHistory": "No yearly history is stored for this section.",
+    "erodedLast": "Erosion, monsoon {{year}}",
+    "retreat": "Bank retreat, mean of last 2 years",
+    "people": "People in the 2 km zone",
+    "buildings": "Buildings in the 2 km zone",
+    "buildingsNote": "Open Buildings v3",
+    "nisar": "NISAR change, 2026 so far",
+    "hindcastTitle": "Past check, {{from}}–{{to}}",
+    "hindcastBody": "Each year a model trained only on earlier years flagged the riskiest 20% of sections. Hit: flagged and eroded ≥ 5 ha. Missed: eroded but not flagged.",
+    "technical": "Technical detail",
+    "modelOutput": "Model output",
+    "priorityScore": "Section priority score",
+    "id": "Section ID",
+    "modelOutputNote": "The model output ranks sections by how likely they are to lose at least {{ha}} ha in the monsoon. It has not been calibrated, so do not read it as a percentage chance.",
+    "viewHistory": "View bank history"
+  },
+  "outcome": {
+    "hit": "Hit",
+    "missed": "Missed",
+    "false_alarm": "False alarm",
+    "correct_quiet": "Correct quiet"
+  },
+  "chart": {
+    "eroded": "Eroded land",
+    "settlement": "of which settlement",
+    "threshold": "{{ha}} ha target",
+    "sectionAria": "Bars: hectares eroded in this section per monsoon, {{from}} to {{to}}",
+    "table": "Show as table",
+    "monsoon": "Monsoon",
+    "erodedHa": "Eroded (ha)",
+    "settlementHa": "Settlement (ha)",
+    "retreatM": "Retreat (m)",
+    "retreatNote": "Retreat is the bank's landward movement in that monsoon; negative values mean the bank built out."
+  },
+  "legend": {
+    "riskTitle": "Relative risk · forecast {{season}}",
+    "high": "High · top 10% of reach",
+    "medium": "Medium · next 20%",
+    "low": "Low · remaining 70%",
+    "selected": "Selected",
+    "sectionNote": "Each block is a 500 m bank section and the 2 km of land behind it.",
+    "banksTitle": "Banks and erosion",
+    "stackRamp": "Bankline height = year, {{from}} → {{to}}",
+    "stackSelected": "Selected year {{year}}",
+    "erodedLand": "Eroded land",
+    "erodedSettlement": "Eroded settlement land",
+    "bankSelected": "Bankline {{year}}",
+    "bankCompare": "Bankline {{year}} (compare)",
+    "bankTrail": "All other years",
+    "stackNote": "Height shows time, not terrain. Drag with right mouse or Ctrl to turn.",
+    "erosionNote": "Patches of at least {{min}} ha are drawn.",
+    "nisarTitle": "NISAR 2026 · provisional",
+    "nisarPatch": "Land-to-water change",
+    "nisarMajor": "Section with ≥ {{ha}} ha change",
+    "nisarHigh": "Section ranked High (forecast)",
+    "nisarNote": "Change up to the latest pass. High water can look like erosion."
+  },
+  "river": {
+    "pause": "Pause",
+    "play": "Play through the years",
+    "yearLabel": "Dry-season bankline year",
+    "compareWith": "Compare with",
+    "none": "none",
+    "banklineTitle": "Dry-season bankline {{year}}",
+    "window": "Radar observations {{from}} – {{to}}",
+    "compareSentence": "The dashed line is the {{year}} bankline.",
+    "noCompareSentence": "No comparison line selected.",
+    "erosionSentence": "Orange patches are land mapped as lost in the {{monsoon}} monsoon, between the {{prev}} and {{year}} banklines (patches ≥ {{min}} ha).",
+    "noErosionSentence": "There is no earlier bankline in this record, so no erosion is shown for this year.",
+    "stackSentence": "3D time stack: every year's bankline floats at a height set by its year, so the river's sideways walk reads as a lean in the stack.",
+    "regionChartTitle": "Mapped erosion per monsoon",
+    "regionChartAria": "Bars: hectares of mapped erosion in this reach per monsoon",
+    "regionChartCaption": "Whole study box, including chars inside the river. Map for {{monsoon}}: {{shown}} of {{total}} ha are drawn (patches ≥ {{min}} ha). Select a bar to jump to that year.",
+    "regionChartCaptionGeneric": "Whole study box, including chars inside the river. Select a bar to jump to that year.",
+    "clearSection": "Clear section",
+    "sectionForecast": "Open this section's forecast",
+    "pickSection": "Select a bank section on the map to see its own erosion history next to the reach total.",
+    "aboutTitle": "What these lines and patches are",
+    "aboutBankline": "A bankline is the edge of the land along the main channel, traced from Sentinel-1 radar composites of one dry season (November to April), when the river is low and the edge is stable.",
+    "aboutErosion": "Erosion for a monsoon is land in one dry season that is river or sand in the next. Patches smaller than 1 ha, or not touching the main channel, are removed as noise.",
+    "aboutSum": "Adding the yearly bars gives the sum of annual mapped erosion, not the unique land lost: a char can be lost, rebuilt and lost again.",
+    "tabs": "Data view",
+    "tabBanks": "Bank history",
+    "tabNisar": "NISAR 2026",
+    "mapLabel": "Map of banklines and erosion in the {{region}}",
+    "stack3d": "3D stack"
+  },
+  "nisar": {
+    "title": "Land-to-water change seen by NISAR, 2026",
+    "passes": "{{n}} passes, {{from}} – {{to}}",
+    "missed_one": "{{n}} scheduled pass missing",
+    "missed_other": "{{n}} scheduled passes missing",
+    "explain": "The map shows land from the 2026 dry-season map that was open water in each of the last two passes up to {{date}}. The river is still high in September, so part of this is flooding, not lost land.",
+    "chartTitle": "Water in the reach at each pass",
+    "mapDate": "map",
+    "chartAria": "Lines: hectares of open water and of flooded dry-season land at each NISAR pass",
+    "water": "water",
+    "landUnder": "land under water",
+    "waterLong": "Open water (ha)",
+    "landUnderLong": "Dry-season land under water (ha)",
+    "gap": "No pass",
+    "mappedTotal": "Mapped change, all patches",
+    "mappedShown": "Drawn on the map (≥ {{min}} ha)",
+    "settlementPart": "of which settlement land",
+    "checkTitle": "Did High sections see major change so far?",
+    "checkIntro": "Share of sections in this reach with at least {{ha}} ha of NISAR change, counted the same way as the model's training target.",
+    "class": "Forecast class",
+    "sections": "Sections",
+    "withMajor": "With major change",
+    "share": "Share",
+    "checkCaption": "Provisional. Erosion before 18 June and on the falling river (October–November) is not yet included.",
+    "layers": "Map layers",
+    "layerPatches": "Change patches",
+    "layerCheck": "Forecast check",
+    "noFrames": "Radar image playback is not available: the image frames are not part of this snapshot. The chart above uses the actual pass dates.",
+    "aboutTitle": "About NISAR and these numbers",
+    "aboutBody": "NISAR is the NASA–ISRO L-band radar mission. These are provisional GCOV products (track 69, frame 14), put on the same 20 m grid as the 2026 Sentinel-1 land map. A pixel counts as changed only if it is open water in each of the two latest passes and within 1 km of the dry-season river.",
+    "aboutMetrics": "Model-versus-baseline scores for this check (top 20% flagged per reach) are on the How it works page. They use a different cut from the map's High class (top 10%)."
+  },
+  "evidence": {
+    "ranking": "Ranking",
+    "prauc": "PR-AUC",
+    "recall": "Caught (recall, top 20%)",
+    "precision": "Precision, top 20%",
+    "events": "Events / rows"
+  },
+  "models": {
+    "random": "Random pick",
+    "persistence": "Persistence (last year's erosion)",
+    "mean3": "3-year mean erosion",
+    "logreg": "Logistic regression",
+    "gbm": "Gradient boosting (this model)",
+    "gbmForecast": "Gradient boosting forecast",
+    "persistence2025": "Persistence (2025 erosion)",
+    "randomExpected": "Random pick (expected)"
+  },
+  "features": {
+    "jrc_occ_land": "Land behind the bank was often water in past decades (young, weak land)",
+    "dw_water_river": "Open water, not sandbar, right against the bank this dry season",
+    "eroded_ha_lag1": "Erosion here last monsoon",
+    "jrc_occ_river": "The channel has hugged this bank for decades",
+    "bulge_m": "The bank sticks out into the river",
+    "corridor_width_m": "Width of the river corridor",
+    "dw_water_change": "Change in open water at the bank since last year",
+    "hand_land_m": "Height of the land above the nearest drainage",
+    "eroded_settlement_ha_lag1": "Settlement land eroded last monsoon",
+    "retreat_accel": "Change in bank retreat speed",
+    "erosion_count_3yr": "Monsoons with erosion, of the last three",
+    "eroded_ha_lag3": "Erosion three monsoons ago",
+    "retreat_m_lag2": "Bank retreat two monsoons ago",
+    "retreat_m_lag1": "Bank retreat last monsoon",
+    "eroded_3yr_mean": "Mean erosion over the last three monsoons",
+    "side_is_west": "West or east bank",
+    "eroded_ha_lag2": "Erosion two monsoons ago"
+  },
+  "how": {
+    "toc": "On this page",
+    "title": "How it works",
+    "lede": "From satellite radar to a ranking of riverbank sections, and how well that ranking held up on years it had not seen.",
+    "process": {
+      "title": "From radar to a ranking",
+      "body": "Clouds hide the Jamuna for most of the monsoon, so the system uses radar, which sees through them. Every step below runs offline in Python; this site shows a fixed, checked snapshot of the results."
+    },
+    "steps": {
+      "radar": {
+        "title": "Radar each dry season",
+        "body": "A median of Sentinel-1 images for each dry season, November to April, 2015–2026. Smooth water returns little signal and looks dark; land looks bright.",
+        "source": "Sentinel-1 · Google Earth Engine"
+      },
+      "landmap": {
+        "title": "Land, water and settlement",
+        "body": "Pixels darker than −15 dB are water or bare sand; the threshold was checked against Sentinel-2 vegetation. Settlements are picked out by persistently bright radar returns.",
+        "source": "20 m grid · UTM 45N"
+      },
+      "banks": {
+        "title": "Banklines",
+        "body": "The west and east edges of the main river corridor are traced for every dry season, giving twelve positions of each bank.",
+        "source": "2015–2026 dry seasons"
+      },
+      "erosion": {
+        "title": "Erosion per monsoon",
+        "body": "Land in one dry season that is river or sand in the next. Patches under 1 ha, or not touching the channel, are dropped as noise.",
+        "source": "11 monsoons, 2015–2025"
+      },
+      "sections": {
+        "title": "500 m bank sections",
+        "body": "Each bank is cut into 500 m sections. For each section and year: past erosion and retreat, how the bank sits in the river, and long-term water history.",
+        "source": "542 sections · 17 inputs"
+      },
+      "model": {
+        "title": "Model and ranking",
+        "body": "A gradient-boosting model learns which sections lose at least 5 ha in a monsoon. Its output ranks the sections of each reach for the 2026 monsoon.",
+        "source": "scikit-learn · trained on 2015–2025"
+      }
+    },
+    "meaning": {
+      "title": "What the forecast means",
+      "body1": "The model is trained to recognise sections that lose at least {{ha}} ha within the section's window in one monsoon. A section is {{len}} m of one bank; the exposure figures use the 2 km of land behind it.",
+      "body2": "High, Medium and Low are relative: the top 10%, the next 20% and the remaining 70% of sections in each reach. They are not probabilities, and Low does not mean safe."
+    },
+    "past": {
+      "title": "How well it worked on past years",
+      "body": "To test it honestly, a model was trained only on monsoons up to {{last}} and then asked to rank the sections for {{from}}–{{to}}, which it had never seen. {{events}} of {{rows}} section-years had major erosion.",
+      "caption": "Each year the riskiest 20% of sections in each reach are flagged. The highlighted rows are this model and the main baseline.",
+      "reading": "Flagging the top 20%, the model caught {{gbm}} of the major-erosion events; repeating last year's erosion caught {{pers}}, a random pick {{rand}}. The margin over persistence is small (PR-AUC {{gbmAuc}} vs {{persAuc}}): past erosion is already a strong signal, and the model adds a modest amount on top.",
+      "metricsHelp": "What PR-AUC, recall and precision mean",
+      "metricsHelpBody": "Recall is the share of real major-erosion events that the flagged 20% caught. Precision is the share of flagged sections that really had major erosion. PR-AUC summarises the ranking across every possible cut; a random ranking scores about the share of events (here ≈ 0.13)."
+    },
+    "regions": {
+      "title": "Does it work in the other reach?",
+      "body": "Trained on Sirajganj and tested on Gaibandha, the model beats persistence. Trained on the smaller Gaibandha set and tested on Sirajganj, it does not. The final model uses both reaches.",
+      "tables": "Cross-reach tables",
+      "direction": "Trained on the {{train}}, tested on the {{test}}"
+    },
+    "nisar": {
+      "title": "Early check with NISAR, 2026",
+      "body": "The 2026 forecast was made before the monsoon. {{n}} NISAR passes up to {{date}} show where land has turned to water so far, so the forecast can be scored on a year and a sensor it never saw.",
+      "caption": "{{events}} of {{n}} sections had major change so far. Top 20% flagged per reach.",
+      "shares": "Sections the model called High had major change {{high}} of the time so far, against {{medium}} for Medium and {{low}} for Low. Persistence still has the higher recall this year.",
+      "alignment": "These recall and precision figures use the top 20% of sections per reach. The map's High class is the top 10%. They are reported separately on purpose; one should not be read as the other.",
+      "byRegion": "By reach"
+    },
+    "drivers": {
+      "title": "What the model pays attention to",
+      "body": "How much the model's PR-AUC drops when one input is shuffled, on the 2023–2025 test years. Longer bars mean the model leans on that input more.",
+      "caution": "This is association inside the model across all sections. It is not proof of cause, and it does not explain the rank of any single section.",
+      "all": "All inputs",
+      "feature": "Input",
+      "code": "Column",
+      "drop": "Drop in PR-AUC"
+    },
+    "priority": {
+      "title": "How union priority is calculated",
+      "body": "Union priority combines the model's ranking with recent bank retreat and who lives nearby, so that it points to where attention matters most, not only where erosion is likeliest.",
+      "levels": "Levels: High at 0.70 or above, Medium at 0.50 or above, otherwise Low. Ranks are shown within each reach only."
+    },
+    "definitions": {
+      "title": "Definitions",
+      "bankline": { "term": "Dry-season bankline 2020", "def": "The bank position from radar observations between November 2019 and April 2020." },
+      "monsoon": { "term": "Monsoon erosion 2020", "def": "Land in the 2020 dry-season map that is river or sand in the 2021 map: the change across the 2020 monsoon." },
+      "forecastSeason": { "term": "Forecast season 2026", "def": "The monsoon the model ranks sections for, using data up to the 2026 dry season." },
+      "nisarObs": { "term": "NISAR observation", "def": "One radar pass on its actual acquisition date, every 12 days when available." },
+      "section": { "term": "Bank section", "def": "500 m of one bank (west or east). Its exposure zone is the 2 km of land behind it." },
+      "hectare": { "term": "Hectare (ha)", "def": "10,000 m², about 2.5 acres or 7.5 bigha." },
+      "exposure": { "term": "Exposure", "def": "People (WorldPop 2020) and buildings (Open Buildings v3) in the 2 km zone today. Context, not losses." }
+    },
+    "limits": {
+      "title": "Limitations",
+      "years": "Eleven monsoons of history; a rare extreme year may behave unlike any of them.",
+      "relative": "Classes are relative within each reach. A Low section in a very active reach can still lose land.",
+      "settlement": "Settlements are inferred from radar brightness, which misses some homes and includes some bright non-buildings.",
+      "exposure": "Population is a 2020 estimate and buildings a single snapshot; neither is a count of losses.",
+      "weights": "Priority weights are design choices, not measured effects.",
+      "nisar": "NISAR results are provisional until the falling-river passes of October and November are processed.",
+      "coverage": "Only two reaches of the Jamuna are covered, not the whole of either district."
+    }
+  },
+  "about": {
+    "title": "About River Watch",
+    "lede": "A hackathon prototype that explains a working erosion pipeline: what it measures, what it ranks, and how far its results can be trusted.",
+    "what": {
+      "title": "What this is",
+      "body1": "River Watch shows the results of an offline Python pipeline that maps the Jamuna's banks from radar every year, measures erosion between years, and ranks riverbank sections for the coming monsoon.",
+      "body2": "It is a static snapshot, not a live service and not an official warning system. Notices on this site are demonstrations of how a union-level advisory could look."
+    },
+    "coverage": {
+      "title": "Coverage and dates",
+      "body": "Two reaches of the Jamuna, defined by the study boxes below. Union boundaries come from geoBoundaries.",
+      "box": "Study box",
+      "sections": "Sections",
+      "unions": "Unions",
+      "banks": "Banklines",
+      "forecast": "Forecast",
+      "forecastVal": "Monsoon season {{season}}",
+      "nisar": "NISAR passes",
+      "snapshot": "Snapshot",
+      "snapshotVal": "Observations to {{date}}; bundle built {{built}}"
+    },
+    "sources": {
+      "title": "Data sources",
+      "source": "Source",
+      "use": "Used for",
+      "credit": "Credit",
+      "uses": {
+        "s1": "Yearly land/water maps, banklines and erosion, 2015–2026",
+        "nisar": "Provisional 2026 land-to-water change and forecast check",
+        "s2": "Checking the radar land/water threshold",
+        "jrc": "Long-term water history behind and in front of each bank",
+        "dw": "Open water next to the bank each dry season",
+        "merit": "Height of land above drainage",
+        "buildings": "Buildings in each section's 2 km zone",
+        "worldpop": "Population in each section's 2 km zone",
+        "geob": "Union boundaries and the country outline",
+        "ne": "Major rivers on the overview map",
+        "basemap": "Map background"
+      }
+    },
+    "method": {
+      "title": "Method",
+      "body": "The radar land/water approach follows"
+    },
+    "code": {
+      "title": "Code and reproducibility",
+      "body": "Pipeline, model and this site are in the project repository:",
+      "review": "The data bundle is rebuilt with scripts/prepare_frontend_data.py and checked before every deployment. Bangla wording on this site still needs review by a fluent speaker."
+    }
+  }
+}

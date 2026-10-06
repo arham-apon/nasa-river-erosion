@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/my-area", "destination": "/index.html" },
+    { "source": "/river-changes", "destination": "/index.html" },
+    { "source": "/how-it-works", "destination": "/index.html" },
+    { "source": "/about", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/data/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+node_modules
+dist
+.vercel
+.env*
+*.local
+# Temp dirs from scripts/prepare_frontend_data.py's atomic swap, if a run is interrupted
+public/data.__building
+public/data.__previous

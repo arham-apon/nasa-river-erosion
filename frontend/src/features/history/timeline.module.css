@@ -1,0 +1,150 @@
+.timeline {
+  position: absolute;
+  z-index: 6;
+  left: var(--s-3);
+  right: 60px;
+  bottom: 30px;
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  align-items: end;
+  gap: var(--s-3);
+  padding: var(--s-2) var(--s-3);
+  background: rgba(11, 15, 19, 0.92);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-3);
+}
+
+.play {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  align-self: center;
+  border: 1px solid var(--water);
+  border-radius: var(--r-2);
+  background: var(--water-dim);
+  color: var(--water-strong);
+}
+
+.play:hover {
+  background: rgba(99, 179, 217, 0.24);
+}
+
+.track {
+  position: relative;
+  min-width: 0;
+}
+
+.bars {
+  display: block;
+  width: 100%;
+  height: 22px;
+}
+
+.bar {
+  fill: var(--erosion);
+  opacity: 0.4;
+}
+
+.barActive {
+  fill: var(--erosion);
+}
+
+.years {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+}
+
+.year {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+  min-height: 34px;
+  padding: 2px 0 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-11);
+}
+
+.year:hover {
+  color: var(--text);
+}
+
+.tick {
+  width: 1px;
+  height: 7px;
+  background: var(--line-2);
+}
+
+.yearText {
+  padding: 1px 3px;
+  border-radius: var(--r-1);
+}
+
+.year[aria-checked="true"] {
+  color: var(--text);
+}
+
+.year[aria-checked="true"] .tick {
+  width: 2px;
+  height: 9px;
+  background: var(--water);
+}
+
+.year[aria-checked="true"] .yearText {
+  background: var(--water);
+  color: #06121a;
+  font-weight: 500;
+}
+
+.year[data-compare="true"] .yearText {
+  box-shadow: inset 0 0 0 1px #c4ccd3;
+  color: var(--text);
+}
+
+.compare {
+  display: grid;
+  gap: 2px;
+  align-self: center;
+  font-size: var(--fs-11);
+  color: var(--text-3);
+}
+
+.compare select {
+  height: 30px;
+  padding: 0 6px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-2);
+  background: var(--bg-sunk);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: var(--fs-12);
+}
+
+@media (max-width: 820px) {
+  .timeline {
+    left: var(--s-2);
+    right: var(--s-2);
+    bottom: 64px;
+    grid-template-columns: 32px 1fr;
+    gap: var(--s-2);
+  }
+
+  .compare {
+    display: none;
+  }
+
+  .yearText {
+    font-size: 10px;
+  }
+
+  .year:nth-child(even):not([aria-checked="true"]) .yearText {
+    visibility: hidden;
+  }
+}

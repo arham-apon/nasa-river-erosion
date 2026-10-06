@@ -1,0 +1,140 @@
+.chart {
+  position: relative;
+  width: 100%;
+}
+
+.chart svg {
+  display: block;
+  overflow: visible;
+}
+
+.bar {
+  fill: var(--erosion);
+}
+
+.grid {
+  stroke: var(--line);
+  stroke-dasharray: 2 3;
+}
+
+.baseline {
+  stroke: var(--line-2);
+}
+
+.missing {
+  stroke: var(--text-3);
+  stroke-width: 1.5;
+}
+
+.threshold {
+  stroke: var(--text-2);
+  stroke-dasharray: 4 3;
+}
+
+.thresholdText {
+  fill: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.axis {
+  fill: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.axisActive {
+  fill: var(--text);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.readout {
+  position: absolute;
+  top: -6px;
+  padding: 2px 6px;
+  font-size: var(--fs-12);
+  color: var(--text);
+  background: var(--surface-3);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-1);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.caption {
+  margin-top: var(--s-2);
+  font-size: var(--fs-12);
+  color: var(--text-3);
+  line-height: 1.45;
+}
+
+.key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-2);
+  font-size: var(--fs-12);
+  color: var(--text-2);
+}
+
+.key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.key i {
+  display: inline-block;
+  width: 12px;
+  height: 10px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-12);
+}
+
+.table th,
+.table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.table th:first-child,
+.table td:first-child {
+  text-align: left;
+}
+
+.table th {
+  color: var(--text-3);
+  font-weight: 500;
+}
+
+.table td {
+  font-family: var(--font-mono);
+  color: var(--text);
+}
+
+.line {
+  fill: none;
+  stroke-width: 1.6;
+}
+
+.gap {
+  fill: none;
+  stroke-width: 1.2;
+  stroke-dasharray: 2 4;
+}
+
+.mark {
+  stroke: var(--text-2);
+  stroke-dasharray: 3 3;
+}

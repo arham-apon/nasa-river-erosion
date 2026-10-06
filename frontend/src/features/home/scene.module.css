@@ -1,0 +1,97 @@
+.scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform;
+  white-space: nowrap;
+}
+
+.label > span {
+  display: block;
+}
+
+.city > span,
+.capital > span {
+  transform: translate(8px, -50%);
+  font-size: 11px;
+  color: var(--text-2);
+  text-shadow: 0 0 4px var(--bg), 0 0 2px var(--bg);
+}
+
+.capital > span {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.river > span {
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+  font-style: italic;
+  color: var(--water);
+  opacity: 0.85;
+  text-shadow: 0 0 4px var(--bg), 0 0 2px var(--bg);
+}
+
+.grid > span {
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #3e4a55;
+}
+
+/* Region label: a leader tick from the block to a small plate. */
+.region > span {
+  position: relative;
+  transform: translate(14px, -50%);
+  padding: 3px 8px 3px 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  background: rgba(11, 15, 19, 0.82);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-1);
+}
+
+.region > span::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: 12px;
+  border-top: 1px solid var(--line-2);
+}
+
+.region[data-state="hover"] > span {
+  color: var(--text);
+  border-color: var(--text-3);
+}
+
+.region[data-state="selected"] > span {
+  color: var(--water-strong);
+  border-color: var(--water);
+}
+
+.region[data-state="selected"] > span::before {
+  border-color: var(--water);
+}
