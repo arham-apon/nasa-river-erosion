@@ -16,6 +16,11 @@
   font-size: var(--fs-small);
 }
 
+.about .toc,
+.aboutToc {
+  gap: 60px;
+}
+
 .tocTitle {
   margin-bottom: var(--s-3);
   font-size: var(--fs-label);
@@ -62,6 +67,26 @@
   padding-top: var(--s-7);
   border-top: 1px solid var(--line);
   scroll-margin-top: calc(var(--header-h) + var(--s-4));
+}
+
+:global(#about-what),
+#about-what {
+  margin-top: 0px;
+}
+
+:global(#about-coverage),
+#about-coverage {
+  margin-top: 0px;
+}
+
+:global(#about-method),
+#about-method {
+  margin-top: 10px;
+}
+
+:global(#about-code),
+#about-code {
+  margin-top: 10px;
 }
 
 .section h2 {

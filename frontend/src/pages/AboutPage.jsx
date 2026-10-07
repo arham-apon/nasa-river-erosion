@@ -25,11 +25,11 @@ export default function AboutPage() {
   const m = manifest.data;
 
   return (
-    <div className={s.page}>
-      <nav className={s.toc} aria-label={t("how.toc")}>
+    <div className={`${s.page} ${s.about}`}>
+      <nav className={`${s.toc} ${s.aboutToc}`} aria-label={t("how.toc")}>
         <div className={s.tocTitle}>{t("how.toc")}</div>
         {["what", "coverage", "sources", "method", "code"].map((id) => (
-          <a key={id} href={`#${id}`}>
+          <a key={id} href={`#about-${id}`}>
             {t(`about.${id}.title`)}
           </a>
         ))}
@@ -43,13 +43,15 @@ export default function AboutPage() {
         <QueryGate queries={manifest}>
           {m && (
             <>
-              <section id="what" className={s.section}>
+              <section id="about-what" className={s.section}>
+                <span id="what" className="visually-hidden" />
                 <h2>{t("about.what.title")}</h2>
                 <p>{t("about.what.body1")}</p>
                 <p>{t("about.what.body2")}</p>
               </section>
 
-              <section id="coverage" className={s.section}>
+              <section id="about-coverage" className={s.section}>
+                <span id="coverage" className="visually-hidden" />
                 <h2>{t("about.coverage.title")}</h2>
                 <p>{t("about.coverage.body")}</p>
                 <div className={s.tableWrap}>
@@ -98,7 +100,8 @@ export default function AboutPage() {
                 </dl>
               </section>
 
-              <section id="sources" className={s.section}>
+              <section id="about-sources" className={s.section}>
+                <span id="sources" className="visually-hidden" />
                 <h2>{t("about.sources.title")}</h2>
                 <div className={s.tableWrap}>
                   <table className={`${s.table} ${s.sources}`}>
@@ -122,7 +125,8 @@ export default function AboutPage() {
                 </div>
               </section>
 
-              <section id="method" className={s.section}>
+              <section id="about-method" className={s.section}>
+                <span id="method" className="visually-hidden" />
                 <h2>{t("about.method.title")}</h2>
                 <p>
                   {t("about.method.body")}{" "}
@@ -133,7 +137,8 @@ export default function AboutPage() {
                 </p>
               </section>
 
-              <section id="code" className={s.section}>
+              <section id="about-code" className={s.section}>
+                <span id="code" className="visually-hidden" />
                 <h2>{t("about.code.title")}</h2>
                 <p>
                   {t("about.code.body")}{" "}
