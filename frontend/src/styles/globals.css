@@ -132,3 +132,20 @@ button {
   outline: 2px solid var(--water);
   outline-offset: -2px;
 }
+
+/* About page section margins (matches about.css) */
+#about-what {
+  margin-top: 0px;
+}
+
+#about-coverage {
+  margin-top: 0px;
+}
+
+#about-method {
+  margin-top: 10px;
+}
+
+#about-code {
+  margin-top: 10px;
+}
