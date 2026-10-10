@@ -8,7 +8,13 @@ River Watch ranks riverbank sections of the Jamuna in Bangladesh by how likely t
 - **Check (NISAR):** NASA–ISRO NISAR L-band passes from June–September 2026 give an early, provisional test of that forecast on a year and a sensor the model never saw.
 - **Website (React):** a bilingual (Bangla / English) site that explains the results, with 3D and 2D maps, light and dark themes.
 
+![River Watch overview — 3D map of Bangladesh with the two study reaches](docs/screenshots/overview-dark.png)
+
 > A model-based comparison of riverbank sections, **not** a prediction for a specific house or field. High / Medium / Low are relative ranks within each reach, not probabilities, and Low does not mean safe.
+
+---
+
+**Contents:** [Results](#results-at-a-glance) · [Screenshots](#screenshots) · [Repository layout](#repository-layout) · [Quick start](#quick-start) · [The website](#the-website) · [Deploying](#deploying-to-vercel) · [Data sources](#data-sources) · [Limitations](#limitations)
 
 ---
 
@@ -24,9 +30,23 @@ Full tables and caveats are on the site's **How it works** page and in `docs/`.
 
 ---
 
+## Screenshots
+
+Every page has a dark (default) and a light theme.
+
+| Dark | Light |
+|---|---|
+| ![Overview, dark theme](docs/screenshots/overview-dark.png) | ![Overview, light theme](docs/screenshots/overview-light.png) |
+| ![My area, dark theme](docs/screenshots/my-area-dark.png) | ![My area, light theme](docs/screenshots/my-area-light.png) |
+| ![River changes, dark theme](docs/screenshots/river-changes-dark.png) | ![River changes, light theme](docs/screenshots/river-changes-light.png) |
+| ![How it works, dark theme](docs/screenshots/how-it-works-dark.png) | ![How it works, light theme](docs/screenshots/how-it-works-light.png) |
+| ![About, dark theme](docs/screenshots/about-dark.png) | ![About, light theme](docs/screenshots/about-light.png) |
+
+---
+
 ## Repository layout
 
-```
+```text
 00_region_bbox.py … 10_nisar_check.py   Pipeline steps (see run.txt and docs/step_*.md)
 config.py                               Study regions, thresholds, paths
 data/                                   Inputs needed to retrain (most outputs are git-ignored)
@@ -45,9 +65,9 @@ run.txt                                 Plain step-by-step run guide (Windows cm
 
 Python 3.13–3.14. The pinned versions in `requirements-lock.txt` reproduce the documented numbers exactly.
 
-```
+```bat
 py -3.14 -m venv nenv
-nenv\Scripts\activate
+nenv\Scripts\activate          :: macOS/Linux: source nenv/bin/activate
 pip install -r requirements-lock.txt
 python 05_model.py
 python 06_threat_score.py
@@ -58,7 +78,7 @@ Re-running the satellite steps (01–04, 08–09) needs Google Earth Engine and 
 
 ### 2. Prepare the website data
 
-```
+```bash
 python scripts/prepare_frontend_data.py
 ```
 
@@ -66,7 +86,7 @@ Writes a validated bundle to `frontend/public/data/` (≈ 17 MB). It also downlo
 
 River summaries and photos for the overview map come from Wikipedia / Wikimedia Commons and are stored in `frontend/public/content/rivers.json`. Refresh them with:
 
-```
+```bash
 node frontend/scripts/fetch-river-info.mjs
 ```
 
@@ -74,7 +94,7 @@ node frontend/scripts/fetch-river-info.mjs
 
 Node 22.
 
-```
+```bash
 cd frontend
 npm install
 npm run dev
@@ -82,7 +102,7 @@ npm run dev
 
 Open http://localhost:5173. Add `?lang=en` or `?lang=bn` to a link to choose the language.
 
-```
+```bash
 npm run build      # validates the data bundle, then builds to frontend/dist
 npm run preview    # serves the production build locally
 ```
