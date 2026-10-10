@@ -2,28 +2,28 @@
   color-scheme: dark;
 
   /*
-   * Dark theme: a Prussian-blue instrument. Colour roles — each hue means one thing:
-   *   neutrals  Prussian-blue graphite; the instrument, not the data
+   * Dark theme. Colour roles — each hue means one thing:
+   *   neutrals  graphite with the faintest olive cast; the instrument, not the data
    *   accent    powder blue (pale, desaturated): something you can act on or have selected
    *   water     azure (vivid, saturated): rivers, banklines, open water — same family, clearly different role
    *   risk      red / yellow / grey: the model's relative ranking
    *   erosion   amber: land observed lost
    */
-  --bg: #0a1520;
-  --bg-sunk: #060e16;
-  --surface: #0f1c29;
-  --surface-2: #142434;
-  --surface-3: #1b2e41;
-  --line: #1d2f40;
-  --line-2: #2a3f54;
-  --text: #eef4f8;
-  --text-2: #bccbd8;
-  --text-3: #8699ab;
+  --bg: #0b0d0c;
+  --bg-sunk: #070908;
+  --surface: #121514;
+  --surface-2: #181c1a;
+  --surface-3: #1b2a38;
+  --line: #1f2c38;
+  --line-2: #2c3e50;
+  --text: #f3f5f2;
+  --text-2: #c6ccc5;
+  --text-3: #8a9aab;
 
   --accent: #b0dcee;
   --accent-strong: #d6eef8;
   --accent-dim: rgba(176, 220, 238, 0.14);
-  --on-accent: #062033;
+  --on-accent: #0b0d0c;
 
   --water: #4fb4f5;
   --water-strong: #8dd0fb;
@@ -34,15 +34,15 @@
   /* Risk uses the universal warning ramp: red = act first, yellow = watch, grey = lower (not "safe"). */
   --risk-high: #ef4f4a;
   --risk-medium: #f2c94c;
-  --risk-low: #5a6878;
+  --risk-low: #59625c;
   --select: #ffffff;
   --danger: #e5675a;
 
-  --overlay: rgba(10, 21, 32, 0.9);
-  --compare: #c9d6e1;
+  --overlay: rgba(11, 13, 12, 0.9);
+  --compare: #cdd3cc;
   --grid-label: #6f8295;
   --reach-fill: #d6eef8;
-  --reach-side: #7f9fb5;
+  --reach-side: #3d5468;
   --bank-line: #3a8fd6;
 
   --font-sans: "Inter Variable", "Inter", "Noto Sans Bengali", system-ui, sans-serif;
