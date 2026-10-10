@@ -26,7 +26,7 @@ River Watch ranks riverbank sections of the Jamuna in Bangladesh by how likely t
 | NISAR 2026 check (provisional, passes to 22 Sep 2026) | Sections ranked **High** saw major erosion **27%** of the time so far, against **4%** for Low (≈ 6.5×). Persistence still has higher recall this year. |
 | Forecast | 55 sections ranked High (top 10% per reach) for the 2026 monsoon. |
 
-Full tables and caveats are on the site's **How it works** page and in `docs/`.
+Full tables and caveats are on the site's **How it works** page.
 
 ---
 
@@ -47,10 +47,10 @@ Every page has a dark (default) and a light theme.
 ## Repository layout
 
 ```text
-00_region_bbox.py … 10_nisar_check.py   Pipeline steps (see run.txt and docs/step_*.md)
+00_region_bbox.py … 10_nisar_check.py   Pipeline steps (see run.txt)
 config.py                               Study regions, thresholds, paths
 data/                                   Inputs needed to retrain (most outputs are git-ignored)
-docs/                                   Step-by-step notes, REPRODUCE.md, PROGRESS.md
+docs/screenshots/                       Website screenshots used in this README
 scripts/prepare_frontend_data.py        Builds the website's data bundle from pipeline outputs
 frontend/                               The React website (Vite, JSX only)
 web/dashboard.html                      Original single-file Leaflet dashboard (kept as a fallback)
@@ -74,7 +74,7 @@ python 06_threat_score.py
 python 10_nisar_check.py
 ```
 
-Re-running the satellite steps (01–04, 08–09) needs Google Earth Engine and a NASA Earthdata account — see `run.txt` and `docs/REPRODUCE.md`.
+Re-running the satellite steps (01–04, 08–09) needs Google Earth Engine and a NASA Earthdata account — see `run.txt`.
 
 ### 2. Prepare the website data
 
