@@ -15,7 +15,7 @@ export default function MapControls({ basemap, onBasemap, tilt, onTilt, onReset,
           value={basemap}
           onChange={onBasemap}
           options={[
-            { value: "dark", label: t("map.dark") },
+            { value: "map", label: t("map.map") },
             { value: "satellite", label: t("map.satellite") },
           ]}
         />

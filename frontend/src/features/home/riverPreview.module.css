@@ -1,0 +1,55 @@
+.card {
+  position: absolute;
+  z-index: 20;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-3);
+  box-shadow: var(--float-shadow);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background: var(--surface-3);
+}
+
+.body {
+  display: grid;
+  gap: var(--s-2);
+  padding: var(--s-3) var(--s-4) var(--s-4);
+}
+
+.title {
+  font-size: var(--fs-lead);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.text {
+  font-size: var(--fs-small);
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.credit {
+  font-size: var(--fs-label);
+  color: var(--text-3);
+}
+
+.credit a {
+  color: var(--text-3);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.open {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+  font-size: var(--fs-small);
+  font-weight: 600;
+}

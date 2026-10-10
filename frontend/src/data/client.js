@@ -4,7 +4,7 @@ export class DataError extends Error {}
 export async function fetchJSON(path) {
   let res;
   try {
-    res = await fetch(`/data/${path}`);
+    res = await fetch(path.startsWith("/") ? path : `/data/${path}`);
   } catch {
     throw new DataError(`network:${path}`);
   }

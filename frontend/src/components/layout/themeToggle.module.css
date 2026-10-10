@@ -1,0 +1,86 @@
+/* The track is the sky it switches to: day (sun left, clouds) or night (moon right, stars). */
+.toggle {
+  position: relative;
+  flex: none;
+  width: 62px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  overflow: hidden;
+  cursor: pointer;
+  background: linear-gradient(180deg, #8fd0ef 0%, #4fa6d3 100%);
+  transition: background 320ms var(--ease), border-color 320ms var(--ease);
+}
+
+.toggle[data-mode="dark"] {
+  background: linear-gradient(180deg, #0d1b2e 0%, #183457 100%);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.clouds,
+.stars {
+  position: absolute;
+  top: 5px;
+  width: 34px;
+  height: 18px;
+  transition: opacity 320ms var(--ease), transform 320ms var(--ease);
+}
+
+.clouds {
+  right: 4px;
+  fill: #ffffff;
+  opacity: 0.95;
+}
+
+.stars {
+  left: 5px;
+  fill: #f4f1e2;
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.toggle[data-mode="dark"] .clouds {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.toggle[data-mode="dark"] .stars {
+  opacity: 0.9;
+  transform: none;
+}
+
+/* Knob: the sun by day, the moon (with craters) by night. */
+.knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff36b 0%, #ffd21f 55%, #f5a90f 100%);
+  box-shadow: 0 0 6px rgba(255, 210, 31, 0.6);
+  transition: transform 320ms var(--ease), background 320ms var(--ease), box-shadow 320ms var(--ease);
+}
+
+.toggle[data-mode="dark"] .knob {
+  transform: translateX(32px);
+  background: radial-gradient(circle at 35% 35%, #fbf8ec 0%, #e9e2c8 70%, #d6ccab 100%);
+  box-shadow: 0 0 8px rgba(240, 235, 210, 0.55);
+}
+
+.crater {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(160, 148, 112, 0.45);
+  opacity: 0;
+  transition: opacity 320ms var(--ease);
+}
+
+.toggle[data-mode="dark"] .crater {
+  opacity: 1;
+}

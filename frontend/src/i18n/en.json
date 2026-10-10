@@ -4,7 +4,10 @@
     "scope": "Jamuna · Bangladesh",
     "dataTo": "Data to {{date}}",
     "snapshotHint": "Latest observation in this snapshot (NISAR pass). Not a live feed.",
-    "language": "Language"
+    "language": "Language",
+    "themeLight": "Switch to light theme",
+    "themeDark": "Switch to dark theme",
+    "themeSwitch": "Dark theme"
   },
   "nav": {
     "home": "Overview",
@@ -21,22 +24,39 @@
     "errorBody": "The file is missing or the connection dropped. Nothing on this page has been guessed in its place.",
     "retry": "Try again"
   },
-  "search": { "none": "No union with that name in this reach" },
+  "search": {
+    "none": "No union with that name in this reach"
+  },
   "tags": {
     "forecastSeason": "Forecast · season {{season}}",
     "provisional": "Provisional",
     "historical": "Historical observation"
   },
-  "risk": { "High": "High", "Medium": "Medium", "Low": "Low" },
-  "priority": { "High": "High", "Medium": "Medium", "Low": "Low" },
+  "risk": {
+    "High": "High",
+    "Medium": "Medium",
+    "Low": "Low"
+  },
+  "priority": {
+    "High": "High",
+    "Medium": "Medium",
+    "Low": "Low"
+  },
   "common": {
     "region": "Study reach",
     "notHouseLevel": "A model-based comparison of riverbank sections, not a prediction for a specific house or field."
   },
-  "units": { "ha": "ha", "m": "m" },
+  "units": {
+    "ha": "ha",
+    "m": "m"
+  },
   "regions": {
-    "gaibandha": { "name": "Gaibandha reach" },
-    "sirajganj": { "name": "Sirajganj reach" }
+    "gaibandha": {
+      "name": "Gaibandha reach"
+    },
+    "sirajganj": {
+      "name": "Sirajganj reach"
+    }
   },
   "rivers": {
     "Brahmaputra": "Brahmaputra",
@@ -48,7 +68,22 @@
     "Kushiyara": "Kushiyara",
     "Old Brahmaputra": "Old Brahmaputra",
     "Karnaphuli": "Karnaphuli",
-    "Matamuhuri": "Matamuhuri"
+    "Matamuhuri": "Matamuhuri",
+    "photoAlt": "Photo: {{river}}",
+    "source": "Text: Wikipedia",
+    "photoCredit": "Photo: Wikimedia Commons",
+    "open": "Open river page",
+    "backHome": "Overview",
+    "kicker": "River",
+    "readMore": "Read the full article on Wikipedia",
+    "studyTitle": "River Watch data on this river",
+    "studyJamuna": "Both of River Watch’s study reaches are on the Jamuna: one near Gaibandha, one near Sirajganj. Open a reach to see its bank sections, history and the 2026 check.",
+    "studyBrahmaputra": "South of Bahadurabad the Brahmaputra continues as the Jamuna, where River Watch’s two study reaches lie.",
+    "contextOnly": "River Watch measures erosion on two reaches of the Jamuna only. This page shows this river for context; there is no erosion data for it here.",
+    "notFound": "This river is not on the overview map.",
+    "mapLabel": "Map of the {{river}}",
+    "lineLegend": "River course (overview)",
+    "lineNote": "A simplified path from Natural Earth or a hand trace for the overview, not a surveyed channel."
   },
   "home": {
     "title": "Which <hl>Jamuna riverbanks</hl> to watch this monsoon",
@@ -73,7 +108,10 @@
     "legendReach": "Study reach, select to choose",
     "legendBank": "Banklines, dry season {{year}}",
     "legendCity": "Division city",
-    "sceneHint": "Drag to tilt and turn · select a raised reach"
+    "sceneHint": "Drag to tilt and turn · select a raised reach",
+    "legendElevation": "Height above sea level",
+    "cardChip": "High vs Low sections, 2026 so far",
+    "cardCollapse": "Collapse"
   },
   "demo": {
     "label": "Guided tour",
@@ -137,13 +175,14 @@
   },
   "map": {
     "basemap": "Base map",
-    "dark": "Dark",
+    "map": "Map",
     "satellite": "Satellite",
     "view": "View",
     "tiltHint": "Tilt the map. Right-drag or Ctrl-drag to rotate.",
     "zoomIn": "Zoom in",
     "zoomOut": "Zoom out",
-    "reset": "Back to the whole reach"
+    "reset": "Back to the whole reach",
+    "resetCountry": "Back to the whole country"
   },
   "area": {
     "listTitle": "Unions in the {{region}}",
@@ -261,7 +300,8 @@
     "nisarPatch": "Land-to-water change",
     "nisarMajor": "Section with ≥ {{ha}} ha change",
     "nisarHigh": "Section ranked High (forecast)",
-    "nisarNote": "Change up to the latest pass. High water can look like erosion."
+    "nisarNote": "Change up to the latest pass. High water can look like erosion.",
+    "studyArea": "Study area (unions covered)"
   },
   "river": {
     "pause": "Pause",
@@ -444,13 +484,34 @@
     },
     "definitions": {
       "title": "Definitions",
-      "bankline": { "term": "Dry-season bankline 2020", "def": "The bank position from radar observations between November 2019 and April 2020." },
-      "monsoon": { "term": "Monsoon erosion 2020", "def": "Land in the 2020 dry-season map that is river or sand in the 2021 map: the change across the 2020 monsoon." },
-      "forecastSeason": { "term": "Forecast season 2026", "def": "The monsoon the model ranks sections for, using data up to the 2026 dry season." },
-      "nisarObs": { "term": "NISAR observation", "def": "One radar pass on its actual acquisition date, every 12 days when available." },
-      "section": { "term": "Bank section", "def": "500 m of one bank (west or east). Its exposure zone is the 2 km of land behind it." },
-      "hectare": { "term": "Hectare (ha)", "def": "10,000 m², about 2.5 acres or 7.5 bigha." },
-      "exposure": { "term": "Exposure", "def": "People (WorldPop 2020) and buildings (Open Buildings v3) in the 2 km zone today. Context, not losses." }
+      "bankline": {
+        "term": "Dry-season bankline 2020",
+        "def": "The bank position from radar observations between November 2019 and April 2020."
+      },
+      "monsoon": {
+        "term": "Monsoon erosion 2020",
+        "def": "Land in the 2020 dry-season map that is river or sand in the 2021 map: the change across the 2020 monsoon."
+      },
+      "forecastSeason": {
+        "term": "Forecast season 2026",
+        "def": "The monsoon the model ranks sections for, using data up to the 2026 dry season."
+      },
+      "nisarObs": {
+        "term": "NISAR observation",
+        "def": "One radar pass on its actual acquisition date, every 12 days when available."
+      },
+      "section": {
+        "term": "Bank section",
+        "def": "500 m of one bank (west or east). Its exposure zone is the 2 km of land behind it."
+      },
+      "hectare": {
+        "term": "Hectare (ha)",
+        "def": "10,000 m², about 2.5 acres or 7.5 bigha."
+      },
+      "exposure": {
+        "term": "Exposure",
+        "def": "People (WorldPop 2020) and buildings (Open Buildings v3) in the 2 km zone today. Context, not losses."
+      }
     },
     "limits": {
       "title": "Limitations",
@@ -500,7 +561,9 @@
         "worldpop": "Population in each section's 2 km zone",
         "geob": "Union boundaries and the country outline",
         "ne": "Major rivers on the overview map",
-        "basemap": "Map background"
+        "basemap": "Map background",
+        "dem": "Height shading on the overview map",
+        "wiki": "River summaries and photos"
       }
     },
     "method": {

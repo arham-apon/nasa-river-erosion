@@ -42,7 +42,7 @@ export default function BarChart({
       <svg width={width} height={height} role="img" aria-label={ariaLabel}>
         <defs>
           <pattern id={hatch} width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-            <line x1="0" y1="0" x2="0" y2="4" stroke="#0b0f13" strokeWidth="1.8" />
+            <line x1="0" y1="0" x2="0" y2="4" style={{ stroke: "var(--bg)" }} strokeWidth="1.8" />
           </pattern>
         </defs>
         <line x1={pad.l} x2={width - pad.r} y1={pad.t} y2={pad.t} className={s.grid} />

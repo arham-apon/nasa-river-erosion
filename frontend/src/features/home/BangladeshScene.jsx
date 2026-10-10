@@ -4,6 +4,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { Line2 } from "three/examples/jsm/lines/Line2.js";
 import { LineMaterial } from "three/examples/jsm/lines/LineMaterial.js";
 import { LineGeometry } from "three/examples/jsm/lines/LineGeometry.js";
+import { useTranslation } from "react-i18next";
+import { Minus, Plus, Scan } from "lucide-react";
 import { prefersReducedMotion } from "../../lib/urlState.js";
 import s from "./scene.module.css";
 
@@ -18,22 +20,6 @@ const SLAB = 0.14;
 const BLOCK = 0.2;
 const GROUND = -0.34;
 
-const C = {
-  slabTop: 0x1a242e,
-  slabSide: 0x0c1217,
-  edge: 0x40505f,
-  division: 0x2b3844,
-  river: 0x63b3d9,
-  blockTop: 0x24333f,
-  blockTopHover: 0x2d4252,
-  blockTopSelected: 0x2a4a5e,
-  blockSide: 0x141e27,
-  blockEdge: 0x5d6f7f,
-  blockEdgeSelected: 0x8fcbe8,
-  banks: 0x9fd4ee,
-  graticule: 0x1a232c,
-  city: 0xa1abb4,
-};
 
 function fatLine(coords, z, color, width, opacity = 1) {
   const g = new LineGeometry();
@@ -58,16 +44,19 @@ function disposeTree(obj) {
   });
 }
 
+const hx = (n) => `#${n.toString(16).padStart(6, "0")}`;
+
 const NO_RESERVE = { left: 0, bottom: 0 };
 
-export default function BangladeshScene({ data, lang, selected, hovered, onHover, onSelect, regionText, reserve = NO_RESERVE }) {
+export default function BangladeshScene({ data, colors: C, lang, selected, hovered, onHover, onSelect, onRiverHover, onRiverOpen, regionText, reserve = NO_RESERVE }) {
+  const { t } = useTranslation();
   const wrapRef = useRef(null);
   const labelRef = useRef(null);
   const apiRef = useRef(null);
   const reserveRef = useRef(reserve);
-  const cbRef = useRef({ onHover, onSelect });
+  const cbRef = useRef({ onHover, onSelect, onRiverHover, onRiverOpen });
   const [failed, setFailed] = useState(false);
-  cbRef.current = { onHover, onSelect };
+  cbRef.current = { onHover, onSelect, onRiverHover, onRiverOpen };
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -93,8 +82,8 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
     root.rotation.x = -Math.PI / 2; // map XY plane lies flat, +Z points up
     scene.add(root);
 
-    scene.add(new THREE.HemisphereLight(0xcfe3f2, 0x020406, 1.1));
-    const sun = new THREE.DirectionalLight(0xffffff, 2.2);
+    scene.add(new THREE.HemisphereLight(C.sky, C.ground, C.hemi));
+    const sun = new THREE.DirectionalLight(0xffffff, C.sun);
     sun.position.set(-3.5, 7, 4.5);
     sun.castShadow = true;
     sun.shadow.mapSize.set(2048, 2048);
@@ -104,17 +93,20 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
     scene.add(sun);
 
     // Ground: graticule and the slab's shadow give the floating-map depth without decoration.
-    const ground = new THREE.Mesh(new THREE.PlaneGeometry(16, 16), new THREE.ShadowMaterial({ opacity: 0.6 }));
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(60, 60), new THREE.ShadowMaterial({ opacity: C.shadow }));
     ground.position.z = GROUND;
     ground.receiveShadow = true;
     root.add(ground);
     const [w, so, e, n] = data.bounds;
+    // Degree labels stay near the country; the grid itself runs well past the frame so it reads as a floor.
     const lons = [];
     const lats = [];
     for (let lon = Math.floor(w) - 1; lon <= Math.ceil(e) + 1; lon++) lons.push(lon);
     for (let lat = Math.floor(so) - 1; lat <= Math.ceil(n) + 1; lat++) lats.push(lat);
-    for (const lon of lons) root.add(thinLine([[lon, lats[0]], [lon, lats.at(-1)]], GROUND + 0.001, C.graticule));
-    for (const lat of lats) root.add(thinLine([[lons[0], lat], [lons.at(-1), lat]], GROUND + 0.001, C.graticule));
+    const GRID_PAD = 14;
+    const [gw, ge, gs, gn] = [lons[0] - GRID_PAD, lons.at(-1) + GRID_PAD, lats[0] - GRID_PAD, lats.at(-1) + GRID_PAD];
+    for (let lon = gw; lon <= ge; lon++) root.add(thinLine([[lon, gs], [lon, gn]], GROUND + 0.001, C.graticule));
+    for (let lat = gs; lat <= gn; lat++) root.add(thinLine([[gw, lat], [ge, lat]], GROUND + 0.001, C.graticule));
 
     const slab = new THREE.Mesh(
       new THREE.ExtrudeGeometry(data.outline.map((p) => shapeOf(p[0])), { depth: SLAB, bevelEnabled: false }),
@@ -126,6 +118,23 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
     slab.castShadow = true;
     slab.receiveShadow = true;
     root.add(slab);
+    // Light theme: hypsometric tint. Each band is the land at or above a height, stacked low to high.
+    if (C.elevation && data.elevation) {
+      data.elevation.bands.forEach((b, i) => {
+        const shapes = b.polygons.map((pp) => {
+          const sh = shapeOf(pp.outer);
+          sh.holes = pp.holes.map((h) => new THREE.Path(h.map(([lon, lat]) => new THREE.Vector2(X(lon), Y(lat)))));
+          return sh;
+        });
+        const mesh = new THREE.Mesh(
+          new THREE.ShapeGeometry(shapes),
+          new THREE.MeshStandardMaterial({ color: C.elevation[b.band] ?? C.elevation.at(-1), roughness: 0.95 }),
+        );
+        mesh.position.z = SLAB + 0.0008 * (i + 1);
+        mesh.receiveShadow = true;
+        root.add(mesh);
+      });
+    }
     for (const p of data.outline) root.add(thinLine(p[0], SLAB + 0.002, C.edge));
     for (const l of data.divisions) root.add(thinLine(l, SLAB + 0.002, C.division, 0.9));
 
@@ -182,20 +191,49 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
     const addLabel = (kind, text, lon, lat, z, extra = {}) => {
       const el = document.createElement("div");
       el.className = `${s.label} ${s[kind]}`;
+      // Only river names are interactive; the other labels repeat what the 3D map already shows.
+      if (kind !== "river") el.setAttribute("aria-hidden", "true");
       const inner = document.createElement("span");
       el.appendChild(inner);
       labelLayer.appendChild(el);
-      labels.push({ el, inner, text, kind, pos: new THREE.Vector3(X(lon), Y(lat), z), ...extra });
+      // ox/dx mirror each kind's CSS anchor so collision boxes match what is drawn.
+      const ox = kind === "river" || kind === "grid" ? -0.5 : 0;
+      const dx = kind === "region" ? 14 : kind === "city" || kind === "capital" ? 8 : 0;
+      labels.push({ el, inner, text, kind, ox, dx, w: null, h: null, priority: 5, minZoom: 0, pos: new THREE.Vector3(X(lon), Y(lat), z), ...extra });
     };
-    for (const c of data.cities) addLabel(c.kind === "capital" ? "capital" : "city", { en: c.name, bn: c.nameBn }, c.at[0], c.at[1], SLAB);
-    for (const r of data.riverLabels) addLabel("river", { river: r.name }, r.at[0], r.at[1], SLAB);
-    for (const [id, reg] of Object.entries(data.regions)) addLabel("region", { region: id }, reg.center[0] + 0.32, reg.center[1], SLAB + BLOCK, { region: id });
-    for (const lon of lons.slice(1, -1)) addLabel("grid", { raw: `${lon}°E` }, lon, lats[0] + 0.35, GROUND);
-    for (const lat of lats.slice(1, -1)) addLabel("grid", { raw: `${lat}°N` }, lons.at(-1) - 0.3, lat, GROUND);
+    // Who wins a collision, and from what zoom a label may appear (1 = the fitted country view).
+    const MAJOR_RIVERS = new Set(["Jamuna", "Padma", "Meghna", "Brahmaputra"]);
+    for (const c of data.cities) {
+      const rank = c.kind === "capital" ? { priority: 1 } : c.kind === "town" ? { priority: 4, minZoom: 1.6 } : { priority: 3 };
+      addLabel(c.kind === "capital" ? "capital" : "city", { en: c.name, bn: c.nameBn }, c.at[0], c.at[1], SLAB, rank);
+    }
+    for (const r of data.riverLabels) {
+      addLabel("river", { river: r.name }, r.at[0], r.at[1], SLAB, MAJOR_RIVERS.has(r.name) ? { priority: 2 } : { priority: 4, minZoom: 1.3 });
+      // River names are the way into each river's page: hover/focus for a preview, click/Enter to open.
+      const span = labels.at(-1).inner;
+      span.tabIndex = 0;
+      span.setAttribute("role", "link");
+      const show = () => cbRef.current.onRiverHover?.(r.name, span.getBoundingClientRect());
+      const hide = () => cbRef.current.onRiverHover?.(null);
+      span.addEventListener("pointerenter", show);
+      span.addEventListener("focus", show);
+      span.addEventListener("pointerleave", hide);
+      span.addEventListener("blur", hide);
+      span.addEventListener("click", () => cbRef.current.onRiverOpen?.(r.name));
+      span.addEventListener("keydown", (ev) => ev.key === "Enter" && cbRef.current.onRiverOpen?.(r.name));
+    }
+    for (const [id, reg] of Object.entries(data.regions)) addLabel("region", { region: id }, reg.center[0] + 0.32, reg.center[1], SLAB + BLOCK, { region: id, priority: 0 });
+    for (const lon of lons.slice(1, -1)) addLabel("grid", { raw: `${lon}°E` }, lon, lats[0] + 0.35, GROUND, { priority: 6 });
+    for (const lat of lats.slice(1, -1)) addLabel("grid", { raw: `${lat}°N` }, lons.at(-1) - 0.3, lat, GROUND, { priority: 6 });
+    const byPriority = [...labels].sort((a, b) => a.priority - b.priority);
+    document.fonts?.ready.then(() => labels.forEach((l) => (l.w = null))); // widths change once Inter loads
 
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableZoom = false;
-    controls.enablePan = false;
+    controls.enableZoom = true;
+    controls.zoomSpeed = 0.6;
+    controls.enablePan = true;
+    controls.screenSpacePanning = true;
+    controls.panSpeed = 0.6;
     controls.enableDamping = !reduced;
     controls.dampingFactor = 0.08;
     controls.rotateSpeed = 0.5;
@@ -247,7 +285,21 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
       for (const l of fatLines) l.material.resolution.set(width, height);
       const sph = new THREE.Spherical().setFromVector3(camera.position.clone().sub(target));
       fit();
+      controls.target.copy(target);
+      controls.minDistance = distance * 0.35;
+      controls.maxDistance = distance * 1.3;
       place(revealDone ? sph.phi : FINAL_POLAR, revealDone ? sph.theta : 0, distance);
+    };
+    const zoom = (factor) => {
+      const off = camera.position.clone().sub(controls.target);
+      off.setLength(Math.min(controls.maxDistance, Math.max(controls.minDistance, off.length() * factor)));
+      camera.position.copy(controls.target).add(off);
+      controls.update();
+    };
+    const resetView = () => {
+      controls.target.copy(target);
+      place(FINAL_POLAR, 0, distance);
+      controls.update();
     };
 
     let revealDone = reduced;
@@ -318,11 +370,26 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
         controls.update();
       }
       root.updateMatrixWorld();
-      for (const l of labels) {
+      // Collision-aware labels: place in priority order; a label that would overlap one already placed waits
+      // (hidden) until zooming or turning frees its space. Less important labels also wait for a closer zoom.
+      const zoomNow = distance / camera.position.distanceTo(controls.target);
+      const placed = [];
+      for (const l of byPriority) {
         tmp.copy(l.pos).applyMatrix4(root.matrixWorld).project(camera);
-        const hidden = tmp.z > 1;
-        l.el.style.visibility = hidden ? "hidden" : "visible";
-        l.el.style.transform = `translate(${((tmp.x + 1) / 2) * width}px, ${((1 - tmp.y) / 2) * height}px)`;
+        const x = ((tmp.x + 1) / 2) * width;
+        const y = ((1 - tmp.y) / 2) * height;
+        l.el.style.transform = `translate(${x}px, ${y}px)`;
+        let show = tmp.z <= 1 && zoomNow >= l.minZoom;
+        if (show) {
+          if (l.w == null) {
+            l.w = l.inner.offsetWidth;
+            l.h = l.inner.offsetHeight;
+          }
+          const box = [x + l.ox * l.w + l.dx - 3, y - l.h / 2 - 2, x + l.ox * l.w + l.dx + l.w + 3, y + l.h / 2 + 2];
+          show = !placed.some((p) => box[0] < p[2] && box[2] > p[0] && box[1] < p[3] && box[3] > p[1]);
+          if (show) placed.push(box);
+        }
+        if ((l.el.dataset.hidden === "true") === show) l.el.dataset.hidden = show ? "false" : "true";
       }
       renderer.render(scene, camera);
     };
@@ -330,6 +397,8 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
 
     apiRef.current = {
       relayout: resize,
+      zoom,
+      reset: resetView,
       highlight(sel, hov) {
         for (const [id, b] of Object.entries(blocks)) {
           const isSel = id === sel;
@@ -342,7 +411,10 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
         for (const l of labels) if (l.region) l.el.dataset.state = l.region === sel ? "selected" : l.region === hov ? "hover" : "";
       },
       setText(fn) {
-        for (const l of labels) l.inner.textContent = fn(l.text);
+        for (const l of labels) {
+          l.inner.textContent = fn(l.text);
+          l.w = null; // re-measure for the new language
+        }
       },
     };
 
@@ -361,11 +433,11 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
       labelLayer.replaceChildren();
       apiRef.current = null;
     };
-  }, [data]);
+  }, [data, C]);
 
   useEffect(() => {
     apiRef.current?.highlight(selected, hovered);
-  }, [selected, hovered, data]);
+  }, [selected, hovered, data, C]);
 
   useEffect(() => {
     reserveRef.current = reserve;
@@ -379,34 +451,45 @@ export default function BangladeshScene({ data, lang, selected, hovered, onHover
       if (txt.region) return regionText.region(txt.region);
       return txt[lang] ?? txt.en;
     });
-  }, [lang, data, regionText]);
+  }, [lang, data, regionText, C]);
 
-  if (failed) return <FlatFallback data={data} selected={selected} onSelect={onSelect} />;
+  if (failed) return <FlatFallback data={data} C={C} selected={selected} onSelect={onSelect} />;
   return (
     <div ref={wrapRef} className={s.scene}>
-      <div ref={labelRef} className={s.labels} aria-hidden="true" />
+      <div ref={labelRef} className={s.labels} />
+      <div className={s.zoom}>
+        <button type="button" aria-label={t("map.zoomIn")} onClick={() => apiRef.current?.zoom(0.75)}>
+          <Plus size={16} />
+        </button>
+        <button type="button" aria-label={t("map.zoomOut")} onClick={() => apiRef.current?.zoom(1 / 0.75)}>
+          <Minus size={16} />
+        </button>
+        <button type="button" aria-label={t("map.resetCountry")} title={t("map.resetCountry")} onClick={() => apiRef.current?.reset()}>
+          <Scan size={16} />
+        </button>
+      </div>
     </div>
   );
 }
 
 /** No WebGL: the same map, flat, still selectable. */
-function FlatFallback({ data, selected, onSelect }) {
+function FlatFallback({ data, C, selected, onSelect }) {
   const [w, so, e, n] = data.bounds;
   const path = (ring) => "M" + ring.map(([lon, lat]) => `${X(lon).toFixed(3)},${(-Y(lat)).toFixed(3)}`).join("L");
   return (
     <svg className={s.scene} viewBox={`${X(w) - 0.2} ${-Y(n) - 0.2} ${X(e) - X(w) + 0.4} ${Y(n) - Y(so) + 0.4}`}>
       {data.outline.map((p, i) => (
-        <path key={i} d={path(p[0]) + "Z"} fill="#1a242e" stroke="#40505f" strokeWidth="0.01" />
+        <path key={i} d={path(p[0]) + "Z"} fill={hx(C.slabTop)} stroke={hx(C.edge)} strokeWidth="0.01" />
       ))}
       {data.rivers.map((r, i) => (
-        <path key={i} d={path(r.coords)} fill="none" stroke="#63b3d9" strokeWidth={r.rank === 1 ? 0.02 : 0.012} />
+        <path key={i} d={path(r.coords)} fill="none" stroke={hx(C.river)} strokeWidth={r.rank === 1 ? 0.02 : 0.012} />
       ))}
       {Object.entries(data.regions).map(([id, reg]) => (
         <path
           key={id}
           d={reg.rings.map((r) => path(r) + "Z").join("")}
-          fill={id === selected ? "#2a4a5e" : "#24333f"}
-          stroke={id === selected ? "#8fcbe8" : "#5d6f7f"}
+          fill={hx(id === selected ? C.blockTopSelected : C.blockTop)}
+          stroke={hx(id === selected ? C.blockEdgeSelected : C.blockEdge)}
           strokeWidth="0.012"
           style={{ cursor: "pointer" }}
           onClick={() => onSelect?.(id)}

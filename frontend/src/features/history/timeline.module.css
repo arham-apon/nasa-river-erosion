@@ -9,7 +9,7 @@
   align-items: end;
   gap: var(--s-3);
   padding: var(--s-2) var(--s-3);
-  background: rgba(11, 15, 19, 0.92);
+  background: var(--overlay);
   border: 1px solid var(--line-2);
   border-radius: var(--r-3);
 }
@@ -20,14 +20,14 @@
   display: grid;
   place-items: center;
   align-self: center;
-  border: 1px solid var(--water);
+  border: 1px solid var(--accent);
   border-radius: var(--r-2);
-  background: var(--water-dim);
-  color: var(--water-strong);
+  background: var(--accent-dim);
+  color: var(--accent-strong);
 }
 
 .play:hover {
-  background: rgba(99, 179, 217, 0.24);
+  background: color-mix(in srgb, var(--accent) 24%, transparent);
 }
 
 .track {
@@ -95,17 +95,17 @@
 .year[aria-checked="true"] .tick {
   width: 2px;
   height: 9px;
-  background: var(--water);
+  background: var(--accent);
 }
 
 .year[aria-checked="true"] .yearText {
-  background: var(--water);
-  color: #06121a;
+  background: var(--accent);
+  color: var(--on-accent);
   font-weight: 500;
 }
 
 .year[data-compare="true"] .yearText {
-  box-shadow: inset 0 0 0 1px #c4ccd3;
+  box-shadow: inset 0 0 0 1px var(--compare);
   color: var(--text);
 }
 

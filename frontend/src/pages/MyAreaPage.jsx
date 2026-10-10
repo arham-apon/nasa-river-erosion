@@ -9,7 +9,8 @@ import GeoLayer from "../features/maps/GeoLayer.jsx";
 import MapControls from "../features/maps/MapControls.jsx";
 import { FitBounds, HoverSync } from "../features/maps/MapHelpers.jsx";
 import { Legend, MapTooltip } from "../features/maps/MapOverlays.jsx";
-import { PRIORITY_COLOR, RISK_COLOR } from "../features/maps/mapStyle.js";
+import { priorityColor, riskColor } from "../theme/palette.js";
+import { usePalette } from "../theme/ThemeContext.jsx";
 import RegionList from "../features/areas/RegionList.jsx";
 import UnionSummary from "../features/areas/UnionSummary.jsx";
 import SectionDetail from "../features/areas/SectionDetail.jsx";
@@ -43,6 +44,7 @@ const DEFAULT_LAYERS = {
 export default function MyAreaPage() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
+  const P = usePalette();
   const [params, update] = useUrlState();
   const manifest = useManifest();
   const m = manifest.data;
@@ -68,7 +70,7 @@ export default function MyAreaPage() {
   const nisarGeo = useRegionLayer(layers.nisarChange ? mapRegion : null, "nisarGeometry");
   const alerts = useAlerts();
 
-  const [basemap, setBasemap] = useState("dark");
+  const [basemap, setBasemap] = useState("map");
   const tilt = params.get("view") === "3d";
   const setTilt = (v) => update({ view: v ? "3d" : null }, { replace: true });
   const [hoverUnion, setHoverUnion] = useState(null);
@@ -134,7 +136,7 @@ export default function MyAreaPage() {
       slot: "slot-fill",
       interactive: true,
       paint: {
-        "fill-color": RISK_COLOR,
+        "fill-color": riskColor(P),
         "fill-opacity": [
           "case",
           HOVER,
@@ -146,54 +148,56 @@ export default function MyAreaPage() {
     {
       id: "sections-edge",
       type: "line",
-      paint: { "line-color": layers.risk ? "#070a0d" : "#3a4652", "line-width": 0.6, "line-opacity": layers.risk ? 0.7 : 0.5 },
+      paint: { "line-color": layers.risk ? P.sectionEdge : P.sectionEdgeFaint, "line-width": 0.6, "line-opacity": layers.risk ? 0.7 : 0.5 },
     },
     {
       id: "sections-sel",
       type: "line",
       slot: "slot-top",
       filter: ["==", ["get", "id"], sectionId ?? ""],
-      paint: { "line-color": "#ffffff", "line-width": 2.4 },
+      paint: { "line-color": P.select, "line-width": 2.4 },
     },
   ];
   const unionLayers = [
+    // The study area itself: every union in the reach, under the priority tint and the section blocks.
+    { id: "unions-base", type: "fill", slot: "slot-fill", paint: { "fill-color": P.studyArea, "fill-opacity": P.studyAreaOpacity } },
     {
       id: "unions-fill",
       type: "fill",
       slot: "slot-fill",
       interactive: true,
       paint: {
-        "fill-color": PRIORITY_COLOR,
+        "fill-color": priorityColor(P),
         "fill-opacity": [
           "case",
           HOVER,
           0.22,
-          layers.priority ? ["match", ["get", "level"], "High", 0.12, "Medium", 0.07, 0.025] : 0,
+          layers.priority ? ["match", ["get", "level"], "High", 0.06, "Medium", 0.035, 0] : 0,
         ],
       },
     },
     {
       id: "unions-line",
       type: "line",
-      paint: { "line-color": ["case", HOVER, "#a1abb4", "#36434f"], "line-width": ["case", HOVER, 1.4, 0.8] },
+      paint: { "line-color": ["case", HOVER, P.unionHover, P.unionLine], "line-width": ["case", HOVER, 1.4, 0.8] },
     },
     {
       id: "unions-sel",
       type: "line",
       slot: "slot-top",
       filter: ["==", ["get", "key"], unionKey ?? ""],
-      paint: { "line-color": "#ffffff", "line-width": 1.6, "line-opacity": 0.9 },
+      paint: { "line-color": P.select, "line-width": 1.6, "line-opacity": 0.9 },
     },
   ];
   // Same encoding for both checks: amber fill = erosion observed, dashed white edge = flagged by the model.
   const checkLayers = (prefix, observed, flagged) => [
-    { id: `${prefix}-fill`, type: "fill", slot: "slot-fill", filter: observed, paint: { "fill-color": "#e8954a", "fill-opacity": 0.6 } },
+    { id: `${prefix}-fill`, type: "fill", slot: "slot-fill", filter: observed, paint: { "fill-color": P.erosion, "fill-opacity": 0.6 } },
     {
       id: `${prefix}-flag`,
       type: "line",
       slot: "slot-top",
       filter: flagged,
-      paint: { "line-color": "#f4f6f7", "line-width": 1.6, "line-dasharray": [3, 1.5] },
+      paint: { "line-color": P.flag, "line-width": 1.6, "line-dasharray": [3, 1.5] },
     },
   ];
   const patchLayers = (prefix) => [
@@ -201,18 +205,18 @@ export default function MyAreaPage() {
       id: `${prefix}-fill`,
       type: "fill",
       slot: "slot-fill",
-      paint: { "fill-color": ["match", ["get", "kind"], "settlement", "#f07a4f", "#e8954a"], "fill-opacity": 0.85 },
+      paint: { "fill-color": ["match", ["get", "kind"], "settlement", P.settlement, P.erosion], "fill-opacity": 0.85 },
     },
   ];
   const lastBank = meta.bankYears.at(-1);
   const bankLayers = [
-    { id: "ma-banks-trail", type: "line", paint: { "line-color": "#63b3d9", "line-width": 1, "line-opacity": 0.22 } },
+    { id: "ma-banks-trail", type: "line", paint: { "line-color": P.water, "line-width": 1, "line-opacity": 0.22 } },
     {
       id: "ma-banks-last",
       type: "line",
       slot: "slot-top",
       filter: ["==", ["get", "year"], lastBank],
-      paint: { "line-color": "#63b3d9", "line-width": 2.2 },
+      paint: { "line-color": P.water, "line-width": 2.2 },
     },
   ];
 
@@ -234,24 +238,25 @@ export default function MyAreaPage() {
       { shape: "◆", color: "var(--risk-medium)", label: t("legend.medium") },
       { shape: "○", color: "var(--text-2)", label: t("legend.low") },
     );
-  if (layers.priority) legendItems.push({ swatch: "fill", color: "rgba(240,122,79,0.3)", label: t("layers.items.priority") });
+  if (layers.priority) legendItems.push({ swatch: "fill", color: P.riskHighA(0.3), label: t("layers.items.priority") });
   if (layers.hindcast || layers.nisarCheck) {
-    legendItems.push({ swatch: "fill", color: "rgba(232,149,74,0.6)", label: t("legend.observedMajor", { ha: fmtNum(m.targetHa, lang) }) });
-    if (layers.hindcast) legendItems.push({ swatch: "dash", color: "#f4f6f7", label: t("legend.flaggedTop20", { year: fmtYear(hy, lang) }) });
-    if (layers.nisarCheck) legendItems.push({ swatch: "dash", color: "#f4f6f7", label: t("legend.nisarHigh") });
+    legendItems.push({ swatch: "fill", color: P.erosionA(0.6), label: t("legend.observedMajor", { ha: fmtNum(m.targetHa, lang) }) });
+    if (layers.hindcast) legendItems.push({ swatch: "dash", color: P.flag, label: t("legend.flaggedTop20", { year: fmtYear(hy, lang) }) });
+    if (layers.nisarCheck) legendItems.push({ swatch: "dash", color: P.flag, label: t("legend.nisarHigh") });
   }
   if (layers.erosion)
     legendItems.push(
-      { swatch: "fill", color: "#e8954a", label: t("legend.erodedLandYear", { year: fmtYear(ey, lang) }) },
-      { swatch: "fill", color: "#f07a4f", label: t("legend.erodedSettlement") },
+      { swatch: "fill", color: P.erosion, label: t("legend.erodedLandYear", { year: fmtYear(ey, lang) }) },
+      { swatch: "fill", color: P.settlement, label: t("legend.erodedSettlement") },
     );
-  if (layers.nisarChange) legendItems.push({ swatch: "fill", color: "#e8954a", label: t("legend.nisarPatch") });
+  if (layers.nisarChange) legendItems.push({ swatch: "fill", color: P.erosion, label: t("legend.nisarPatch") });
   if (layers.banks)
     legendItems.push(
-      { swatch: "line", color: "#63b3d9", label: t("legend.bankSelected", { year: fmtYear(lastBank, lang) }) },
-      { swatch: "line", color: "rgba(99,179,217,0.4)", label: t("legend.bankTrail") },
+      { swatch: "line", color: P.water, label: t("legend.bankSelected", { year: fmtYear(lastBank, lang) }) },
+      { swatch: "line", color: P.waterA(0.4), label: t("legend.bankTrail") },
     );
-  legendItems.push({ swatch: "outline", color: "#ffffff", label: t("legend.selected") });
+  legendItems.push({ swatch: "fill", color: P.studyArea, label: t("legend.studyArea") });
+  legendItems.push({ swatch: "outline", color: P.select, label: t("legend.selected") });
 
   let panel;
   if (!regionOk) {

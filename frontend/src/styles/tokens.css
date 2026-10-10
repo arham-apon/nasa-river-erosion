@@ -1,29 +1,49 @@
 :root {
   color-scheme: dark;
 
-  /* Neutrals: cool graphite, not purple. The page is a dark instrument, data supplies the colour. */
-  --bg: #0b0f13;
-  --bg-sunk: #070a0d;
-  --surface: #10161c;
-  --surface-2: #151c23;
-  --surface-3: #1b242d;
-  --line: #1f2830;
-  --line-2: #2c3742;
-  --text: #edf0f2;
-  --text-2: #b9c1c9;
-  --text-3: #8a96a1;
+  /*
+   * Dark theme: a Prussian-blue instrument. Colour roles — each hue means one thing:
+   *   neutrals  Prussian-blue graphite; the instrument, not the data
+   *   accent    powder blue (pale, desaturated): something you can act on or have selected
+   *   water     azure (vivid, saturated): rivers, banklines, open water — same family, clearly different role
+   *   risk      red / yellow / grey: the model's relative ranking
+   *   erosion   amber: land observed lost
+   */
+  --bg: #0a1520;
+  --bg-sunk: #060e16;
+  --surface: #0f1c29;
+  --surface-2: #142434;
+  --surface-3: #1b2e41;
+  --line: #1d2f40;
+  --line-2: #2a3f54;
+  --text: #eef4f8;
+  --text-2: #bccbd8;
+  --text-3: #8699ab;
 
-  /* Cool = water and the user's current focus. Warm = land loss and relative risk. Nothing else gets a hue. */
-  --water: #63b3d9;
-  --water-strong: #8fcbe8;
-  --water-dim: rgba(99, 179, 217, 0.14);
+  --accent: #b0dcee;
+  --accent-strong: #d6eef8;
+  --accent-dim: rgba(176, 220, 238, 0.14);
+  --on-accent: #062033;
+
+  --water: #4fb4f5;
+  --water-strong: #8dd0fb;
+  --water-dim: rgba(79, 180, 245, 0.14);
+
   --erosion: #e8954a;
   --erosion-dim: rgba(232, 149, 74, 0.16);
-  --risk-high: #f07a4f;
-  --risk-medium: #c9a25b;
-  --risk-low: #56636e;
+  /* Risk uses the universal warning ramp: red = act first, yellow = watch, grey = lower (not "safe"). */
+  --risk-high: #ef4f4a;
+  --risk-medium: #f2c94c;
+  --risk-low: #5a6878;
   --select: #ffffff;
   --danger: #e5675a;
+
+  --overlay: rgba(10, 21, 32, 0.9);
+  --compare: #c9d6e1;
+  --grid-label: #6f8295;
+  --reach-fill: #d6eef8;
+  --reach-side: #7f9fb5;
+  --bank-line: #3a8fd6;
 
   --font-sans: "Inter Variable", "Inter", "Noto Sans Bengali", system-ui, sans-serif;
   /* Numbers use Inter's tabular figures so columns and counters line up. */
@@ -64,6 +84,48 @@
   --panel-w: 384px;
   --float-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/*
+ * Light: a paper map. Warm off-white UI, sky-blue water, sage-to-forest risk ramp (darker = higher on light),
+ * the accent deepened to forest green so it still reads as "act here" on a pale ground.
+ */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f5f3ec;
+  --bg-sunk: #ebe8de;
+  --surface: #fdfcf8;
+  --surface-2: #f0eee6;
+  --surface-3: #e5e2d6;
+  --line: #e0dccf;
+  --line-2: #cbc6b6;
+  --text: #1b221e;
+  --text-2: #48524b;
+  --text-3: #646d66;
+
+  --accent: #3f6f1c;
+  --accent-strong: #2f5612;
+  --accent-dim: rgba(63, 111, 28, 0.1);
+  --on-accent: #ffffff;
+
+  --water: #2f8fca;
+  --water-strong: #1c6fa3;
+  --water-dim: rgba(47, 143, 202, 0.12);
+
+  --erosion: #d9792a;
+  --erosion-dim: rgba(217, 121, 42, 0.14);
+  --risk-high: #c8302a;
+  --risk-medium: #a87b00;
+  --risk-low: #8a9088;
+  --select: #1b221e;
+
+  --overlay: rgba(253, 252, 248, 0.94);
+  --compare: #48524b;
+  --grid-label: #85816f;
+  --reach-fill: #b3cf8b;
+  --reach-side: #a9b38f;
+  --float-shadow: 0 12px 32px rgba(60, 55, 40, 0.18);
 }
 
 /* Bengali glyphs need a touch more size and leading to read at the same weight. */

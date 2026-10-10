@@ -3,7 +3,8 @@
     { "source": "/my-area", "destination": "/index.html" },
     { "source": "/river-changes", "destination": "/index.html" },
     { "source": "/how-it-works", "destination": "/index.html" },
-    { "source": "/about", "destination": "/index.html" }
+    { "source": "/about", "destination": "/index.html" },
+    { "source": "/river/:id", "destination": "/index.html" }
   ],
   "headers": [
     {

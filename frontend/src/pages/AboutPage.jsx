@@ -15,6 +15,8 @@ const SOURCES = [
   { name: "WorldPop 2020", key: "worldpop", credit: "WorldPop, University of Southampton" },
   { name: "geoBoundaries", key: "geob", credit: "William & Mary geoLab" },
   { name: "Natural Earth", key: "ne", credit: "Natural Earth (public domain)" },
+  { name: "AWS Terrain Tiles", key: "dem", credit: "Mapzen / AWS Open Data (SRTM and others)" },
+  { name: "Wikipedia, Wikimedia Commons", key: "wiki", credit: "CC BY-SA; photo credits on each river" },
   { name: "Basemaps", key: "basemap", credit: "OpenFreeMap, © OpenMapTiles, © OpenStreetMap contributors; imagery © Esri, Maxar, Earthstar Geographics" },
 ];
 

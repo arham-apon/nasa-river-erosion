@@ -92,6 +92,83 @@ class BuildError(RuntimeError):
     pass
 
 
+DEM_FILE = "dem_bgd_z9.npz"
+DEM_ZOOM = 9  # ~300 m per pixel at this latitude
+DEM_BBOX = (87.9, 20.5, 92.8, 26.7)
+DEM_RES = 0.003  # degrees per cell after reprojection (~320 m)
+ELEV_BANDS_M = [10, 30, 100]  # active floodplain | older floodplain and terraces | uplands | hills
+
+
+def ensure_dem():
+    """Elevation for Bangladesh from AWS Terrain Tiles (Terrarium PNG, mostly SRTM), reprojected to lon/lat, cached."""
+    import io
+    import math
+    import urllib.request
+    from PIL import Image
+    from rasterio.transform import from_origin
+    from rasterio.warp import Resampling, reproject
+
+    p = CONTEXT / DEM_FILE
+    if p.exists():
+        d = np.load(p)
+        return d["z"], tuple(d["transform"])
+    w, s, e, n = DEM_BBOX
+    tiles = 2 ** DEM_ZOOM
+    tx = lambda lon: int((lon + 180) / 360 * tiles)
+    ty = lambda lat: int((1 - math.asinh(math.tan(math.radians(lat))) / math.pi) / 2 * tiles)
+    x0, x1, y0, y1 = tx(w), tx(e), ty(n), ty(s)
+    mosaic = np.zeros(((y1 - y0 + 1) * 256, (x1 - x0 + 1) * 256), dtype="float32")
+    for x in range(x0, x1 + 1):
+        for y in range(y0, y1 + 1):
+            url = f"https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{DEM_ZOOM}/{x}/{y}.png"
+            with urllib.request.urlopen(url) as r:
+                rgb = np.asarray(Image.open(io.BytesIO(r.read())).convert("RGB"), dtype="float32")
+            mosaic[(y - y0) * 256:(y - y0 + 1) * 256, (x - x0) * 256:(x - x0 + 1) * 256] = (
+                rgb[..., 0] * 256 + rgb[..., 1] + rgb[..., 2] / 256 - 32768)
+    world = 2 * math.pi * 6378137
+    px = world / (tiles * 256)
+    src_t = from_origin(-world / 2 + x0 * 256 * px, world / 2 - y0 * 256 * px, px, px)
+    dst_t = from_origin(w, n, DEM_RES, DEM_RES)
+    z = np.zeros((int((n - s) / DEM_RES), int((e - w) / DEM_RES)), dtype="float32")
+    reproject(mosaic, z, src_transform=src_t, src_crs="EPSG:3857", dst_transform=dst_t, dst_crs="EPSG:4326",
+              resampling=Resampling.bilinear)
+    np.savez_compressed(p, z=z, transform=np.array(dst_t)[:6])
+    print(f"DEM {z.shape}, {int((x1 - x0 + 1) * (y1 - y0 + 1))} tiles")
+    return z, tuple(np.array(dst_t)[:6])
+
+
+def elevation_bands(country):
+    """Areas at or above each height threshold, from a ~300 m DEM, for the overview's hypsometric tint."""
+    from affine import Affine
+    from rasterio import features
+    from scipy.ndimage import gaussian_filter
+
+    z, t = ensure_dem()
+    transform = Affine(*t)
+    # A ~600 m blur removes tree-and-roof noise in the radar DEM without moving real landform edges.
+    z = gaussian_filter(z, sigma=2)
+    land = country.buffer(0)
+    bands = []
+    for k, thr in enumerate(ELEV_BANDS_M, start=1):
+        mask = (z >= thr).astype("uint8")
+        polys = [shapely.geometry.shape(geom) for geom, v in features.shapes(mask, mask=mask == 1, transform=transform)]
+        if not polys:
+            continue
+        area = shapely.unary_union(polys)
+        # Light rounding (about one pixel) removes stair-steps; a ~250 m simplify keeps the real outline.
+        area = area.buffer(-0.003).buffer(0.006, quad_segs=4).buffer(-0.003)
+        area = area.intersection(land).simplify(0.0025)
+        parts = [pp for pp in getattr(area, "geoms", [area]) if pp.geom_type == "Polygon" and pp.area > 0.0015]
+        bands.append({
+            "band": k,
+            "minM": thr,
+            "polygons": [{"outer": [[round(x, 4), round(y, 4)] for x, y in pp.exterior.coords],
+                          "holes": [[[round(x, 4), round(y, 4)] for x, y in h.coords] for h in pp.interiors
+                                    if shapely.Polygon(h).area > 0.0015]} for pp in parts],
+        })
+    return {"thresholdsM": ELEV_BANDS_M, "source": "AWS Terrain Tiles (SRTM-based), ~300 m", "bands": bands}
+
+
 def ensure_context():
     """data/ is git-ignored, so fetch the small public context layers on first run."""
     import urllib.request
@@ -379,6 +456,34 @@ def build_context(unions):
                 rivers.append({"name": name, "rank": 1 if name in ("Padma", "Meghna") else 2, "traced": True,
                                "coords": [[round(x, 4), round(y, 4)] for x, y in part.coords]})
 
+    # Per-river geometry for the river pages. North of Bahadurabad the main stem is the Brahmaputra, south of it
+    # the Jamuna down to the Padma confluence; the overview map draws them as one line.
+    def coords_of(g):
+        return [[[round(x, 4), round(y, 4)] for x, y in l.coords] for l in getattr(g, "geoms", [g]) if not l.is_empty]
+
+    main = shapely.unary_union([LineString(r["coords"]) for r in rivers if r["name"] == "Brahmaputra" and r["rank"] == 1])
+    river_paths = {
+        "Brahmaputra": coords_of(main.intersection(box(87, 25.15, 93, 27))),
+        "Jamuna": coords_of(main.intersection(box(87, 23.75, 93, 25.15))),
+    }
+    for name in ["Padma", "Teesta", "Meghna", "Surma", "Kushiyara", "Old Brahmaputra", "Karnaphuli", "Matamuhuri"]:
+        river_paths[name] = [r["coords"] for r in rivers if r["name"] == name and r["rank"] < 3]
+    # Natural Earth files the stretch below the Jamuna confluence (Goalundo to Mawa) under the Brahmaputra.
+    river_paths["Padma"] += coords_of(main.intersection(box(87, 20, 93, 23.75)))
+    check(all(river_paths.values()), f"river without geometry: {[k for k, v in river_paths.items() if not v]}")
+
+    # Division shapes, flagged when a study reach falls inside: the overview shades them one step lighter.
+    reach_area = {r: unions[unions["region"] == r].to_crs(UTM).geometry.union_all() for r in REGIONS}
+    division_areas = []
+    for row in adm1.to_crs(UTM).itertuples():
+        g = row.geometry.simplify(1500)
+        has = any(g.intersection(a).area > 0.05 * a.area for a in reach_area.values())
+        g4326 = gpd.GeoSeries([g], crs=UTM).to_crs(4326).iloc[0]
+        rings = [[[round(x, 4), round(y, 4)] for x, y in p.exterior.coords]
+                 for p in getattr(g4326, "geoms", [g4326]) if p.area > 0.0008]
+        division_areas.append({"name": row.shapeName, "hasReach": bool(has), "rings": rings})
+    check(sum(d["hasReach"] for d in division_areas) >= 1, "no division contains a study reach")
+
     regions = {}
     for r in REGIONS:
         u = unions[unions["region"] == r].to_crs(UTM)
@@ -397,7 +502,10 @@ def build_context(unions):
         "bounds": [round(float(v), 4) for v in country.bounds],
         "outline": [[[[round(x, 4), round(y, 4)] for x, y in p.exterior.coords]] for p in polys],
         "divisions": [[[round(x, 4), round(y, 4)] for x, y in l] for l in division_lines],
+        "divisionAreas": division_areas,
+        "elevation": elevation_bands(country),
         "rivers": rivers,
+        "riverPaths": river_paths,
         "riverLabels": [{"name": k, "at": list(v)} for k, v in RIVER_LABELS.items()],
         "cities": [{"name": n, "nameBn": nb, "at": [x, y], "kind": k} for n, nb, x, y, k in CITIES],
         "regions": regions,

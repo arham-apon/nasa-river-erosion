@@ -13,6 +13,7 @@ import BankHistoryPanel from "../features/history/BankHistoryPanel.jsx";
 import NisarPanel from "../features/observations/NisarPanel.jsx";
 import { useManifest, useRegionLayer, useUnions } from "../data/queries.js";
 import { boundsOf, findSection, findUnionFeature, regionBounds, sideLabelKey } from "../data/selectors.js";
+import { usePalette } from "../theme/ThemeContext.jsx";
 import { intParam, prefersReducedMotion, useUrlState } from "../lib/urlState.js";
 import { fmtNum, fmtYear } from "../lib/format.js";
 import p from "../features/areas/panel.module.css";
@@ -49,6 +50,7 @@ function FadeIn({ layers, value }) {
 export default function RiverChangesPage() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
+  const P = usePalette();
   const [params, update] = useUrlState();
   const manifest = useManifest();
   const m = manifest.data;
@@ -135,13 +137,13 @@ export default function RiverChangesPage() {
       type: "fill",
       slot: "slot-fill",
       interactive: true,
-      paint: { "fill-color": "#ffffff", "fill-opacity": ["case", HOVER, 0.12, 0.0] },
+      paint: { "fill-color": P.select, "fill-opacity": ["case", HOVER, 0.12, 0.0] },
     },
     {
       id: "rc-sections-line",
       type: "line",
       paint: {
-        "line-color": ["case", HOVER, "#c4ccd3", "#56636e"],
+        "line-color": ["case", HOVER, P.compare, P.sectionLine],
         "line-width": ["case", HOVER, 1.2, 0.5],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 9, 0.12, 12, 0.6],
       },
@@ -151,7 +153,7 @@ export default function RiverChangesPage() {
       type: "line",
       slot: "slot-top",
       filter: ["==", ["get", "id"], sectionId ?? ""],
-      paint: { "line-color": "#ffffff", "line-width": 2.2 },
+      paint: { "line-color": P.select, "line-width": 2.2 },
     },
   ];
   if (tab === "nisar" && nisarLayers.check) {
@@ -163,14 +165,14 @@ export default function RiverChangesPage() {
         type: "fill",
         slot: "slot-fill",
         filter: ["==", ["get", "nisarMajor"], 1],
-        paint: { "fill-color": "#e8954a", "fill-opacity": 0.4 },
+        paint: { "fill-color": P.erosion, "fill-opacity": 0.4 },
       },
       {
         id: "rc-check-high",
         type: "line",
         slot: "slot-top",
         filter: ["==", ["get", "risk"], "High"],
-        paint: { "line-color": "#f4f6f7", "line-width": 1.6, "line-dasharray": [3, 1.5] },
+        paint: { "line-color": P.flag, "line-width": 1.6, "line-dasharray": [3, 1.5] },
       },
     );
   }
@@ -179,20 +181,20 @@ export default function RiverChangesPage() {
     {
       id: "banks-trail",
       type: "line",
-      paint: { "line-color": "#63b3d9", "line-width": 1, "line-opacity": tab === "banks" ? 0.14 : 0 },
+      paint: { "line-color": P.water, "line-width": 1, "line-opacity": tab === "banks" ? 0.14 : 0 },
     },
     {
       id: "banks-compare",
       type: "line",
       filter: ["==", ["get", "year"], tab === "banks" ? (compare ?? -1) : -1],
-      paint: { "line-color": "#c4ccd3", "line-width": 1.6, "line-dasharray": [2, 2], "line-opacity": 0.85 },
+      paint: { "line-color": P.compare, "line-width": 1.6, "line-dasharray": [2, 2], "line-opacity": 0.85 },
     },
     {
       id: "banks-current",
       type: "line",
       slot: "slot-top",
       filter: ["==", ["get", "year"], tab === "banks" ? bank : y1],
-      paint: { "line-color": "#63b3d9", "line-width": tab === "banks" ? 2.6 : 1.4, "line-opacity": 1 },
+      paint: { "line-color": P.water, "line-width": tab === "banks" ? 2.6 : 1.4, "line-opacity": 1 },
     },
   ];
 
@@ -202,7 +204,7 @@ export default function RiverChangesPage() {
       type: "fill",
       slot: "slot-fill",
       paint: {
-        "fill-color": ["match", ["get", "kind"], "settlement", "#f07a4f", "#e8954a"],
+        "fill-color": ["match", ["get", "kind"], "settlement", P.settlement, P.erosion],
         "fill-opacity": 0.8,
       },
     },
@@ -210,7 +212,7 @@ export default function RiverChangesPage() {
       id: "erosion-settlement",
       type: "line",
       filter: ["==", ["get", "kind"], "settlement"],
-      paint: { "line-color": "#ffd9c7", "line-width": 0.8 },
+      paint: { "line-color": P.settlementEdge, "line-width": 0.8 },
     },
   ];
 
@@ -223,8 +225,8 @@ export default function RiverChangesPage() {
         "fill-extrusion-color": [
           "case",
           ["==", ["get", "year"], bank],
-          "#ffffff",
-          ["interpolate", ["linear"], ["get", "year"], y0, "#2c3742", y1, "#8fcbe8"],
+          P.select,
+          ["interpolate", ["linear"], ["get", "year"], y0, P.stackFrom, y1, P.stackTo],
         ],
         "fill-extrusion-base": ["*", ["-", ["get", "year"], y0], STACK_STEP_M],
         "fill-extrusion-height": ["+", ["*", ["-", ["get", "year"], y0], STACK_STEP_M], STACK_THICK_M],
@@ -239,7 +241,7 @@ export default function RiverChangesPage() {
       type: "fill",
       slot: "slot-fill",
       paint: {
-        "fill-color": ["match", ["get", "kind"], "settlement", "#f07a4f", "#e8954a"],
+        "fill-color": ["match", ["get", "kind"], "settlement", P.settlement, P.erosion],
         "fill-opacity": nisarLayers.patches ? 0.85 : 0,
       },
     },
@@ -271,26 +273,26 @@ export default function RiverChangesPage() {
           title: t("legend.banksTitle"),
           items: tilt
             ? [
-                { swatch: "ramp", color: "linear-gradient(90deg,#2c3742,#8fcbe8)", label: t("legend.stackRamp", { from: fmtYear(y0, lang), to: fmtYear(y1, lang) }) },
-                { swatch: "fill", color: "#ffffff", label: t("legend.stackSelected", { year: fmtYear(bank, lang) }) },
-                { swatch: "fill", color: "#e8954a", label: t("legend.erodedLand") },
+                { swatch: "ramp", color: `linear-gradient(90deg,${P.stackFrom},${P.stackTo})`, label: t("legend.stackRamp", { from: fmtYear(y0, lang), to: fmtYear(y1, lang) }) },
+                { swatch: "fill", color: P.select, label: t("legend.stackSelected", { year: fmtYear(bank, lang) }) },
+                { swatch: "fill", color: P.erosion, label: t("legend.erodedLand") },
               ]
             : [
-                { swatch: "line", color: "#63b3d9", label: t("legend.bankSelected", { year: fmtYear(bank, lang) }) },
-                ...(compare ? [{ swatch: "dash", color: "#c4ccd3", label: t("legend.bankCompare", { year: fmtYear(compare, lang) }) }] : []),
-                { swatch: "line", color: "rgba(99,179,217,0.35)", label: t("legend.bankTrail") },
-                { swatch: "fill", color: "#e8954a", label: t("legend.erodedLand") },
-                { swatch: "fill", color: "#f07a4f", label: t("legend.erodedSettlement") },
+                { swatch: "line", color: P.water, label: t("legend.bankSelected", { year: fmtYear(bank, lang) }) },
+                ...(compare ? [{ swatch: "dash", color: P.compare, label: t("legend.bankCompare", { year: fmtYear(compare, lang) }) }] : []),
+                { swatch: "line", color: P.waterA(0.35), label: t("legend.bankTrail") },
+                { swatch: "fill", color: P.erosion, label: t("legend.erodedLand") },
+                { swatch: "fill", color: P.settlement, label: t("legend.erodedSettlement") },
               ],
           note: tilt ? t("legend.stackNote") : t("legend.erosionNote", { min: fmtNum(m.display.erosionMinHa, lang) }),
         }
       : {
           title: t("legend.nisarTitle"),
           items: [
-            { swatch: "fill", color: "#e8954a", label: t("legend.nisarPatch") },
-            { swatch: "fill", color: "rgba(232,149,74,0.45)", label: t("legend.nisarMajor", { ha: fmtNum(m.targetHa, lang) }) },
-            { swatch: "dash", color: "#f4f6f7", label: t("legend.nisarHigh") },
-            { swatch: "line", color: "#63b3d9", label: t("legend.bankSelected", { year: fmtYear(y1, lang) }) },
+            { swatch: "fill", color: P.erosion, label: t("legend.nisarPatch") },
+            { swatch: "fill", color: P.erosionA(0.45), label: t("legend.nisarMajor", { ha: fmtNum(m.targetHa, lang) }) },
+            { swatch: "dash", color: P.flag, label: t("legend.nisarHigh") },
+            { swatch: "line", color: P.water, label: t("legend.bankSelected", { year: fmtYear(y1, lang) }) },
           ],
           note: t("legend.nisarNote"),
         };
@@ -351,7 +353,7 @@ export default function RiverChangesPage() {
           <GeoLayer
             id="rc-union"
             data={unionF}
-            layers={[{ id: "rc-union-line", type: "line", slot: "slot-top", paint: { "line-color": "#ffffff", "line-width": 1.4, "line-dasharray": [1, 1.5] } }]}
+            layers={[{ id: "rc-union-line", type: "line", slot: "slot-top", paint: { "line-color": P.select, "line-width": 1.4, "line-dasharray": [1, 1.5] } }]}
           />
         )}
         <FadeIn layers={[["banks-current", "line-opacity", 1], ["erosion-fill", "fill-opacity", 0.8]]} value={`${bank}-${erosion.isPlaceholderData}`} />

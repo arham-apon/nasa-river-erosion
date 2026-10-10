@@ -12,7 +12,7 @@ export function ChartKey({ targetHa }) {
         <i style={{ background: "var(--erosion)" }} /> {t("chart.eroded")}
       </span>
       <span>
-        <i style={{ background: "repeating-linear-gradient(45deg, var(--erosion) 0 2px, #0b0f13 2px 3.6px)" }} />{" "}
+        <i style={{ background: "repeating-linear-gradient(45deg, var(--erosion) 0 2px, var(--bg) 2px 3.6px)" }} />{" "}
         {t("chart.settlement")}
       </span>
       {targetHa != null && (
