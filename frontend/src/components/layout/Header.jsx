@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import Segmented from "../ui/Segmented.jsx";
 import { useManifest } from "../../data/queries.js";
+import ThemeToggle from "./ThemeToggle.jsx";
 import { fmtDate } from "../../lib/format.js";
 import s from "./layout.module.css";
 
@@ -56,6 +57,7 @@ export default function Header() {
             {t("app.dataTo", { date: fmtDate(manifest.snapshotId, i18n.language) })}
           </span>
         )}
+        <ThemeToggle />
         <Segmented
           label={t("app.language")}
           value={i18n.language}

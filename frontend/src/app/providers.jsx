@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "../theme/ThemeContext.jsx";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -8,5 +9,9 @@ const client = new QueryClient({
 });
 
 export default function Providers({ children }) {
-  return <QueryClientProvider client={client}>{children}</QueryClientProvider>;
+  return (
+    <QueryClientProvider client={client}>
+      <ThemeProvider>{children}</ThemeProvider>
+    </QueryClientProvider>
+  );
 }

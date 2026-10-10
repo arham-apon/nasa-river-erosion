@@ -1,25 +1,23 @@
-import { lazy, Suspense, useMemo, useState } from "react";
+import { lazy, Suspense, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { Trans, useTranslation } from "react-i18next";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronUp, Play } from "lucide-react";
 import Segmented from "../components/ui/Segmented.jsx";
 import Tag from "../components/ui/Tag.jsx";
 import UnionSearch from "../components/ui/UnionSearch.jsx";
 import Button from "../components/ui/Button.jsx";
 import { ErrorState } from "../components/ui/StateView.jsx";
 import { SplitHandle, useSplit } from "../components/layout/Split.jsx";
-import { useCountry, useEvaluation, useManifest, useUnions } from "../data/queries.js";
+import { useCountry, useEvaluation, useManifest, useRiverInfo, useUnions } from "../data/queries.js";
 import { unionsOfRegion } from "../data/selectors.js";
 import { useDemo } from "../features/demo/DemoContext.jsx";
 import { fmtDate, fmtNum, fmtPct, fmtYear } from "../lib/format.js";
-import { useMediaQuery } from "../lib/useMediaQuery.js";
+import { useTheme } from "../theme/ThemeContext.jsx";
+import RiverPreview from "../features/home/RiverPreview.jsx";
 import s from "./home.module.css";
 
 const BangladeshScene = lazy(() => import("../features/home/BangladeshScene.jsx"));
 const INTRO_DEFAULT = () => Math.round(Math.min(600, Math.max(440, window.innerWidth * 0.4)));
-// Space the highlight card takes from the 3D stage, so the map is framed beside it rather than under it.
-const RESERVE_WIDE = { left: 300, bottom: 0 };
-const RESERVE_NARROW = { left: 0, bottom: 230 };
 
 export default function HomePage() {
   const { t, i18n } = useTranslation();
@@ -33,7 +31,40 @@ export default function HomePage() {
   const [region, setRegion] = useState("sirajganj");
   const [hovered, setHovered] = useState(null);
   const split = useSplit({ storageKey: "rw-split-home", initial: INTRO_DEFAULT, min: 380, max: 760, minRight: 380 });
-  const narrow = useMediaQuery("(max-width: 920px)");
+  const { palette } = useTheme();
+  const riverInfo = useRiverInfo();
+  const stageRef = useRef(null);
+  const [riverTip, setRiverTip] = useState(null);
+  const [cardOpen, setCardOpen] = useState(() => {
+    try {
+      return localStorage.getItem("rw-nisar-card") === "open";
+    } catch {
+      return false;
+    }
+  });
+  const toggleCard = (open) => {
+    setCardOpen(open);
+    try {
+      localStorage.setItem("rw-nisar-card", open ? "open" : "closed");
+    } catch {
+      /* not remembered */
+    }
+  };
+  const tipTimer = useRef();
+  const showRiver = (name, rect) => {
+    clearTimeout(tipTimer.current);
+    if (name) {
+      const stage = stageRef.current.getBoundingClientRect();
+      setRiverTip({ name, x: rect.right - stage.left, left: rect.left - stage.left, y: rect.top - stage.top, w: stage.width, h: stage.height });
+    } else {
+      // A short grace period lets the pointer travel from the label into the preview.
+      tipTimer.current = setTimeout(() => setRiverTip(null), 220);
+    }
+  };
+  const openRiver = (name) => {
+    const id = riverInfo.data?.[name]?.id;
+    if (id) navigate(`/river/${id}`);
+  };
 
   const m = manifest.data;
   const list = useMemo(() => unionsOfRegion(unions.data, region), [unions.data, region]);
@@ -140,19 +171,22 @@ export default function HomePage() {
 
       <SplitHandle split={split} label={t("layout.resizeIntro")} />
 
-      <section className={s.stage} aria-label={t("home.sceneLabel")}>
+      <section className={s.stage} aria-label={t("home.sceneLabel")} ref={stageRef}>
+        <div className={s.stageMap}>
         <div className={s.sceneClip}>
           {country.data && (
             <Suspense fallback={null}>
               <BangladeshScene
                 data={country.data}
+                colors={palette.scene}
                 lang={lang}
                 selected={region}
                 hovered={hovered}
                 onHover={setHovered}
                 onSelect={setRegion}
+                onRiverHover={showRiver}
+                onRiverOpen={openRiver}
                 regionText={regionText}
-                reserve={ratio == null ? undefined : narrow ? RESERVE_NARROW : RESERVE_WIDE}
               />
             </Suspense>
           )}
@@ -170,15 +204,58 @@ export default function HomePage() {
           <li>
             <i className={s.lgBank} /> {t("home.legendBank", { year: m ? fmtYear(Math.max(...m.regions[regionIds[0]].bankYears), lang) : "" })}
           </li>
+          {country.data?.elevation && palette.scene.elevation && (
+            <li className={s.lgElevation}>
+              <span>{t("home.legendElevation")}</span>
+              <span className={s.elevRamp}>
+                {palette.scene.elevation.map((c) => (
+                  <i key={c} style={{ background: `#${c.toString(16).padStart(6, "0")}` }} />
+                ))}
+              </span>
+              <span className={s.elevTicks}>
+                {["0", ...country.data.elevation.thresholdsM].map((m, i, all) => (
+                  <span key={m}>{i === all.length - 1 ? `>${fmtNum(+m, lang)} ${t("units.m")}` : `${fmtNum(+m, lang)}+`}</span>
+                ))}
+              </span>
+            </li>
+          )}
           <li>
             <i className={s.lgCity} /> {t("home.legendCity")}
           </li>
         </ul>
         <p className={s.hint}>{t("home.sceneHint")}</p>
+        </div>
 
-        {ratio != null && m && (
-          <aside className={s.highlight} aria-label={t("home.cardLabel")}>
+        {riverTip && riverInfo.data?.[riverTip.name] && (
+          <RiverPreview
+            tip={riverTip}
+            info={riverInfo.data[riverTip.name]}
+            label={t(`rivers.${riverTip.name}`, riverTip.name)}
+            onEnter={() => clearTimeout(tipTimer.current)}
+            onLeave={() => showRiver(null)}
+          />
+        )}
+
+        {ratio != null && m && !cardOpen && (
+          // Collapsed by default: the result stays visible as a chip without covering the map.
+          <button type="button" className={s.highlightChip} aria-expanded="false" onClick={() => toggleCard(true)}>
             <Tag tone="provisional">{t("home.cardLabel")}</Tag>
+            <span className={s.chipFigure}>
+              {fmtNum(ratio, lang, 1)}
+              <span>×</span>
+            </span>
+            <span className={s.chipText}>{t("home.cardChip")}</span>
+            <ChevronUp size={16} aria-hidden="true" />
+          </button>
+        )}
+        {ratio != null && m && cardOpen && (
+          <aside className={s.highlight} aria-label={t("home.cardLabel")}>
+            <div className={s.highlightHead}>
+              <Tag tone="provisional">{t("home.cardLabel")}</Tag>
+              <button type="button" className={s.highlightClose} aria-expanded="true" aria-label={t("home.cardCollapse")} onClick={() => toggleCard(false)}>
+                <ChevronDown size={16} />
+              </button>
+            </div>
             <p className={s.highlightFigure}>
               {fmtNum(ratio, lang, 1)}
               <span>×</span>

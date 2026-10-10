@@ -40,7 +40,7 @@
 
 .toc a:hover {
   color: var(--text);
-  border-left-color: var(--water);
+  border-left-color: var(--accent);
 }
 
 .content {
@@ -120,7 +120,7 @@
 .callout {
   margin-top: var(--s-5);
   padding: var(--s-4) var(--s-5);
-  border-left: 2px solid var(--water);
+  border-left: 2px solid var(--accent);
   background: var(--surface);
   font-size: var(--fs-body);
   line-height: 1.75;
@@ -154,7 +154,7 @@
   background: var(--bg);
   font-size: var(--fs-label);
   font-weight: 600;
-  color: var(--water);
+  color: var(--accent);
 }
 
 .steps h3 {
@@ -210,7 +210,7 @@
 }
 
 .table tr[data-emph="model"] td:first-child {
-  color: var(--water-strong);
+  color: var(--accent-strong);
   font-weight: 600;
 }
 
@@ -248,7 +248,7 @@
 }
 
 tr[data-emph="model"] .metric i b {
-  background: var(--water);
+  background: var(--accent);
 }
 
 .muted {
@@ -283,7 +283,7 @@ tr[data-emph="model"] .metric i b {
 .bars i b {
   display: block;
   height: 100%;
-  background: var(--water);
+  background: var(--accent);
   opacity: 0.85;
 }
 

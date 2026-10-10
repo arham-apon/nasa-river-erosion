@@ -2,8 +2,9 @@ import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Map as MapLibreMap, setWorkerUrl } from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { baseStyle, DARK_ONLY } from "./mapStyle.js";
+import { applyBasePalette, baseStyle, DARK_ONLY } from "./mapStyle.js";
 import { prefersReducedMotion } from "../../lib/urlState.js";
+import { usePalette } from "../../theme/ThemeContext.jsx";
 import s from "./map.module.css";
 
 // MapLibre 6 derives its worker URL at runtime, which bundlers cannot see; hand it the bundled worker instead.
@@ -12,14 +13,15 @@ setWorkerUrl(workerUrl);
 const MapCtx = createContext(null);
 export const useMap = () => useContext(MapCtx);
 
-export default function MapView({ initialBounds, basemap = "dark", tilt = false, tiltPitch = 55, label, children }) {
+export default function MapView({ initialBounds, basemap = "map", tilt = false, tiltPitch = 55, label, children }) {
   const el = useRef(null);
   const [map, setMap] = useState(null);
+  const palette = usePalette();
 
   useEffect(() => {
     const m = new MapLibreMap({
       container: el.current,
-      style: baseStyle(),
+      style: baseStyle(palette),
       bounds: initialBounds,
       fitBoundsOptions: { padding: 48 },
       attributionControl: { compact: true },
@@ -42,9 +44,13 @@ export default function MapView({ initialBounds, basemap = "dark", tilt = false,
 
   useEffect(() => {
     if (!map) return;
-    for (const id of DARK_ONLY) map.setLayoutProperty(id, "visibility", basemap === "dark" ? "visible" : "none");
+    for (const id of DARK_ONLY) map.setLayoutProperty(id, "visibility", basemap === "map" ? "visible" : "none");
     map.setLayoutProperty("esri", "visibility", basemap === "satellite" ? "visible" : "none");
   }, [map, basemap]);
+
+  useEffect(() => {
+    if (map) applyBasePalette(map, palette);
+  }, [map, palette]);
 
   useEffect(() => {
     if (!map) return;

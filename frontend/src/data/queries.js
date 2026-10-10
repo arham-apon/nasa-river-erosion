@@ -15,6 +15,8 @@ export const useUnions = () => useTopLayer("unions");
 export const useEvaluation = () => useTopLayer("evaluation");
 export const useAlerts = () => useTopLayer("alerts");
 export const useCountry = () => useTopLayer("context");
+// Wikipedia snapshot for the rivers named on the overview map (outside the generated data bundle).
+export const useRiverInfo = () => useFile("/content/rivers.json");
 
 export function useRegionLayer(region, layer, year) {
   const { data: m } = useManifest();

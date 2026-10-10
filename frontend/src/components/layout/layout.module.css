@@ -86,7 +86,7 @@
   right: var(--s-3);
   bottom: -1px;
   height: 2px;
-  background: var(--water);
+  background: var(--accent);
 }
 
 .headerRight {
@@ -180,7 +180,7 @@
 .demoStep {
   font-family: var(--font-num);
   font-size: var(--fs-label);
-  color: var(--water);
+  color: var(--accent);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }

@@ -29,6 +29,25 @@
   display: block;
 }
 
+/* Collision-hidden labels fade rather than blink, and stop taking the pointer. */
+.label {
+  transition: opacity 160ms var(--ease), visibility 160ms;
+}
+
+.label[data-hidden="true"] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* A soft backing keeps place and river names legible over lines and shading in both themes. */
+.city > span,
+.capital > span,
+.river > span {
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+}
+
 .city > span,
 .capital > span {
   transform: translate(8px, -50%);
@@ -49,12 +68,25 @@
   font-weight: 500;
   color: var(--water-strong);
   text-shadow: 0 0 4px var(--bg), 0 0 2px var(--bg), 0 0 1px var(--bg);
+  /* The label layer ignores the pointer; river names opt back in because they open a preview. */
+  pointer-events: auto;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: var(--r-1);
+  outline: none;
+}
+
+.river > span:hover,
+.river > span:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--text);
 }
 
 .grid > span {
   transform: translate(-50%, -50%);
   font-size: 11px;
-  color: #4a5864;
+  color: var(--grid-label);
 }
 
 /* Region label: a leader tick from the block to a small plate. */
@@ -67,7 +99,7 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-2);
-  background: rgba(11, 15, 19, 0.88);
+  background: var(--overlay);
   border: 1px solid var(--line-2);
   border-radius: var(--r-2);
 }
@@ -87,10 +119,50 @@
 }
 
 .region[data-state="selected"] > span {
-  color: var(--water-strong);
-  border-color: var(--water);
+  color: var(--text);
+  border-color: var(--text);
 }
 
 .region[data-state="selected"] > span::before {
-  border-color: var(--water);
+  border-color: var(--text);
+}
+
+.zoom {
+  position: absolute;
+  right: var(--s-5);
+  bottom: 52px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-2);
+  background: var(--overlay);
+  overflow: hidden;
+}
+
+.zoom button {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--text-2);
+}
+
+.zoom button + button {
+  border-top: 1px solid var(--line-2);
+}
+
+.zoom button:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+@media (max-width: 920px) {
+  .zoom {
+    right: var(--s-4);
+    bottom: auto;
+    top: var(--s-6);
+  }
 }

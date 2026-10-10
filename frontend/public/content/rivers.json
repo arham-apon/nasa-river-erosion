@@ -1,0 +1,182 @@
+{
+ "Brahmaputra": {
+  "id": "brahmaputra",
+  "name": "Brahmaputra",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Ganges-Brahmaputra-Meghna_basins.jpg/500px-Ganges-Brahmaputra-Meghna_basins.jpg",
+  "imageCredit": "https://commons.wikimedia.org/wiki/File:Ganges-Brahmaputra-Meghna_basins.jpg",
+  "en": {
+   "title": "Brahmaputra River",
+   "short": "The Brahmaputra is a trans-boundary river which flows through Southwestern China, Northeastern India, and Bangladesh. It is known as the Brahmaputra in Assam, Yarlung Tsangpo in Tibetan, the Siang/Dihang River in the Mishmi language, and Jamuna River in Bangladesh.",
+   "extract": "The Brahmaputra is a trans-boundary river which flows through Southwestern China, Northeastern India, and Bangladesh. It is known as the Brahmaputra in Assam, Yarlung Tsangpo in Tibetan, the Siang/Dihang River in the Mishmi language, and Jamuna River in Bangladesh. It is the 9th largest river in the world by discharge, and the 15th longest.",
+   "url": "https://en.wikipedia.org/wiki/Brahmaputra_River"
+  },
+  "bn": {
+   "title": "ব্রহ্মপুত্র নদ",
+   "short": "ব্রহ্মপুত্র নদ এশিয়া মহাদেশের একটি গুরুত্বপূর্ণ নদী। সংস্কৃত ভাষায় ব্রহ্মপুত্রের অর্থ \"ব্রহ্মার পুত্র\"।",
+   "extract": "ব্রহ্মপুত্র নদ এশিয়া মহাদেশের একটি গুরুত্বপূর্ণ নদী। সংস্কৃত ভাষায় ব্রহ্মপুত্রের অর্থ \"ব্রহ্মার পুত্র\"। এজন্য একে \"ব্রহ্মপুত্র নদ\" বলা হয়। ব্রহ্মপুত্রের পূর্ব নাম ছিল লৌহিত্য।",
+   "url": "https://bn.wikipedia.org/wiki/%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%B9%E0%A7%8D%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%A4%E0%A7%8D%E0%A6%B0_%E0%A6%A8%E0%A6%A6"
+  }
+ },
+ "Jamuna": {
+  "id": "jamuna",
+  "name": "Jamuna",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Boat_on_Jamuna_River.jpg/500px-Boat_on_Jamuna_River.jpg",
+  "imageCredit": "https://commons.wikimedia.org/wiki/File:Boat_on_Jamuna_River.jpg",
+  "en": {
+   "title": "Jamuna River (Bangladesh)",
+   "short": "The Jamuna River is one of the three main rivers of Bangladesh. The two other major rivers in Bangladesh are the Padma and the Meghna.",
+   "extract": "The Jamuna River is one of the three main rivers of Bangladesh. The two other major rivers in Bangladesh are the Padma and the Meghna. The Jamuna is the lower stream of the Brahmaputra River, which originates in Tibet as Yarlung Tsangpo, before flowing through India and then southwest into Bangladesh. The Jamuna flows south and joins the Padma River, near Goalundo Ghat.",
+   "url": "https://en.wikipedia.org/wiki/Jamuna_River_(Bangladesh)"
+  },
+  "bn": {
+   "title": "যমুনা নদী (বাংলাদেশ)",
+   "short": "যমুনা বাংলাদেশের প্রধান তিনটি নদীর একটি। এটি ব্রহ্মপুত্র নদের প্রধান শাখা।",
+   "extract": "যমুনা বাংলাদেশের প্রধান তিনটি নদীর একটি। এটি ব্রহ্মপুত্র নদের প্রধান শাখা। বাংলাদেশ পানি উন্নয়ন বোর্ড (পাউবো)কর্তৃক যমুনা নদীর প্রদত্ত পরিচিতি নম্বর উত্তর-পশ্চিমাঞ্চলের নদী নং ৭৬।",
+   "url": "https://bn.wikipedia.org/wiki/%E0%A6%AF%E0%A6%AE%E0%A7%81%E0%A6%A8%E0%A6%BE_%E0%A6%A8%E0%A6%A6%E0%A7%80_(%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6)"
+  }
+ },
+ "Teesta": {
+  "id": "teesta",
+  "name": "Teesta",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Teesta_River_View_From_Sikkim.jpg/500px-Teesta_River_View_From_Sikkim.jpg",
+  "imageCredit": "https://commons.wikimedia.org/wiki/File:Teesta_River_View_From_Sikkim.jpg",
+  "en": {
+   "title": "Teesta River",
+   "short": "Teesta River is a 414 km (257 mi) long river that rises in the Pauhunri Mountain of eastern Himalayas, flows through the Indian states of Sikkim and West Bengal and subsequently enters Bangladesh through Rangpur division. In Bangladesh, it merges with Jamuna River which after meeting some other major rivers of the Bengal delta finally falls into the Bay of Bengal.",
+   "extract": "Teesta River is a 414 km (257 mi) long river that rises in the Pauhunri Mountain of eastern Himalayas, flows through the Indian states of Sikkim and West Bengal and subsequently enters Bangladesh through Rangpur division. In Bangladesh, it merges with Jamuna River which after meeting some other major rivers of the Bengal delta finally falls into the Bay of Bengal. It drains an area of 12,540 km2 (4,840 sq mi). In India, the Teesta River flows through Mangan District, Gangtok District, Pakyong District, Kalimpong district, Darjeeling District, Jalpaiguri District, and Cooch Behar District as well as the cities of Rangpo, Jalpaiguri, and Mekhliganj. In Bangladesh, it flows through Lalmonirhat District, Rangpur District, Kurigram District and Gaibandha District. It joins the Jamuna River at Phulchhari Upazila in Bangladesh. 305 km (190 mi) of the river lies in India and 109 km (68 mi) in Bangladesh. The Teesta is the largest river of Sikkim and second largest river of West Bengal after the Ganges.",
+   "url": "https://en.wikipedia.org/wiki/Teesta_River"
+  },
+  "bn": {
+   "title": "তিস্তা নদী",
+   "short": "তিস্তা নদী বাংলাদেশ-ভারতের একটি আন্তঃসীমান্ত নদী। এটি ভারতের সিকিম ও পশ্চিমবঙ্গ রাজ্য ও বাংলাদেশের মধ্যে দিয়ে প্রবাহিত একটি নদী।",
+   "extract": "তিস্তা নদী বাংলাদেশ-ভারতের একটি আন্তঃসীমান্ত নদী। এটি ভারতের সিকিম ও পশ্চিমবঙ্গ রাজ্য ও বাংলাদেশের মধ্যে দিয়ে প্রবাহিত একটি নদী। তিস্তা সিকিম ও পশ্চিমবঙ্গের জলপাইগুড়ি বিভাগের প্রধান নদী। একে সিকিম ও উত্তরবঙ্গের জীবনরেখাও বলা হয়। সিকিম ও পশ্চিমবঙ্গের উপর দিয়ে প্রবাহিত হওয়ার পর বাংলাদেশে প্রবেশ করে তিস্তা ব্রহ্মপুত্র নদের সঙ্গে মিলিত হয়েছে। বাংলাদেশ পানি উন্নয়ন বোর্ড বা \"পাউবো\" কর্তৃক তিস্তা নদীর প্রদত্ত পরিচিতি নম্বর উত্তর-পশ্চিমাঞ্চলের নদী নং ৫২।",
+   "url": "https://bn.wikipedia.org/wiki/%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE_%E0%A6%A8%E0%A6%A6%E0%A7%80"
+  }
+ },
+ "Padma": {
+  "id": "padma",
+  "name": "Padma",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Padma_River%2C_Bangladesh.jpg/500px-Padma_River%2C_Bangladesh.jpg",
+  "imageCredit": "https://commons.wikimedia.org/wiki/File:Padma_River%2C_Bangladesh.jpg",
+  "en": {
+   "title": "Padma River",
+   "short": "The Padma is a major river in Bangladesh. It is the eastern and main distributary of the Ganges, flowing generally southeast for 356 kilometres (221 mi) to its confluence with the Meghna River, near the Bay of Bengal.",
+   "extract": "The Padma is a major river in Bangladesh. It is the eastern and main distributary of the Ganges, flowing generally southeast for 356 kilometres (221 mi) to its confluence with the Meghna River, near the Bay of Bengal. The city of Rajshahi is located on the banks of the river. Since 1966, over 66,000 hectares of land have been lost to erosion of the Padma. The Padma River is also an important source of fisheries and supports livelihoods for communities living along its banks.",
+   "url": "https://en.wikipedia.org/wiki/Padma_River"
+  },
+  "bn": {
+   "title": "পদ্মা নদী",
+   "short": "বাংলাদেশের রাজশাহী জেলার বাঘা উপজেলার পার্শ্ববর্তী বহমান পদ্মা।পদ্মা বাংলাদেশের প্রধান নদী।",
+   "extract": "বাংলাদেশের রাজশাহী জেলার বাঘা উপজেলার পার্শ্ববর্তী বহমান পদ্মা।পদ্মা বাংলাদেশের প্রধান নদী। এটি হিমালয়ে উৎপন্ন গঙ্গানদীর প্রধান শাখা এবং বাংলাদেশের দীর্ঘতম নদী। বাংলাদেশের গুরুত্বপূর্ণ শহর রাজশাহী এই পদ্মার উত্তর তীরে অবস্থিত। বাংলাদেশে নদীটির দৈর্ঘ্য ৩৪১ কিলোমিটার ,গড় প্রস্থ ১০ কিলোমিটার এবং নদীটির প্রকৃতি সর্পিলাকার।",
+   "url": "https://bn.wikipedia.org/wiki/%E0%A6%AA%E0%A6%A6%E0%A7%8D%E0%A6%AE%E0%A6%BE_%E0%A6%A8%E0%A6%A6%E0%A7%80"
+  }
+ },
+ "Meghna": {
+  "id": "meghna",
+  "name": "Meghna",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Bangladesh_LOC_1996_map.jpg/500px-Bangladesh_LOC_1996_map.jpg",
+  "imageCredit": "https://commons.wikimedia.org/wiki/File:Bangladesh_LOC_1996_map.jpg",
+  "en": {
+   "title": "Meghna River",
+   "short": "The Meghna is one of the major rivers in Bangladesh, one of the three that form the Ganges Delta, the largest delta on earth, which fans out to the Bay of Bengal. A part of the Surma-Meghna River System, the Meghna is formed inside Bangladesh in Kishoreganj District above the town of Bhairab Bazar by the joining of the Surma and the Kushiyara, both of which originate in the hilly regions of eastern India as the Barak River.",
+   "extract": "The Meghna is one of the major rivers in Bangladesh, one of the three that form the Ganges Delta, the largest delta on earth, which fans out to the Bay of Bengal. A part of the Surma-Meghna River System, the Meghna is formed inside Bangladesh in Kishoreganj District above the town of Bhairab Bazar by the joining of the Surma and the Kushiyara, both of which originate in the hilly regions of eastern India as the Barak River. The Meghna meets its major tributary, the Padma, in Chandpur District. Other major tributaries of the Meghna include the Dhaleshwari, the Gumti, and the Feni. The Meghna empties into the Bay of Bengal in Bhola District via four principal mouths, named Tetulia (Ilsha), Shahbazpur, Hatia, and Bamni.",
+   "url": "https://en.wikipedia.org/wiki/Meghna_River"
+  },
+  "bn": {
+   "title": "মেঘনা নদী",
+   "short": "মেঘনা নদী বা মেঘনা আপার নদী বাংলাদেশের দক্ষিণ-পূর্বাঞ্চলের কিশোরগঞ্জ, নরসিংদী, নারায়ণগঞ্জ, মুন্সীগঞ্জ, কুমিল্লা, ব্রাহ্মণবাড়িয়া, চাঁদপুর, লক্ষ্মীপুর ও ভোলা জেলার একটি নদী। নদীটির দৈর্ঘ্য ১৫৬ কিলোমিটার, গড় প্রস্থ ৩৪০০ মিটার এবং নদীটির প্রকৃতি সর্পিলাকার।",
+   "extract": "মেঘনা নদী বা মেঘনা আপার নদী বাংলাদেশের দক্ষিণ-পূর্বাঞ্চলের কিশোরগঞ্জ, নরসিংদী, নারায়ণগঞ্জ, মুন্সীগঞ্জ, কুমিল্লা, ব্রাহ্মণবাড়িয়া, চাঁদপুর, লক্ষ্মীপুর ও ভোলা জেলার একটি নদী। নদীটির দৈর্ঘ্য ১৫৬ কিলোমিটার, গড় প্রস্থ ৩৪০০ মিটার এবং নদীটির প্রকৃতি সর্পিলাকার। মেঘনা চাঁদপুরের মোহনা থেকে শুরু করেই সবথেকে বেশি খরস্রোতা হয়েছে এবং মেঘনা ভোলার শুরু থেকে শেষ প্রান্ত পর্যন্ত প্রায় ১০০কি:মি: প্রবাহিত হয়ে বঙ্গোপসাগরে পতিত হয়েছে। বাংলাদেশ পানি উন্নয়ন বোর্ড বা \"পাউবো\" কর্তৃক মেঘনা আপার নদীর প্রদত্ত পরিচিতি নম্বর দক্ষিণ-পূর্বাঞ্চলের নদী নং ১৭। মেঘনা বাংলাদেশের গভীরতম ও প্রশস্ততম নদী এবং অন্যতম বৃহৎ ও প্রধান নদী।",
+   "url": "https://bn.wikipedia.org/wiki/%E0%A6%AE%E0%A7%87%E0%A6%98%E0%A6%A8%E0%A6%BE_%E0%A6%A8%E0%A6%A6%E0%A7%80"
+  }
+ },
+ "Surma": {
+  "id": "surma",
+  "name": "Surma",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Surma_River_0002.jpg/500px-Surma_River_0002.jpg",
+  "imageCredit": "https://commons.wikimedia.org/wiki/File:Surma_River_0002.jpg",
+  "en": {
+   "title": "Surma River",
+   "short": "The Surma is a major transboundary river in Bangladesh and Assam, part of the Surma-Meghna River System. It starts when the Barak River from northeast India divides at the Bangladesh border into the Surma and the Kushiyara rivers at the junction of Cachar and Karimganj districts.",
+   "extract": "The Surma is a major transboundary river in Bangladesh and Assam, part of the Surma-Meghna River System. It starts when the Barak River from northeast India divides at the Bangladesh border into the Surma and the Kushiyara rivers at the junction of Cachar and Karimganj districts. It ends in Kishoreganj District, above Bhairab Bāzār, where the two rivers rejoin to form the Meghna River, which ultimately flows into the Bay of Bengal in Bhola District.",
+   "url": "https://en.wikipedia.org/wiki/Surma_River"
+  },
+  "bn": {
+   "title": "সুরমা নদী",
+   "short": "সুরমা নদী বাংলাদেশ-ভারতের একটি আন্তঃসীমান্ত নদী। সুরমা নদী বাংলাদেশের উত্তর-পূর্বাঞ্চলের সিলেট ও সুনামগঞ্জ জেলার একটি নদী।",
+   "extract": "সুরমা নদী বাংলাদেশ-ভারতের একটি আন্তঃসীমান্ত নদী। সুরমা নদী বাংলাদেশের উত্তর-পূর্বাঞ্চলের সিলেট ও সুনামগঞ্জ জেলার একটি নদী। বাংলাদেশ পানি উন্নয়ন বোর্ড বা \"পাউবো\" কর্তৃক সুরমা নদীর প্রদত্ত পরিচিতি নম্বর উত্তর-পূর্বাঞ্চলের নদী নং ৮৩। এটি বাংলাদেশের প্রধান নদীসমূহের অন্যতম।",
+   "url": "https://bn.wikipedia.org/wiki/%E0%A6%B8%E0%A7%81%E0%A6%B0%E0%A6%AE%E0%A6%BE_%E0%A6%A8%E0%A6%A6%E0%A7%80"
+  }
+ },
+ "Kushiyara": {
+  "id": "kushiyara",
+  "name": "Kushiyara",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Kushiyara_river%2C_sylhet.jpg/500px-Kushiyara_river%2C_sylhet.jpg",
+  "imageCredit": "https://commons.wikimedia.org/wiki/File:Kushiyara_river%2C_sylhet.jpg",
+  "en": {
+   "title": "Kushiyara River",
+   "short": "The Kushiyara is a transboundary river in Bangladesh and Assam, India. It forms on the India-Bangladesh border as a branch of the Barak River, when the Barak bifurcates into the Kushiyara and Surma.",
+   "extract": "The Kushiyara is a transboundary river in Bangladesh and Assam, India. It forms on the India-Bangladesh border as a branch of the Barak River, when the Barak bifurcates into the Kushiyara and Surma. The waters that eventually form the Kushiyara originate in the uplands of the state of Assam and pick up tributaries from Nagaland and Manipur.",
+   "url": "https://en.wikipedia.org/wiki/Kushiyara_River"
+  },
+  "bn": {
+   "title": "কুশিয়ারা নদী",
+   "short": "কুশিয়ারা নদী বাংলাদেশ-ভারতের একটি আন্তঃসীমান্ত নদী। বাংলাদেশ পানি উন্নয়ন বোর্ড বা \"পাউবো\" কর্তৃক কুশিয়ারা নদীর প্রদত্ত পরিচিতি নম্বর উত্তর-পূর্বাঞ্চলের নদী নং ১৭।",
+   "extract": "কুশিয়ারা নদী বাংলাদেশ-ভারতের একটি আন্তঃসীমান্ত নদী। বাংলাদেশ পানি উন্নয়ন বোর্ড বা \"পাউবো\" কর্তৃক কুশিয়ারা নদীর প্রদত্ত পরিচিতি নম্বর উত্তর-পূর্বাঞ্চলের নদী নং ১৭। কুশিয়ারা নামের উৎপত্তি সম্পর্কে প্রচলিত আছে যে এই নদীর চারপাশের তীরে কুশ নামক একধরনের ঘাস জন্মাতো সেখান থেকেই মূলত এটির নামের উৎপত্তি। কুশিয়ারাকে সিলেট অঞ্চলের প্রধান দুটি নদীর একটি মনে করা হয়। বৃহত্তর সিলেট অঞ্চলের মানুষের আবেগ, ইতিহাস, স্মৃতি,ঐতিহ্য মিশে আছে এই নদীর প্রবাহে ।",
+   "url": "https://bn.wikipedia.org/wiki/%E0%A6%95%E0%A7%81%E0%A6%B6%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0%E0%A6%BE_%E0%A6%A8%E0%A6%A6%E0%A7%80"
+  }
+ },
+ "Old Brahmaputra": {
+  "id": "old-brahmaputra",
+  "name": "Old Brahmaputra",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Rayhan_29_Sep_17_08.png/500px-Rayhan_29_Sep_17_08.png",
+  "imageCredit": "https://commons.wikimedia.org/wiki/File:Rayhan_29_Sep_17_08.png",
+  "en": {
+   "title": "Old Brahmaputra River",
+   "short": "The Old Brahmaputra River is a distributary of the Brahmaputra River in north-central Bangladesh. Historically it constituted the main stem of the Brahmaputra, however, the larger river's primary outflow was redirected via the Jamuna River after the 1762 Arakan earthquake.",
+   "extract": "The Old Brahmaputra River is a distributary of the Brahmaputra River in north-central Bangladesh. Historically it constituted the main stem of the Brahmaputra, however, the larger river's primary outflow was redirected via the Jamuna River after the 1762 Arakan earthquake. Today, the Old Brahmaputra has been relegated to a minor river with much less flow than its former self. The river branches off from the Brahmaputra in Jamalpur District and Mymensingh then flows southeasterly for approximately 200 km (120 mi) before meeting the Meghna River in Kishoreganj District.",
+   "url": "https://en.wikipedia.org/wiki/Old_Brahmaputra_River"
+  },
+  "bn": {
+   "title": "পুরাতন ব্রহ্মপুত্র নদ",
+   "short": "পুরাতন ব্রহ্মপুত্র নদ বাংলাদেশের উত্তর-কেন্দ্রীয় অঞ্চলের গাইবান্ধা, জামালপুর, শেরপুর, ময়মনসিংহ, কিশোরগঞ্জ ও নরসিংদী জেলার মধ্য দিয়ে প্রবাহিত একটি নদ। নদটির দৈর্ঘ্য ২৮৩ কিলোমিটার, গড় প্রস্থ ২০০ মিটার এবং নদটির প্রকৃতি সর্পিলাকার।",
+   "extract": "পুরাতন ব্রহ্মপুত্র নদ বাংলাদেশের উত্তর-কেন্দ্রীয় অঞ্চলের গাইবান্ধা, জামালপুর, শেরপুর, ময়মনসিংহ, কিশোরগঞ্জ ও নরসিংদী জেলার মধ্য দিয়ে প্রবাহিত একটি নদ। নদটির দৈর্ঘ্য ২৮৩ কিলোমিটার, গড় প্রস্থ ২০০ মিটার এবং নদটির প্রকৃতি সর্পিলাকার। বাংলাদেশ পানি উন্নয়ন বোর্ড বা \"পাউবো\" কর্তৃক পুরাতন ব্রহ্মপুত্র নদের প্রদত্ত পরিচিতি নম্বর উত্তর-কেন্দ্রীয় অঞ্চলের নদী নং ৩৭।",
+   "url": "https://bn.wikipedia.org/wiki/%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A6%A8_%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%B9%E0%A7%8D%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%A4%E0%A7%8D%E0%A6%B0_%E0%A6%A8%E0%A6%A6"
+  }
+ },
+ "Karnaphuli": {
+  "id": "karnaphuli",
+  "name": "Karnaphuli",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Karnafully_River_to_Bay_of_Bengal_%2816471666352%29.jpg/500px-Karnafully_River_to_Bay_of_Bengal_%2816471666352%29.jpg",
+  "imageCredit": "https://commons.wikimedia.org/wiki/File:Karnafully_River_to_Bay_of_Bengal_%2816471666352%29.jpg",
+  "en": {
+   "title": "Karnaphuli",
+   "short": "The Karnaphuli River is the largest and most important river in Chittagong and the Chittagong Hill Tracts. It is a 667-metre (2,188 ft) wide river in the south-eastern part of Bangladesh.",
+   "extract": "The Karnaphuli River is the largest and most important river in Chittagong and the Chittagong Hill Tracts. It is a 667-metre (2,188 ft) wide river in the south-eastern part of Bangladesh. Originating from the Saithah village of Mamit district in Mizoram, India, it flows 270 kilometres (170 mi) southwest through Chattogram Hill Tracts and Chattogram into the Bay of Bengal. It is the fastest flowing river in Bangladesh, after the Padma.",
+   "url": "https://en.wikipedia.org/wiki/Karnaphuli"
+  },
+  "bn": {
+   "title": "কর্ণফুলী নদী",
+   "short": "কর্ণফুলি নদী চট্টগ্রামের ও পার্বত্য চট্টগ্রামের বৃহত্তম এবং সবচেয়ে গুরুত্বপূর্ণ নদী। এটি বাংলাদেশ-ভারতের একটি সর্পিলাকার আন্তঃসীমান্ত নদী।",
+   "extract": "কর্ণফুলি নদী চট্টগ্রামের ও পার্বত্য চট্টগ্রামের বৃহত্তম এবং সবচেয়ে গুরুত্বপূর্ণ নদী। এটি বাংলাদেশ-ভারতের একটি সর্পিলাকার আন্তঃসীমান্ত নদী। এটি বাংলাদেশের দক্ষিণ-পূর্ব অংশে প্রবাহিত ৬৬৭-মিটার (২,১৮৮-ফুট) প্রশস্ত একটি নদী। ভারতের মিজোরামের মমিত জেলার শৈতা গ্রাম থেকে উদ্ভূত ২৭০ কিলোমিটার নদীটি দক্ষিণ-পশ্চিমে চট্টগ্রাম পার্বত্য অঞ্চল এবং চট্টগ্রাম শহর হয়ে বঙ্গোপসাগরে প্রবাহিত হয়েছে। পদ্মার পর এটি বাংলাদেশের সবচেয়ে দ্রুত প্রবাহিত নদী। এটি \"মিজোরামের সমগ্র দক্ষিণ-পশ্চিম অংশের জল নিষ্কাশন ব্যবস্থার প্রতিনিধিত্ব করে\"। ১৯৬২ সালে কাপ্তাই উপজেলার কর্ণফুলীতে একটি পানি বিদ্যুৎ কেন্দ্র নির্মিত হয়েছিল। এই নদীর মোহনায় বাংলাদেশের বৃহত্তম এবং ব্যস্ততম সমুদ্রবন্দর চট্টগ্রাম বন্দর অবস্থিত। এর প্রধান উপনদীগুলির মধ্যে রয়েছে কাওরপুই বা থেগা, তুইচাং, ফায়ারুয়াং, হালদা (বোয়ালখালী), কাসালং এবং সাহনী। বাংলাদেশ পানি উন্নয়ন বোর্ড কর্তৃক কর্ণফুলী নদীর প্রদত্ত পরিচিতি নম্বর হলো পূর্ব-পাহাড়ি অঞ্চলের নদী নং ০৩।",
+   "url": "https://bn.wikipedia.org/wiki/%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A3%E0%A6%AB%E0%A7%81%E0%A6%B2%E0%A7%80_%E0%A6%A8%E0%A6%A6%E0%A7%80"
+  }
+ },
+ "Matamuhuri": {
+  "id": "matamuhuri",
+  "name": "Matamuhuri",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Mountain_River_Sunset.jpg/500px-Mountain_River_Sunset.jpg",
+  "imageCredit": "https://commons.wikimedia.org/wiki/File:Mountain_River_Sunset.jpg",
+  "en": {
+   "title": "Matamuhuri River",
+   "short": "Matamuhuri River is a Bangladeshi river located in the eastern hill region, flowing through both Bandarban District and Cox's Bazar District. The river is about 287 kilometres (178 mi) long, with an average width of 154 metres (505 ft).",
+   "extract": "Matamuhuri River is a Bangladeshi river located in the eastern hill region, flowing through both Bandarban District and Cox's Bazar District. The river is about 287 kilometres (178 mi) long, with an average width of 154 metres (505 ft). It flows in a winding, serpentine pattern.",
+   "url": "https://en.wikipedia.org/wiki/Matamuhuri_River"
+  },
+  "bn": {
+   "title": "মাতামুহুরী নদী",
+   "short": "মাতামুহুরী নদী বাংলাদেশের পূর্ব-পাহাড়ি অঞ্চলের বান্দরবান ও কক্সবাজার জেলার একটি নদী। নদীটির দৈর্ঘ্য ১৪৬ কিলোমিটার, গড় প্রস্থ ১৫৪ মিটার এবং নদীটির প্রকৃতি সর্পিলাকার।",
+   "extract": "মাতামুহুরী নদী বাংলাদেশের পূর্ব-পাহাড়ি অঞ্চলের বান্দরবান ও কক্সবাজার জেলার একটি নদী। নদীটির দৈর্ঘ্য ১৪৬ কিলোমিটার, গড় প্রস্থ ১৫৪ মিটার এবং নদীটির প্রকৃতি সর্পিলাকার। বাংলাদেশ পানি উন্নয়ন বোর্ড বা \"পাউবো\" কর্তৃক মাতামুহুরী নদীর প্রদত্ত পরিচিতি নম্বর পূর্ব-পাহাড়ি অঞ্চলের নদী নং ১৩।",
+   "url": "https://bn.wikipedia.org/wiki/%E0%A6%AE%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%AE%E0%A7%81%E0%A6%B9%E0%A7%81%E0%A6%B0%E0%A7%80_%E0%A6%A8%E0%A6%A6%E0%A7%80"
+  }
+ }
+}

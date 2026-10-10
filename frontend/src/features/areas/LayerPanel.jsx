@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ChevronRight } from "lucide-react";
 import Segmented from "../../components/ui/Segmented.jsx";
+import { usePalette } from "../../theme/ThemeContext.jsx";
 import { fmtNum, fmtYear } from "../../lib/format.js";
 import p from "./panel.module.css";
 
@@ -13,19 +14,21 @@ const GROUPS = [
   { key: "nisar", items: ["nisarChange", "nisarCheck"] },
 ];
 
-const SWATCH = {
-  priority: { background: "rgba(240,122,79,0.28)", border: "1px solid #36434f" },
-  risk: { background: "linear-gradient(90deg,#f07a4f 0 33%,#c9a25b 33% 66%,#56636e 66%)" },
-  hindcast: { background: "rgba(232,149,74,0.55)", outline: "1.5px dashed #f4f6f7", outlineOffset: -2 },
-  erosion: { background: "#e8954a" },
-  banks: { height: 0, borderTop: "2px solid #63b3d9" },
-  nisarChange: { background: "#e8954a", opacity: 0.85 },
-  nisarCheck: { background: "rgba(232,149,74,0.4)", outline: "1.5px dashed #f4f6f7", outlineOffset: -2 },
-};
+// Each swatch repeats the symbol the layer draws on the map, in the active theme.
+const swatches = (P) => ({
+  priority: { background: P.riskHighA(0.28), border: `1px solid ${P.unionLine}` },
+  risk: { background: `linear-gradient(90deg,${P.risk.High} 0 33%,${P.risk.Medium} 33% 66%,${P.risk.Low} 66%)` },
+  hindcast: { background: P.erosionA(0.55), outline: `1.5px dashed ${P.flag}`, outlineOffset: -2 },
+  erosion: { background: P.erosion },
+  banks: { height: 0, borderTop: `2px solid ${P.water}` },
+  nisarChange: { background: P.erosion, opacity: 0.85 },
+  nisarCheck: { background: P.erosionA(0.4), outline: `1.5px dashed ${P.flag}`, outlineOffset: -2 },
+});
 
 export default function LayerPanel({ layers, onToggle, hindYears, hindYear, onHindYear, erosionYears, erosionYear, onErosionYear }) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
+  const SWATCH = swatches(usePalette());
   const on = Object.values(layers).filter(Boolean).length;
   const [open, setOpen] = useState(() => {
     try {

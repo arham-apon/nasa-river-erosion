@@ -45,3 +45,5 @@ nenv/
 
 # Secrets (Earthdata token)
 .env
+
+.claude/

@@ -43,14 +43,14 @@
 .handle:hover::before,
 .handle:focus-visible::before,
 .handle[data-dragging="true"]::before {
-  background: var(--water);
+  background: var(--accent);
 }
 
 .handle:hover .grip,
 .handle:focus-visible .grip,
 .handle[data-dragging="true"] .grip {
-  border-color: var(--water);
-  color: var(--water-strong);
+  border-color: var(--accent);
+  color: var(--accent-strong);
 }
 
 @media (max-width: 920px) {
