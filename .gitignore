@@ -47,3 +47,6 @@ nenv/
 .env
 
 .claude/
+
+# Working notes (kept locally)
+/docs/*.md
