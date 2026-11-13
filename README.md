@@ -1,4 +1,6 @@
-# River Watch — Char Erosion Watch
+🌐 **[LIVE WEBSITE — RIVER WATCH](https://nasa-river-erosion.vercel.app/)**
+
+**# River Watch — Char Erosion Watch**
 
 **NASA Space Apps Challenge 2026 · Dancing with the SARs**
 
@@ -48,13 +50,13 @@ Every page has a dark (default) and a light theme.
 
 ```text
 00_region_bbox.py … 10_nisar_check.py   Pipeline steps (see run.txt)
-config.py                               Study regions, thresholds, paths
-data/                                   Inputs needed to retrain (most outputs are git-ignored)
-docs/screenshots/                       Website screenshots used in this README
-scripts/prepare_frontend_data.py        Builds the website's data bundle from pipeline outputs
-frontend/                               The React website (Vite, JSX only)
-web/dashboard.html                      Original single-file Leaflet dashboard (kept as a fallback)
-run.txt                                 Plain step-by-step run guide (Windows cmd)
+config.py                              Study regions, thresholds, paths
+data/                                  Inputs needed to retrain (most outputs are git-ignored)
+docs/screenshots/                      Website screenshots used in this README
+scripts/prepare_frontend_data.py       Builds the website's data bundle from pipeline outputs
+frontend/                              The React website (Vite, JSX only)
+web/dashboard.html                     Original single-file Leaflet dashboard (kept as a fallback)
+run.txt                                Plain step-by-step run guide (Windows cmd)
 ```
 
 ---
@@ -100,7 +102,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173. Add `?lang=en` or `?lang=bn` to a link to choose the language.
+Open [http://localhost:5173](http://localhost:5173). Add `?lang=en` or `?lang=bn` to a link to choose the language.
 
 ```bash
 npm run build      # validates the data bundle, then builds to frontend/dist
